@@ -9,7 +9,8 @@ const Search = () => {
     return (
         <div
             className={`
-                flex 
+                hidden
+                sm:flex
                 justify-between 
                 rounded-xl 
                 ${isActive && "bg-slate-800"}

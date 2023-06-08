@@ -8,11 +8,11 @@ const Logo = () => {
 
     return (
 
-        <div className="hidden md:flex  items-center text-blue gap-2 cursor-pointer select-none">
+        <div className="flex items-center text-blue gap-2 cursor-pointer select-none">
             <Image
                 onClick={() => router.push('/')}
                 alt="Logo"
-                className=""
+                className="h-[64px] w-[64px]"
                 height="64"
                 width="64"
                 src="/images/logo.png"
