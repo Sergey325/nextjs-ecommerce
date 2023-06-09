@@ -23,16 +23,16 @@ const Button = ({label, onClick, disabled, outline, small, icon: Icon}: Props) =
                 relative
                 disabled:opacity-70 disabled:cursor-not-allowed
                 rounded-lg
-                hover:opacity-80
-                transition
+                transition-all
+                duration-300
                 w-full
-                ${outline ? "bg-white" : "bg-rose-500"}
-                ${outline ? "border-black" : "bg-rose-500"}
-                ${outline ? "text-black" : "text-white"}
+                ${outline ? "bg-slate-800" : "bg-slate-500"}
+                ${outline ? "shadow-[0_0_0_1px_rgba(100,116,139,1)]" : "border-slate-500"}
+                ${outline ? "hover:shadow-[0_0_0_3px_rgba(100,116,139,1)]" : "hover:drop-shadow-[0_5px_10px_rgba(98,143,200,0.90)]"}
+                ${outline ? "text-gray-300" : "text-gray-900"}
                 ${small ? "py-1" : "py-3"}
                 ${small ? "text-sm" : "text-md"}
                 ${small ? "font-light" : "font-semibold"}
-                ${small ? "border-[1px]" : "border-2"}
                 select-none
             `}
         >
