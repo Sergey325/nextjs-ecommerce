@@ -26,7 +26,7 @@ const Button = ({label, onClick, disabled, outline, small, icon: Icon}: Props) =
                 transition-all
                 duration-300
                 w-full
-                ${outline ? "bg-slate-800" : "bg-slate-500"}
+                ${outline ? "bg-slate-900" : "bg-slate-500"}
                 ${outline ? "shadow-[0_0_0_1px_rgba(100,116,139,1)]" : "border-slate-500"}
                 ${outline ? "hover:shadow-[0_0_0_3px_rgba(100,116,139,1)]" : "hover:drop-shadow-[0_5px_10px_rgba(98,143,200,0.90)]"}
                 ${outline ? "text-gray-300" : "text-gray-900"}

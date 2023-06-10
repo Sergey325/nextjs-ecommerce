@@ -6,14 +6,22 @@ import {useCallback, useState} from "react";
 import Search from "@/app/components/navbar/Search";
 import MenuItem from "@/app/components/navbar/MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import {User} from "@prisma/client";
+import {signOut} from "next-auth/react";
 
-const UserMenu = () => {
+type Props = {
+    currentUser?: User | null
+}
+
+const UserMenu = ({currentUser}: Props) => {
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value)
-    },[])
+    }, [])
 
     return (
         <div className="relative">
@@ -27,15 +35,15 @@ const UserMenu = () => {
                             flex flex-row items-center gap-3
                             rounded-full
                             cursor-pointer
-                            hover:shadow-md
+                            hover:shadow-[0_0_20px_rgba(98,143,200,0.25)]
                             transition
                             text-slate-500
                             text-xl
                         "
                 >
-                    <AiOutlineMenu />
+                    <AiOutlineMenu/>
                     <div className="hidden md:block">
-                        <Avatar src={null}/>
+                        <Avatar src={currentUser?.image}/>
                     </div>
                 </div>
             </div>
@@ -57,30 +65,33 @@ const UserMenu = () => {
                     "
                 >
                     <div className="flex flex-col cursor-pointer">
-                        {isOpen ? (
+                        {currentUser ? (
                             <>
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                    }}
                                     label="Basket"
                                 />
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                    }}
                                     label="Orders"
                                 />
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                    }}
                                     label="Favorites"
                                 />
                                 <hr className="border-slate-500"/>
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => signOut()}
                                     label="Logout"
                                 />
                             </>
                         ) : (
                             <>
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={loginModal.onOpen}
                                     label="Login"
                                 />
                                 <MenuItem

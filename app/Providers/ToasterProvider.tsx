@@ -2,9 +2,14 @@
 
 import {Toaster} from "react-hot-toast";
 
-const ToasterProvider = () =>{
+const ToasterProvider = () => {
     return (
-        <Toaster />
+        <Toaster toastOptions={{
+            style: {
+                background: "#1E293B",
+                color: "#D0D4DA"
+            }
+        }}/>
     )
 }
 

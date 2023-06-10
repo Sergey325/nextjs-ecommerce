@@ -99,8 +99,8 @@ const Modal = ({
                             relative
                             flex flex-col
                             w-full
-                            bg-slate-800
-                            text-gray-300
+                            bg-slate-900
+                            text-gray-400
                             outline-none focud:outline-none
                         ">
 

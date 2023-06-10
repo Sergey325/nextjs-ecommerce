@@ -15,7 +15,7 @@ const Logo = () => {
                 className="h-[64px] w-[64px]"
                 height="64"
                 width="64"
-                src="/images/logo.png"
+                src="/images/logo1.png"
             />
             <div className="text-3xl text-gray-400">
                 Pc Store

@@ -34,8 +34,11 @@ const Input = ({id, label, type = "text", disabled, formatPrice, required, regis
                     p-4
                     pt-6
                     font-light
-                    bg-white
+                    text-gray-300
+                    bg-slate-800
                     border-2
+                    border-slate-700
+                    autofill:!bg-slate-700
                     rounded-md
                     outline-none
                     transition
@@ -43,7 +46,7 @@ const Input = ({id, label, type = "text", disabled, formatPrice, required, regis
                     disabled:cursor-not-allowed
                     ${formatPrice ? "pl-9" : "pl-4"}
                     ${errors[id] ? 'border-rose-500' : "border-neutral-300"}
-                    ${errors[id] ? 'focus:border-rose-500' : "focus:border-black"}
+                    ${errors[id] ? 'focus:border-rose-500' : "focus:drop-shadow-[0_0_10px_rgba(98,143,200,0.4)]"}
                 `}
             />
             <label

@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: #1E293B;
+  border: 2px solid #334155;
+  -webkit-text-fill-color: #D0D4DA;
+  -webkit-box-shadow: 0 0 0 1000px #1E293B inset;
+  box-shadow: 0 0 0 1000px #1E293B inset;
+  transition: background-color 5000s ease-in-out 0s;
+  color: #D0D4DA;
+}
+
 html,
 body,
 :root{

@@ -13,7 +13,7 @@ const Heading = ({title, subtitle, center}: Props) => {
             <div className="text-2xl font-bold">
                 {title}
             </div>
-            <div className="font-light text-neutral-500 mt-2">
+            <div className="font-light text-gray-400 mt-2">
                 {subtitle}
             </div>
         </div>
