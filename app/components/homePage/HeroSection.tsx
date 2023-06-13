@@ -19,7 +19,7 @@ const HeroSection = () => {
                     quality={100}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-1/2 h-1/2 bg-gradient-to-br from-blue-400/70 to-purple-500/70 rounded-full filter blur-[150px] absolute"></div>
+                    <div className="w-1/2 h-1/2 bg-gradient-to-br from-blue-400/70 to-purple-500/70 rounded-full filter blur-[150px] absolute z-10"></div>
                 </div>
             </div>
             <div className=" text-gray-400 flex flex-col gap-4 md:gap-8 md:w-2/5">

@@ -11,7 +11,7 @@ type Props = {
 
 const Navbar = ({currentUser}: Props) => {
     return (
-        <div className="fixed w-full bg-transparent z-10">
+        <div className="fixed w-full bg-slate-950 z-10">
             <div
                 className="
                     py-6
