@@ -6,6 +6,7 @@ import RegisterModal from "@/app/components/modals/RegisterModal";
 import LoginModal from "@/app/components/modals/LoginModal";
 import ToasterProvider from "@/app/Providers/ToasterProvider";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import BackToTop from "@/app/components/backToTop/BackToTop";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -30,9 +31,10 @@ export default async function RootLayout({
                     <RegisterModal/>
                     <Navbar currentUser={currentUser}/>
                 </ClientOnly>
-                <div className="pb-20 pt-28">
+                <div className="pb-20 pt-20">
                     {children}
                 </div>
+                <BackToTop/>
             </body>
         </html>
     )

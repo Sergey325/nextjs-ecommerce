@@ -8,7 +8,7 @@ const HeroSection = () => {
     const router = useRouter()
 
     return (
-        <section className="pt-12 flex flex-col-reverse md:flex-row items-center gap-4">
+        <section className="flex flex-col-reverse md:flex-row items-center gap-4">
             <div className="relative flex items-center justify-center md:w-1/2">
                 <Image
                     className=""
