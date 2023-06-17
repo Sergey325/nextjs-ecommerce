@@ -1,6 +1,7 @@
 import Container from "@/app/components/Container";
 import HeroSection from "@/app/components/homePage/HeroSection";
 import ThirdSection from "@/app/components/homePage/ThirdSection";
+import FourthSection from "@/app/components/homePage/FourthSection";
 
 export default function Home() {
     return (
@@ -29,15 +30,17 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="pt-24 flex flex-col w-full items-center">
+            <section className="pt-32 flex flex-col w-full items-center">
                 <div className="flex flex-col items-center justify-center w-[80%] gap-4 md:gap-8">
                     <p className="text-3xl lg:text-4xl xl:text-5xl text-gray-300 text-center">Uncompromising Quality: Discover the Best Components</p>
                     <p className="text-gray-400 text-md lg:text-lg xl:text-xl 2xl:text-2xl text-center">Explore a wide range of top-notch components, meticulously selected for their exceptional quality and performance.</p>
                 </div>
-
                 <ThirdSection/>
             </section>
 
+            <section className="pt-24 flex justify-center">
+                <FourthSection/>
+            </section>
         </Container>
     )
 }
