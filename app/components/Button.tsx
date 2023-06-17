@@ -10,9 +10,10 @@ type Props = {
     outline?: boolean
     small?: boolean
     icon?: IconType
+    gradient?: boolean
 };
 
-const Button = ({label, onClick, disabled, outline, small, icon: Icon}: Props) => {
+const Button = ({label, onClick, disabled, outline, small, icon: Icon, gradient}: Props) => {
 
 
     return (
@@ -28,6 +29,8 @@ const Button = ({label, onClick, disabled, outline, small, icon: Icon}: Props) =
                 w-full
                 ${outline ? "bg-slate-900" : "bg-slate-400"}
                 ${outline ? "shadow-[0_0_0_1px_rgba(100,116,139,1)]" : "border-slate-400"}
+                ${gradient && "bg-gradient-to-br from-indigo-500 to-purple-600"}
+                ${gradient && "hover:drop-shadow-[0_5px_10px_rgba(137,63,237,0.90)]"}
                 ${outline ? "hover:shadow-[0_0_0_3px_rgba(100,116,139,1)]" : "hover:drop-shadow-[0_5px_10px_rgba(98,143,200,0.90)]"}
                 ${outline ? "text-gray-300" : "text-gray-950"}
                 ${small ? "py-1" : "py-3"}

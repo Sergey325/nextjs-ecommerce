@@ -19,8 +19,8 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="hidden xl:flex w-1/2 relative flex-col justify-center items-center p-10">
-                        <div className="h-1 w-[100%] bg-gradient-to-r from-blue-500 to-gray-400"></div>
-                        <div className="text-xl text-slate-400 pt-6 px-8">
+                        <div className="h-1 w-[100%] bg-gradient-to-r from-blue-500 to-blue-700"></div>
+                        <div className="text-xl text-blue-600 pt-6 px-8">
                             5-star reviews
                         </div>
                         <div className="text-3xl text-gray-500 pt-3">
