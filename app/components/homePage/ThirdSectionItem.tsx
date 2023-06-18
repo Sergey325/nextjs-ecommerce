@@ -32,7 +32,7 @@ const ThirdSectionItem = ({label, icon: Icon, linearGradient, pushUrl, iconColor
                 ></div>
             </div>
             <div className="flex z-50 translate-y-0 group-hover:translate-y-[-15px] transition-all duration-700 cursor-pointer">
-                <Icon size={size} color={iconColor}/>
+                <Icon size={size} color={iconColor} onClick={() => router.push(pushUrl)}/>
             </div>
             <div className="text-gray-300 text-xl text-center min-w-[250px] pt-4 font-medium">
                 {label}

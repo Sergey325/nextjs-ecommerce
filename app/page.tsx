@@ -2,6 +2,7 @@ import Container from "@/app/components/Container";
 import HeroSection from "@/app/components/homePage/HeroSection";
 import ThirdSection from "@/app/components/homePage/ThirdSection";
 import FourthSection from "@/app/components/homePage/FourthSection";
+import FifthSection from "@/app/components/homePage/FifthSection";
 
 export default function Home() {
     return (
@@ -40,6 +41,10 @@ export default function Home() {
 
             <section className="pt-24 flex justify-center">
                 <FourthSection/>
+            </section>
+
+            <section className="pt-40 flex justify-center">
+                <FifthSection/>
             </section>
         </Container>
     )
