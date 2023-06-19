@@ -7,6 +7,7 @@ import LoginModal from "@/app/components/modals/LoginModal";
 import ToasterProvider from "@/app/Providers/ToasterProvider";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import BackToTop from "@/app/components/backToTop/BackToTop";
+import Footer from "@/app/components/Footer";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -35,6 +36,7 @@ export default async function RootLayout({
                     {children}
                 </div>
                 <BackToTop/>
+                <Footer/>
             </body>
         </html>
     )

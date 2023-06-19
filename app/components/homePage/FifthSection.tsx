@@ -2,7 +2,7 @@ import FifthSectionItem from "@/app/components/homePage/FifthSectionItem";
 
 const FifthSection = () => {
     return (
-        <div className="text-3xl lg:text-4xl xl:text-5xl text-gray-300 text-center w-full">
+        <div className="text-3xl lg:text-4xl xl:text-5xl text-gray-400 text-center w-full">
             Backed by the best
             <div className="pt-14 grid grid-cols-2 md:grid-cols-3 justify-center items-center">
                 <FifthSectionItem src_gray="/images/amd_gray.svg" src_purple="/images/amd_purple.svg"/>
