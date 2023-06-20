@@ -17,7 +17,9 @@ const Footer = () => {
                         Copyright © 2023 PC store
                     </div>
                     <div className="flex justify-between gap-1">
-                        All rights reserved |<span className="hover:text-indigo-600 transition cursor-pointer">Privacy</span> | <span className="hover:text-indigo-600 transition cursor-pointer">Terms</span>
+                        All rights reserved |
+                        <span className="hover:text-indigo-600 transition cursor-pointer">Privacy</span> |
+                        <span className="hover:text-indigo-600 transition cursor-pointer">Terms</span>
                     </div>
                 </div>
                 <div className="flex items-center order-2 sm:order-1 lg:order-2 text-blue gap-2 cursor-pointer select-none">
