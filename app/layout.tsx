@@ -26,17 +26,20 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <ClientOnly>
-                    <ToasterProvider/>
-                    <LoginModal/>
-                    <RegisterModal/>
-                    <Navbar currentUser={currentUser}/>
-                </ClientOnly>
-                <div className="pb-20 pt-20">
-                    {children}
+                <div className="flex min-h-screen flex-col">
+                    <ClientOnly>
+                        <ToasterProvider/>
+                        <LoginModal/>
+                        <RegisterModal/>
+                        <Navbar currentUser={currentUser}/>
+                    </ClientOnly>
+                    <div className="pb-20 flex-grow">
+                        {children}
+                    </div>
+                    <BackToTop/>
+                    <Footer/>
                 </div>
-                <BackToTop/>
-                <Footer/>
+
             </body>
         </html>
     )

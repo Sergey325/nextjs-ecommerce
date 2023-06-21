@@ -39,14 +39,14 @@ const ThirdSection = () => {
             />
             <ThirdSectionItem
                 icon={BsDeviceSsdFill}
-                label="Solid State Drives (SSD)"
+                label="Hard Drives"
                 linearGradient={"bg-gradient-to-br from-green-500 to-purple-400"}
                 pushUrl={"/"}
                 iconColor="#10b981"
             />
             <ThirdSectionItem
                 icon={BsFan}
-                label="PC fans and CPU coolers"
+                label="Processor Coolers"
                 linearGradient={"bg-gradient-to-br from-red-500 to-purple-400"}
                 pushUrl={"/"}
                 iconColor="#ec4899"
