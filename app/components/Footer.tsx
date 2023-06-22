@@ -13,8 +13,8 @@ const Footer = () => {
         <Container>
             <footer className="pb-10 sm:b-20 flex flex-col flex-shrink justify-center items-center">
                 <hr className="border-gray-700 w-full "/>
-                <div className="flex flex-col sm:flex-row gap-5 sm:gap-0 justify-between items-center w-full pt-10 sm:pt-20">
-                    <div className="flex flex-col order-3 sm:order-2 lg:order-1 text-gray-500 text-sm md:text-md lg:text-lg">
+                <div className="flex flex-col sm:flex-row gap-5 sm:gap-0 justify-between items-center w-full pt-5 sm:pt-10">
+                    <div className="flex flex-col order-3 sm:order-2 lg:order-1 text-gray-500 text-xs md:text-sm lg:text-md">
                         <div className="">
                             Copyright © 2023 PC store
                         </div>
@@ -39,8 +39,8 @@ const Footer = () => {
                     </div>
                     {/*<Logo/>*/}
                     <div className="flex order-1 sm:order-3 gap-4 lg:w-[300px] justify-end">
-                        <AiFillGithub size={45} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
-                        <AiFillLinkedin size={45} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
+                        <AiFillGithub size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
+                        <AiFillLinkedin size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
                     </div>
                 </div>
             </footer>

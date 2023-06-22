@@ -41,6 +41,7 @@ const CategoryBox = ({icon: Icon, label, selected, gradient}: Props) => {
                 hover:text-gray-600
                 transition
                 cursor-pointer
+                min-w-[110px]
                 ${selected ? 'border-b-gray-600' : "border-transparent"}
                 ${selected ? 'text-gray-400' : 'text-gray-400'}
             `}
