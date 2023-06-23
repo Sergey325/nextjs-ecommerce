@@ -17,13 +17,21 @@ const CategoryBox = ({icon: Icon, label, selected, gradient}: Props) => {
     const params = useSearchParams()
 
     const handleClick = useCallback(() => {
-        const query  = {
+
+        let currentQuery = {};
+
+        if (params) {
+            currentQuery = qs.parse(params.toString())
+        }
+
+        const updatedQuery: any = {
+            ...currentQuery,
             category: label
         }
 
         const url = qs.stringifyUrl({
             url: "/store",
-            query: query
+            query: updatedQuery
         }, {skipNull: true})
 
         router.push(url)
@@ -49,7 +57,7 @@ const CategoryBox = ({icon: Icon, label, selected, gradient}: Props) => {
         >
             {
                 selected && (
-                    <div className="absolute inset-0 flex items-center justify-center z-50">
+                    <div className="absolute inset-0 flex items-center justify-center z-5">
                         <div
                             className={`
                             w-[60px] h-[50px] 

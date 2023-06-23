@@ -28,10 +28,6 @@ const Sorting = () => {
             sorting: sorting
         }
 
-        if (params?.get('sorting') === sorting) {
-            delete updatedQuery.category;
-        }
-
         const url = qs.stringifyUrl({
             url: '/store',
             query: updatedQuery
@@ -41,7 +37,20 @@ const Sorting = () => {
     }
 
     return (
-        <DropDown placeholder="Filter By" paddingTopList={0} childContainerStyles="bg-gray-800 text-black" options={options}/>
+        <DropDown
+            placeholder="Sort By"
+            paddingTopList={0}
+            mainStyles="
+                hover:shadow-none
+                w-1/5
+                border-gray-800
+                border-[1px]
+                text-gray-500
+                px-1
+            "
+            childStyle={"bg-gray-900 hover:bg-gray-800 text-md"}
+            options={options}
+        />
     );
 };
 

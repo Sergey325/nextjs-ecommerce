@@ -139,7 +139,7 @@ export const categories = [
     },
 ]
 
-const Categories = () => {
+const Categories =() => {
     const params = useSearchParams()
     const category = params?.get('category')
     const pathname = usePathname()
@@ -152,7 +152,15 @@ const Categories = () => {
 
     return (
 
-            <div className="flex items-center justify-between mx-auto w-full lg:w-[90%] lg:px-20 overflow-y-hidden overflow-x-auto">
+            <div className="
+                flex items-center justify-between
+                mx-auto
+                w-full
+                lg:w-[90%]
+                lg:px-20
+                overflow-y-hidden overflow-x-auto
+                "
+            >
                 {categories.map(item => (
                     <CategoryBox
                         key={item.label}
