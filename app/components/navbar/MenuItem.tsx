@@ -1,7 +1,7 @@
 "use client"
 
 type Props = {
-    onClick: () => void
+    onClick?: () => void
     label: string
 
 };

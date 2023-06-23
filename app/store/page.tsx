@@ -1,6 +1,7 @@
 import Categories from "@/app/components/store/Categories";
 import Container from "@/app/components/Container";
-import DropDown from "@/app/components/DropDown/DropDown";
+import React from "react";
+import Sorting from "@/app/components/Sorting";
 
 const StorePage = () => {
     return (
@@ -25,9 +26,8 @@ const StorePage = () => {
                             {/*    <option className="outline-0 border-0 shadow-none" value="Alphabetically, A-Z">Alphabetically, A-Z</option>*/}
                             {/*    <option className="outline-0 border-0 shadow-none" value="Alphabetically, Z-A">Alphabetically, Z-A</option>*/}
                             {/*</select>*/}
-                            <DropDown placeholder="filter by" paddingTopList={0} childContainerStyles="bg-gray-800 text-black">
+                            <Sorting/>
 
-                            </DropDown>
                         </div>
                     </div>
                 </div>
