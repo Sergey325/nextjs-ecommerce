@@ -2,10 +2,19 @@ import Categories from "@/app/components/store/Categories";
 import Container from "@/app/components/Container";
 import React from "react";
 import Sorting from "@/app/components/Sorting";
+import ClientOnly from "@/app/components/ClientOnly";
+import DevCreateProductBtn from "@/app/components/store/DevCreateProductBtn";
+import getProducts from "@/app/actions/getProducts";
+import ProductCard from "@/app/components/store/ProductCard";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
-const StorePage = () => {
+const StorePage = async () => {
+    const currentUser = await getCurrentUser()
+    const products = await getProducts()
+    // console.log(products)
+
     return (
-        <div className="">
+        <ClientOnly>
             <hr className="border-gray-800"/>
             <Categories/>
             <hr className="border-gray-800"/>
@@ -21,12 +30,34 @@ const StorePage = () => {
                     <div className="w-full flex-col">
                         <div className="flex justify-between items-center">
                             <Sorting/>
+                            {/*<DevCreateProductBtn/>*/}
+                        </div>
+                        <div
+                            className="
+                                pt-24
+                                grid
+                                grid-cols-1
+                                md:grid-cols-2
+                                lg:grid-cols-3
+                                xl:grid-cols-4
+                                2xl:grid-cols-5
+                                gap-8
+                            "
+                        >
+                            {products.map(product => {
+                                return (
+                                    <ProductCard
+                                        key={product.id}
+                                        data={product}
+                                        currentUser={currentUser}
+                                    />
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
             </Container>
-
-        </div>
+        </ClientOnly>
     );
 };
 
