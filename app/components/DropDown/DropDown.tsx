@@ -75,14 +75,14 @@ const DropDown = ({placeholder, body, paddingTopList, rounded, mainStyles, optio
                     text-md
                     text-gray-400
                     transition-all
-                    duration-100
+                    duration-300
                     min-h-max
                     min-w-max
                     border-current
                     ${isOpen ? `translate-y-${paddingTopList} opacity-100 visible` : "translate-y-0 opacity-0 invisible"}
                 `}
             >
-                <div className="flex flex-col h-full cursor-pointer text-md border-current">
+                <div className="flex flex-col h-full cursor-pointer text-md border-current ">
                     {options.map((option, key) => (
                         (
                             <div key={key + option.value}>

@@ -47,8 +47,9 @@ const Sorting = () => {
                 border-[1px]
                 text-gray-500
                 px-1
+                z-10
             "
-            childStyle={"bg-gray-900 hover:bg-gray-800 text-md"}
+            childStyle={"bg-slate-900 hover:bg-slate-800 text-md drop-shadow-xl"}
             options={options}
         />
     );

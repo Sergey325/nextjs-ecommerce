@@ -11,7 +11,13 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 const StorePage = async () => {
     const currentUser = await getCurrentUser()
     const products = await getProducts()
-    // console.log(products)
+    products.push(products[0])
+    products.push(products[0])
+    products.push(products[0])
+    products.push(products[0])
+    products.push(products[0])
+    products.push(products[0])
+    console.log(products)
 
     return (
         <ClientOnly>
@@ -34,22 +40,23 @@ const StorePage = async () => {
                         </div>
                         <div
                             className="
-                                pt-24
+                                pt-5
                                 grid
                                 grid-cols-1
-                                md:grid-cols-2
+                                sm:grid-cols-2
                                 lg:grid-cols-3
                                 xl:grid-cols-4
                                 2xl:grid-cols-5
                                 gap-8
                             "
                         >
-                            {products.map(product => {
+                            {products.map((product, index) => {
                                 return (
                                     <ProductCard
-                                        key={product.id}
+                                        key={product.id + index}
                                         data={product}
                                         currentUser={currentUser}
+                                        actionLabel="Into cart"
                                     />
                                 )
                             })}
