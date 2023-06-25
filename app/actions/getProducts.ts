@@ -1,8 +1,18 @@
 import prisma from "@/app/libs/prismadb"
 
-export default async function getProducts(){
+export interface IProductsParams {
+    category?:string
+}
+
+export default async function getProducts(params: IProductsParams){
     try {
-        const products = await prisma.product.findMany()
+        const { category } = params
+
+        const products = await prisma.product.findMany({
+            where:{
+                category: category
+            }
+        })
 
         return products
     } catch (e: any){

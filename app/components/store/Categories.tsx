@@ -18,7 +18,7 @@ import {usePathname, useSearchParams} from "next/navigation";
 
 export const categories = [
     {
-        label: 'Processor',
+        label: 'Processors',
         icon: BsCpuFill,
         properties: [
             { title: "Processor Socket", value: "AM4"},
@@ -28,10 +28,9 @@ export const categories = [
             { title: "Graphics integrated", value: "AMD Radeon™ Vega 8"},
             { title: "Packaging", value: "tray"},
         ],
-        gradient: "bg-gradient-to-br from-orange-400 to-amber-500"
     },
     {
-        label: 'Motherboard',
+        label: 'Motherboards',
         icon: BsMotherboardFill,
         properties: [
             { title: "Processor Socket", value: "AM4"},
@@ -44,10 +43,9 @@ export const categories = [
             { title: "SLI support", value: true},
             { title: "M.2 Slot", value: true},
         ],
-        gradient: "bg-gradient-to-br from-indigo-500 to-purple-600"
     },
     {
-        label: 'GPU',
+        label: 'GPUs',
         icon: BsGpuCard,
         properties: [
             { title: "Chipset", value: "AMD Radeon™ RX 6700 XT"},
@@ -58,7 +56,6 @@ export const categories = [
             { title: "Power Connector", value: "8pin + 6pin"},
             { title: "GPU Length (mm)", value: 295},
         ],
-        gradient: "bg-gradient-to-br from-teal-400 to-purple-600"
     },
     {
         label: 'RAM',
@@ -72,7 +69,6 @@ export const categories = [
             { title: "Illumination", value: false},
             { title: "CAS Latency", value: "CL18"},
         ],
-        gradient: "bg-gradient-to-br from-yellow-500 to-purple-400"
     },
     {
         label: 'Hard Drives',
@@ -84,7 +80,6 @@ export const categories = [
             { title: "NVMe", value: "true"},
             { title: "Speed", value: "Write speed up to 2800 MB/s, up to 3500 MB/s"},
         ],
-        gradient: "bg-gradient-to-br from-green-500 to-purple-400"
     },
     {
         label: 'CPU Coolers',
@@ -98,7 +93,6 @@ export const categories = [
             { title: "maximum Volume", value: "26.8 dB"},
             { title: "Speed Range", value: "1500rpm"},
         ],
-        gradient: "bg-gradient-to-br from-red-500 to-purple-400"
     },
     {
         label: 'Cases',
@@ -118,7 +112,6 @@ export const categories = [
             { title: "possible 140mm fans", value: 6},
             { title: "possible 200mm fans", value: 0},
         ],
-        gradient: "bg-gradient-to-br from-indigo-500 to-purple-600"
     },
     {
         label: 'PSU',
@@ -135,7 +128,6 @@ export const categories = [
             { title: "Illumination", value: false},
             { title: "Cable Management", value: false},
         ],
-        gradient: "bg-gradient-to-br from-indigo-500 to-purple-600"
     },
 ]
 
@@ -167,7 +159,6 @@ const Categories =() => {
                         icon={item.icon}
                         label={item.label}
                         selected={category === item.label}
-                        gradient={item.gradient}
                     />
                 ))}
             </div>

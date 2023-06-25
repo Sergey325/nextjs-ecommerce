@@ -9,10 +9,9 @@ type Props = {
     icon: IconType
     label: string
     selected?: boolean
-    gradient: string
 };
 
-const CategoryBox = ({icon: Icon, label, selected, gradient}: Props) => {
+const CategoryBox = ({icon: Icon, label, selected}: Props) => {
     const router = useRouter()
     const params = useSearchParams()
 
@@ -61,7 +60,7 @@ const CategoryBox = ({icon: Icon, label, selected, gradient}: Props) => {
                         <div
                             className={`
                             w-[60px] h-[50px] 
-                            ${gradient}
+                            bg-gradient-to-br from-indigo-500 to-blue-600
                             rounded-full 
                             filter blur-[45px] 
                             transition-all duration-700 bg-in

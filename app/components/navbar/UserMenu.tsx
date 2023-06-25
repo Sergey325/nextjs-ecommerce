@@ -53,7 +53,7 @@ const UserMenu = ({currentUser}: Props) => {
                     rounded
                     options={options}
                     mainStyles={"text-slate-500 border-slate-500 p-4"}
-                    paddingTopList={2}
+                    paddingTopList={3}
                     childStyle={"bg-gray-900 hover:bg-gray-700 border-red-500 font-medium min-w-[150px]"}
                     hrAfter={[3]}
                 />

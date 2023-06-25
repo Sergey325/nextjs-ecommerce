@@ -3,10 +3,10 @@
 import {Product, User} from "@prisma/client";
 import {useRouter} from "next/navigation";
 import Image from "next/image"
-import {AiOutlineHeart} from "react-icons/ai";
 import Button from "@/app/components/Button";
 import {FaShoppingCart} from "react-icons/fa";
 import {useCallback} from "react";
+import HeartButton from "@/app/components/HeartButton";
 
 type Props = {
     data: Product
@@ -53,7 +53,7 @@ const ProductCard = ({data, currentUser, onAction, actionLabel}: Props) => {
                         "
                 />
                 <div className="absolute top-0 right-0">
-                    <AiOutlineHeart size={24}/>
+                    <HeartButton productId={data.id} currentUser={currentUser}/>
                 </div>
             </div>
             <div className="font-semibold text-sm">
@@ -61,7 +61,7 @@ const ProductCard = ({data, currentUser, onAction, actionLabel}: Props) => {
             </div>
             <div className="flex flex-row items-center gap-1">
                 <div className="font-semibold text-2xl my-[-15px] text-gray-300">
-                    $ {data.price}$
+                    $ {data.price}
                 </div>
             </div>
             {data.immediatelyAvailable &&
