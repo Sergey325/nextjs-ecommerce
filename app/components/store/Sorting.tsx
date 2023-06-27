@@ -39,7 +39,6 @@ const Sorting = () => {
     return (
         <DropDown
             placeholder="Sort By"
-            paddingTopList={1}
             mainStyles="
                 hover:shadow-none
                 w-1/5

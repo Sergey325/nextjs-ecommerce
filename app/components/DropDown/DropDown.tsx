@@ -14,7 +14,6 @@ type Option = {
 type Props = {
     placeholder?: string
     body?: React.ReactElement
-    paddingTopList?: number
     rounded?: boolean
     mainStyles?: string
     options: Option[]
@@ -22,7 +21,7 @@ type Props = {
     hrAfter?: Number[]
 };
 
-const DropDown = ({placeholder, body, paddingTopList, rounded, mainStyles, options, childStyle, hrAfter}: Props) => {
+const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, hrAfter}: Props) => {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
@@ -71,7 +70,7 @@ const DropDown = ({placeholder, body, paddingTopList, rounded, mainStyles, optio
                     w-full
                     overflow-hidden
                     right-0
-                    top-6 md:top-8
+                    top-3/4
                     text-md
                     text-gray-400
                     transition-all
@@ -79,7 +78,7 @@ const DropDown = ({placeholder, body, paddingTopList, rounded, mainStyles, optio
                     min-h-max
                     min-w-min
                     border-current
-                    ${isOpen ? `translate-y-${paddingTopList} opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
+                    ${isOpen ? `translate-y-3 opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
                 `}
             >
                 <div className="flex flex-col h-full cursor-pointer text-md border-current w-full">

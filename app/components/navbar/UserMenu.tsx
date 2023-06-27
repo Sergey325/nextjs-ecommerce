@@ -3,20 +3,29 @@
 import {AiOutlineMenu} from "react-icons/ai";
 import Avatar from "../Avatar";
 import {useMemo} from "react";
-import Search from "@/app/components/navbar/Search";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import {User} from "@prisma/client";
 import {signOut} from "next-auth/react";
 import DropDown from "@/app/components/DropDown/DropDown";
+import Cart from "@/app/components/navbar/Cart";
+import {useRouter} from "next/navigation";
 
 type Props = {
     currentUser?: User | null
 }
 
 const UserMenu = ({currentUser}: Props) => {
+    const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
+
+    const onCartClick = () => {
+        if(!currentUser){
+            return registerModal.onOpen()
+        }
+        return router.push("/cart")
+    }
 
     const body = (
         <>
@@ -46,14 +55,13 @@ const UserMenu = ({currentUser}: Props) => {
 
     return (
         <div className="relative">
-            <div className="flex flex-row items-center gap-3">
-                <Search/>
+            <div className="flex flex-row items-center gap-4">
+                <Cart currentUser={currentUser} onClick={onCartClick}/>
                 <DropDown
                     body={body}
                     rounded
                     options={options}
                     mainStyles={"text-slate-500 border-slate-500 p-4"}
-                    paddingTopList={3}
                     childStyle={"bg-gray-900 hover:bg-gray-700 border-red-500 font-medium min-w-[150px]"}
                     hrAfter={[3]}
                 />

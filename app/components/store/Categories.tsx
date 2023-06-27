@@ -114,7 +114,7 @@ export const categories = [
         ],
     },
     {
-        label: 'PSU',
+        label: 'PSUs',
         icon: BsFillLightningChargeFill,
         properties: [
             { title: "Power (Watt)", value: 700},
