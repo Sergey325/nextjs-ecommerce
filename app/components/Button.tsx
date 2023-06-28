@@ -5,7 +5,7 @@ import {IconType} from "react-icons";
 
 type Props = {
     label: string
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+    onClick: (e: any) => void
     disabled?: boolean
     outline?: boolean
     small?: boolean
@@ -14,8 +14,6 @@ type Props = {
 };
 
 const Button = ({label, onClick, disabled, outline, small, icon: Icon, gradient}: Props) => {
-
-
     return (
         <button
             onClick={onClick}

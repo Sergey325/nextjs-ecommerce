@@ -5,8 +5,11 @@ import Sorting from "@/app/components/store/Sorting";
 import ClientOnly from "@/app/components/ClientOnly";
 import DevCreateProductBtn from "@/app/components/store/DevCreateProductBtn";
 import getProducts, {IProductsParams} from "@/app/actions/getProducts";
-import ProductCard from "@/app/components/store/ProductCard";
 import getCurrentUser from "@/app/actions/getCurrentUser";
+import ProductsLayout from "@/app/components/store/ProductsLayout";
+
+export const dynamic = 'force-dynamic'
+
 
 type Props = {
     searchParams: IProductsParams
@@ -41,29 +44,7 @@ const StorePage = async ({searchParams}: Props) => {
                             <Sorting/>
                             {/*<DevCreateProductBtn/>*/}
                         </div>
-                        <div
-                            className="
-                                pt-5
-                                grid
-                                grid-cols-1
-                                sm:grid-cols-2
-                                lg:grid-cols-3
-                                xl:grid-cols-4
-                                2xl:grid-cols-5
-                                gap-8
-                            "
-                        >
-                            {products.map((product, index) => {
-                                return (
-                                    <ProductCard
-                                        key={product.id + index}
-                                        data={product}
-                                        currentUser={currentUser}
-                                        actionLabel="Into cart"
-                                    />
-                                )
-                            })}
-                        </div>
+                        <ProductsLayout products={products} currentUser={currentUser}/>
                     </div>
                 </div>
             </Container>
