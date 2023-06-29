@@ -77,11 +77,10 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                     duration-300
                     min-h-max
                     min-w-min
-                    border-current
-                    ${isOpen ? `translate-y-3 opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
+                    ${isOpen ? `translate-y-2 opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
                 `}
             >
-                <div className="flex flex-col h-full cursor-pointer text-md border-current w-full">
+                <div className="flex flex-col h-full cursor-pointer text-md w-full">
                     {options.map((option, key) => (
                         (
                             <div key={key + option.value}>
@@ -89,7 +88,6 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                                     <hr className="border-gray-600"/>
                                 )}
                                 <DropDownItem
-
                                     label={option.label}
                                     onClick={() => handleSelectOption(option)}
                                     childStyle={childStyle}

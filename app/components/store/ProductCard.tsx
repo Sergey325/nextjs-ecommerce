@@ -19,7 +19,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
 
     return (
         <div
-            onClick={() => router.push(`/products/${product.id}`)}
+            onClick={() => router.push(`store/product/${product.id}`)}
             className="
                 col-span-1 cursor-pointer group bg-gray-900 text-gray-400 rounded-xl flex flex-col gap-8 p-4
             "
