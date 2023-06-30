@@ -27,10 +27,17 @@ const ProductClient = ({product, currentUser}: Props) => {
         <Container>
             <div className="flex flex-col pt-10 gap-10 px-3 sm:px-10 2xl:px-36 justify-center">
                 <div className="flex flex-col xl:flex-row justify-between gap-10 xl:gap-0">
+
                     <ProductImages product={product}/>
+
                     <div className="flex flex-col text-gray-400 text-sm lg:text-lg gap-20">
                         <div className="flex flex-col gap-6 text-gray-400">
-                            <div className="cursor-pointer text-4xl">{product.manufacturer}</div>
+
+                            {/*TO ADD FUNCTION*/}
+                            <div className="cursor-pointer text-4xl w-min" onClick={() => {}}>
+                                {product.manufacturer}
+                            </div>
+
                             <hr className="border-gray-500 w-full"/>
                             <div className="flex flex-col ">
                                 {product.sale &&
