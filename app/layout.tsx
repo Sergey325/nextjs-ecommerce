@@ -6,7 +6,7 @@ import RegisterModal from "@/app/components/modals/RegisterModal";
 import LoginModal from "@/app/components/modals/LoginModal";
 import ToasterProvider from "@/app/Providers/ToasterProvider";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import BackToTop from "@/app/components/backToTop/BackToTop";
+import BackToTop from "@/app/components/BackToTop";
 import Footer from "@/app/components/Footer";
 
 const inter = Inter({subsets: ['latin']})

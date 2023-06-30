@@ -5,7 +5,7 @@ import {useRouter} from "next/navigation";
 import Image from "next/image"
 import Button from "@/app/components/Button";
 import {FaShoppingCart} from "react-icons/fa";
-import HeartButton from "@/app/components/HeartButton";
+import HeartButton from "@/app/components/store/HeartButton";
 import useCart from "@/app/hooks/useCart";
 
 type Props = {
