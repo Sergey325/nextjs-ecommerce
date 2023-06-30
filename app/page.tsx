@@ -44,7 +44,7 @@ export default function Home() {
                 <ThirdSection/>
             </section>
 
-            <section className="pt-24 flex justify-center">
+            <section className="pt-32 flex justify-center">
                 <FourthSection/>
             </section>
 

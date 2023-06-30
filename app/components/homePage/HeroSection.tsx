@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Button from "@/app/components/Button";
 import {useRouter} from "next/navigation";
+import GradientRadial from "@/app/components/GradientRadial";
 
 const HeroSection = () => {
     const router = useRouter()
@@ -18,9 +19,11 @@ const HeroSection = () => {
                     src={"/images/home1.png"}
                     quality={100}
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-1/2 h-1/2 bg-gradient-to-br from-blue-400/70 to-purple-500/70 rounded-full filter blur-[150px] absolute z-10"></div>
-                </div>
+                <GradientRadial
+                    size="w-1/2 h-1/2"
+                    gradient="bg-gradient-to-br from-blue-400/70 to-purple-500/70"
+                    blur="blur-[150px]"
+                />
             </div>
             <div className=" text-gray-400 flex flex-col gap-4 md:gap-8 md:w-2/5">
                 <span className="text-4xl lg:text-5xl xl:text-6xl text-gray-300">
@@ -29,7 +32,7 @@ const HeroSection = () => {
                 <span className="text-md lg:text-lg xl:text-xl 2xl:text-2xl pl-1">
                     Experience unparalleled performance and customization options with our extensive range of top-tier components, empowering you to craft a truly extraordinary computer that reflects your unique vision and aspirations. Build your dream machine and embark on a journey of limitless possibilities.
                 </span>
-                <Button label="Explore Our Store" onClick={router.refresh} gradient/>
+                <Button label="Explore Our Store" onClick={() => router.push("/store")} gradient/>
             </div>
         </section>
     );

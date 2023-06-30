@@ -4,6 +4,7 @@ import {IconType} from "react-icons";
 import {useRouter, useSearchParams} from "next/navigation";
 import {useCallback} from "react";
 import qs from "query-string";
+import GradientRadial from "@/app/components/GradientRadial";
 
 type Props = {
     icon: IconType
@@ -56,17 +57,12 @@ const CategoryBox = ({icon: Icon, label, selected}: Props) => {
         >
             {
                 selected && (
-                    <div className="absolute inset-0 flex items-center justify-center z-5">
-                        <div
-                            className={`
-                            w-[60px] h-[50px] 
-                            bg-gradient-to-br from-indigo-500 to-blue-600
-                            rounded-full 
-                            filter blur-[45px] 
-                            transition-all duration-700 bg-in
-                            cursor-pointer`}
-                        ></div>
-                    </div>
+                    <GradientRadial
+                        size="w-[60px] h-[50px]"
+                        gradient="bg-gradient-to-br from-indigo-500 to-blue-600"
+                        blur="blur-[45px]"
+                        zIndex={"z-5"}
+                    />
                 )
             }
 

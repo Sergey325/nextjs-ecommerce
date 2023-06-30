@@ -21,6 +21,15 @@ select:-webkit-autofill:focus {
   color: #D0D4DA;
 }
 
+.react-multi-carousel-dot button {
+  border: transparent !important;
+  background-color: #6b7280 !important;
+}
+.react-multi-carousel-dot--active button {
+  opacity: 100% !important;
+  background-color: #374151 !important;
+}
+
 html,
 body,
 :root{
