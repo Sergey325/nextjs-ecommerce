@@ -1,6 +1,7 @@
 import {NextResponse} from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
+import {BasketItem} from "@/app/types";
 
 export async function PATCH(request: Request) {
     const body = await request.json();
@@ -17,10 +18,10 @@ export async function PATCH(request: Request) {
         throw new Error("Invalid Product")
     }
 
-    let cart = [...(currentUser.cart || [])]
+    let cart = [...(currentUser.cart || [])] as BasketItem[]
 
     if (quantity) {
-        cart = cart.map((item: any) => {
+        cart = cart.map((item: BasketItem) => {
             if (item.product.id === product.id) {
                 return { ...item, quantity: quantity };
             }

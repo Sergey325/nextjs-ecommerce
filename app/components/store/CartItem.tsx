@@ -11,9 +11,10 @@ import {useRouter} from "next/navigation";
 
 type Props = {
     item: { product: Product, quantity: number }
+    onChangeQuantity: () => void
 };
 
-const CartItem = ({item}: Props) => {
+const CartItem = ({item, onChangeQuantity}: Props) => {
     const [totalPrice, setTotalPrice] = useState(item.product.price * item.quantity)
     const router = useRouter()
 
@@ -41,7 +42,9 @@ const CartItem = ({item}: Props) => {
                 })
                 .catch(() => {
                     toast.error("Something went wrong.");
-                });
+                })
+                .finally(onChangeQuantity);
+
         } catch (error) {
             toast.error("Something went wrong");
         }
