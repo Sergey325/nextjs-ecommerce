@@ -54,8 +54,8 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
             {
                 body ? body
                 : (
-                    <div className="flex items-center justify-between w-full">
-                        {selectedOption ? selectedOption.label : (<p>{placeholder}</p>)}
+                    <div className="flex items-center justify-between pl-1 md:pl-0.5 w-full min-w-[50px]">
+                        {selectedOption ? selectedOption.label : (<p className=" text-center">{placeholder}</p>)}
                         <IoIosArrowDropdown
                             className={`transition-all duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`} size={26}/>
                     </div>

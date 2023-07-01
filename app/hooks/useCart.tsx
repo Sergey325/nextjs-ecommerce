@@ -8,12 +8,13 @@ import {Product, User} from "@prisma/client";
 interface IUseFavorite {
     product: Product
     currentUser?: User | null
+    quantity?: number | null
 }
 
 const useCart = (
     {
         product,
-        currentUser
+        currentUser,
     }: IUseFavorite
 ) => {
     const router = useRouter()

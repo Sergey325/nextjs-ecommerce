@@ -15,7 +15,6 @@ import CategoryBox from "@/app/components/store/CategoryBox";
 
 import {usePathname, useSearchParams} from "next/navigation";
 
-
 export const categories = [
     {
         label: 'Processors',

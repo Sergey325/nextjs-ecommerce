@@ -23,8 +23,7 @@ const ProductImages = memo(({product}: Props) => {
     const [selectedImage, setSelectedImage] = useState(product.images[0])
 
     return (
-        <div className="relative flex flex-col items-center gap-4">
-            <div className="text-xl md:text-2xl lg:text-3xl text-gray-300">{product.title}</div>
+        <>
             <Image
                 src={selectedImage}
                 width={600} height={600}
@@ -71,8 +70,10 @@ const ProductImages = memo(({product}: Props) => {
                     />
                 ))}
             </div>
-        </div>
+        </>
     );
 });
+
+ProductImages.displayName = 'ProductImages';
 
 export default ProductImages;

@@ -1,5 +1,3 @@
-"use client"
-
 import ProductCard from "@/app/components/store/ProductCard";
 import {Product, User} from "@prisma/client";
 

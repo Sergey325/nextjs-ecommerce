@@ -23,13 +23,21 @@ const ProductClient = ({product, currentUser}: Props) => {
 
     const [isExpanded, setIsExpanded] = useState(false)
 
+    const scrollToSpecs = () => {
+        const element = document.getElementById('specs');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     return (
         <Container>
             <div className="flex flex-col pt-10 gap-10 px-3 sm:px-10 2xl:px-36 justify-center">
                 <div className="flex flex-col xl:flex-row justify-between gap-10 xl:gap-0">
-
-                    <ProductImages product={product}/>
-
+                    <div className="relative flex flex-col items-center gap-4">
+                        <div className="text-xl md:text-2xl lg:text-3xl text-gray-300">{product.title}</div>
+                        <ProductImages product={product}/>
+                    </div>
                     <div className="flex flex-col text-gray-400 text-sm lg:text-lg gap-20">
                         <div className="flex flex-col gap-6 text-gray-400">
 
@@ -64,7 +72,7 @@ const ProductClient = ({product, currentUser}: Props) => {
                                 {product.properties.filter((property: any) => property?.title === "description").map( (property: any) => (
                                     <span key={property.value} className="before:content-['•'] before:text-xl before:pr-2 ">{property.value}</span>
                                 ))}
-                                <span className="hover:underline underline-offset-4 cursor-pointer">more product information {">"}</span>
+                                <span className="hover:underline underline-offset-4 cursor-pointer" onClick={scrollToSpecs}>more product information {">"}</span>
                             </div>
                             <hr className="border-gray-500 w-full"/>
                             <div className="flex flex-col">
@@ -94,7 +102,7 @@ const ProductClient = ({product, currentUser}: Props) => {
                         </div>
                         <hr className="border-gray-500 w-full"/>
                     </div>
-                    <div className={`
+                    <div id="specs" className={`
                         relative
                         flex flex-col gap-3
                         overflow-y-hidden

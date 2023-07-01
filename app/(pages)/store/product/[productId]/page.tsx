@@ -8,17 +8,14 @@ type Props = {
     productId: string
 }
 
-
-
-
-const Home = async ({params}: {params: Props})  => {
+const ProductPage = async ({params}: {params: Props})  => {
     const product = await getProductById(params)
     const currentUser = await getCurrentUser()
 
     if(!product){
         return (
             <ClientOnly>
-                <EmptyState/>
+                <EmptyState />
             </ClientOnly>
         )
     }
@@ -33,4 +30,4 @@ const Home = async ({params}: {params: Props})  => {
     );
 };
 
-export default Home;
+export default ProductPage;

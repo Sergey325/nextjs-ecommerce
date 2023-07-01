@@ -54,6 +54,7 @@ const ThirdSection = () => {
         <div className="flex flex-wrap pt-20 gap-4">
             {items.map( item => (
                 <ThirdSectionItem
+                    key={item.label}
                     icon={item.icon}
                     label={item.label}
                     linearGradient={item.linearGradient}

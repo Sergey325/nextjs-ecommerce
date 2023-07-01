@@ -42,7 +42,7 @@ const FourthSection = () => {
             <div className="relative flex justify-center w-full xl:w-1/2">
                 <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-14">
                     {items.map( item => (
-                        <FourthSectionItem icon={item.icon} title={item.title} subtitle={item.subtitle}/>
+                        <FourthSectionItem key={item.title} icon={item.icon} title={item.title} subtitle={item.subtitle}/>
                     ))}
                 </div>
                 <GradientRadial
