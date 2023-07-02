@@ -26,6 +26,9 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
     const handleSelectOption = useCallback((option: Option) => {
+        if(selectedOption?.value === option.value){
+            return
+        }
         setSelectedOption(option);
         option.onSelected();
     }, []);
@@ -68,15 +71,16 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                     rounded-${rounded ? "xl" : "none"}
                     shadow-md
                     w-full
-                    overflow-hidden
+                    overflow-x-hidden
                     right-0
                     top-3/4
                     text-md
                     text-gray-400
                     transition-all
                     duration-300
-                    min-h-max
+                    max-h-[200px] lg:max-h-max
                     min-w-min
+                    z-50
                     ${isOpen ? `translate-y-2 opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
                 `}
             >

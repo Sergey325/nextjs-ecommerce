@@ -4,7 +4,7 @@ import {User} from "@prisma/client";
 import Container from "@/app/components/Container";
 import CartItem from "@/app/components/store/CartItem";
 import Button from "@/app/components/Button";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {BasketItem} from "@/app/types";
 
 type Props = {
@@ -16,16 +16,17 @@ const CartClient = ({currentUser}: Props) => {
 
     useEffect(() => {
         onChangeQuantity()
-    })
+    }, [])
 
-    const onChangeQuantity = () => {
+    const onChangeQuantity = useCallback(() => {
         const total = (currentUser?.cart as BasketItem[]).reduce((total, item) => {
             const itemCost = item.product.price * item?.quantity;
             return total + itemCost;
         }, 0);
 
-        setTotalPrice(total)
-    }
+        console.log(Math.round(total * 100) / 100)
+        setTotalPrice(Math.round(total * 100) / 100)
+    }, [currentUser?.cart])
 
     return (
         <Container>
@@ -39,16 +40,16 @@ const CartClient = ({currentUser}: Props) => {
                             <span className="md:w-[18%] justify-self-end text-center">Quantity</span>
                             <span className=" justify-self-end text-right">Total</span>
                         </div>
-                        {currentUser?.cart.map((item: any) => (
+                        <hr className="border-gray-500 w-full"/>
+                        {(currentUser?.cart as BasketItem[]).map((item: BasketItem) => (
                             <div key={item.product.id} className="flex flex-col gap-4">
-                                <hr className="border-gray-500 w-full"/>
                                 <CartItem item={item} onChangeQuantity={onChangeQuantity}/>
                                 <hr className="border-gray-500 w-full"/>
                             </div>
                         ))}
                     </div>
                     <div
-                        className="mt-16 rounded-lg  px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 w-full md:w-[50%] xl:w-[30%] bg-gray-900 text-gray-400 self-start"
+                        className="mt-16 rounded-lg px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 w-full md:w-[50%] xl:w-[30%] bg-gray-900 text-gray-400 self-start"
                     >
                         <h2 className="text-xl font-medium ">
                             Order summary
@@ -57,7 +58,7 @@ const CartClient = ({currentUser}: Props) => {
                         <div className="mt-6 space-y-4">
                             <div className="flex justify-between items-center">
                                 <span className="font-light text-base sm:text-lg text-gray-400 max-w-[60%]">Subtotal</span>
-                                <span className="font-light text-base sm:text-lg text-gray-300">$3483</span>
+                                <span className="font-light text-base sm:text-lg text-gray-300">${totalPrice}</span>
                             </div>
                             <div className="flex justify-between items-center">
                                 <span className="font-light text-sm sm:text-base text-gray-400 max-w-[60%]">Estimated shipping and handling costs</span>

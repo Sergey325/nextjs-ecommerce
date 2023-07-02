@@ -53,15 +53,15 @@ export async function PUT(request: Request) {
 
     if (!currentUser) return NextResponse.error()
 
-    const product = body.product
+    const productId = body.productId
 
-    if (!product) {
-        throw new Error("Invalid Product")
+    if (!productId) {
+        throw new Error("Invalid Product ID")
     }
 
     let cart = [...(currentUser.cart || [])]
 
-    cart = cart.filter((item: any) => item.product === product)
+    cart = cart.filter((item: any) => item.product.id !== productId)
 
     const user = await prisma.user.update({
         where: {

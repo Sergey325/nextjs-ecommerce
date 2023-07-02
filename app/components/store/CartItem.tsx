@@ -15,7 +15,7 @@ type Props = {
 };
 
 const CartItem = ({item, onChangeQuantity}: Props) => {
-    const [totalPrice, setTotalPrice] = useState(item.product.price * item.quantity)
+    const [totalPrice, setTotalPrice] = useState(Math.round(item.product.price * +item.quantity * 100) / 100)
     const router = useRouter()
 
     const options = [
@@ -33,7 +33,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
     const handleChangeQuantity = useCallback((quantity: string) => {
         try {
             item.quantity = +quantity;
-            setTotalPrice(item.product.price * +quantity);
+            setTotalPrice(Math.round(item.product.price * +quantity * 100) / 100);
 
             axios
                 .patch("/api/cart", item)
@@ -53,7 +53,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
     const handleDeleteItem = useCallback(() => {
         try {
             axios
-                .put("/api/cart", { product: item.product })
+                .put("/api/cart", { productId: item.product.id })
                 .then(() => {
                     toast.success("Success!");
                 })
@@ -70,7 +70,10 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
 
     return (
         <div className="flex flex-col sm:flex-row w-full text-gray-400 text-sm md:text-lg justify-between items-center gap-5">
-            <div className="flex w-full sm:w-1/2 gap-1 items-center">
+            <div
+                className="flex w-full sm:w-1/2 gap-1 items-center cursor-pointer"
+                onClick={() => router.push(`/store/product/${item.product.id}`)}
+            >
                 <Image src={item.product.images[0]} alt="productImage" height={100} width={100} className=""/>
                 <span className="text-sm md:text-base">{item.product.title}</span>
             </div>
@@ -80,9 +83,9 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                     <DropDown
                         options={options}
                         placeholder={item.quantity.toString()}
-                        mainStyles="border-1 border-gray-400 text-gray-400 hover:shadow-none text-base"
+                        mainStyles="border-1 border-gray-400 text-gray-400 hover:shadow-none text-base max-h-[200px] lg:max-h-min"
                         rounded
-                        childStyle="bg-gray-900"
+                        childStyle="bg-gray-900 "
                     />
                     <BsFillTrashFill
                         className="text-gray-400 hover:text-gray-500 transition cursor-pointer"

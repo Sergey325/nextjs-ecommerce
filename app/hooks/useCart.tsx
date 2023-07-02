@@ -23,7 +23,7 @@ const useCart = (
     const isInCart = useMemo(() => {
         const cart = currentUser?.cart || []
 
-        return cart.some((item: any) => item.product.id == product.id)
+        return cart.some((item: any) => item.product.id === product.id)
     },[currentUser, product])
 
     const updateCart = useCallback(async(e: React.MouseEvent<HTMLDivElement>) => {
@@ -37,7 +37,8 @@ const useCart = (
             let request
 
             if(isInCart) {
-                request = () => axios.put("/api/cart", {product: product})
+                //delete
+                request = () => axios.put("/api/cart", {productId: product.id})
             } else {
                 request = () => axios.patch("/api/cart", {product: product})
             }
@@ -48,7 +49,7 @@ const useCart = (
         } catch (error) {
             toast.error("Something went wrong")
         }
-    }, [currentUser, isInCart, product, loginModal, router])
+    }, [currentUser?.cart, isInCart, product, loginModal, router])
     return {
         isInCart,
         updateCart

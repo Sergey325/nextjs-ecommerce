@@ -47,5 +47,5 @@ body,
 
 /*Handle*/
 ::-webkit-scrollbar-thumb {
-  @apply ml-1 bg-neutral-400 rounded-md;
+  @apply ml-1 bg-slate-600 rounded-md;
 }

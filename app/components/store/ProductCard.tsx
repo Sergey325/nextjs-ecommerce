@@ -21,7 +21,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
         <div
             onClick={() => router.push(`store/product/${product.id}`)}
             className="
-                col-span-1 cursor-pointer group bg-gray-900 text-gray-400 rounded-xl flex flex-col gap-8 p-4
+                col-span-1 cursor-pointer group bg-gray-900 text-gray-400 rounded-xl flex flex-col gap-8 p-4 flex-shrink-0
             "
         >
             <div
@@ -48,7 +48,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
                     <HeartButton productId={product.id} currentUser={currentUser}/>
                 </div>
             </div>
-            <div className="font-semibold text-sm">
+            <div className="font-semibold flex-grow text-sm">
                 {product.title}
             </div>
             <div className="flex flex-row items-center gap-1">
@@ -56,12 +56,12 @@ const ProductCard = ({data: product, currentUser}: Props) => {
                     $ {product.price}
                 </div>
             </div>
-            {product.immediatelyAvailable &&
-                <div className="font-light text-sm text-gray-400 mb-[-10px]">
-                    In stock and immediately available
-                </div>
-            }
-            <Button label={isInCart ? "Remove" : "Into Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
+            <div className="font-light text-sm text-gray-400 justify-self-start mb-[-10px] ">
+                {product.immediatelyAvailable ? "Immediately available" : "Out of stock"}
+            </div>
+            <div className="">
+                <Button label={isInCart ? "Remove" : "Into Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
+            </div>
         </div>
     );
 };
