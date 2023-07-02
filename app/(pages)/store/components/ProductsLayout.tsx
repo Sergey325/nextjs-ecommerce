@@ -1,4 +1,4 @@
-import ProductCard from "@/app/components/store/ProductCard";
+import ProductCard from "@/app/(pages)/store/components/ProductCard";
 import {Product, User} from "@prisma/client";
 
 type Props = {

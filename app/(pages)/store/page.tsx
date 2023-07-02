@@ -1,12 +1,12 @@
-import Categories from "@/app/components/store/Categories";
+import Categories from "@/app/(pages)/store/components/Categories";
 import Container from "@/app/components/Container";
 import React from "react";
-import Sorting from "@/app/components/store/Sorting";
+import Sorting from "@/app/(pages)/store/components/Sorting";
 import ClientOnly from "@/app/components/ClientOnly";
-import DevCreateProductBtn from "@/app/components/store/DevCreateProductBtn";
+import DevCreateProductBtn from "@/app/(pages)/store/components/DevCreateProductBtn";
 import getProducts, {IProductsParams} from "@/app/actions/getProducts";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import ProductsLayout from "@/app/components/store/ProductsLayout";
+import ProductsLayout from "@/app/(pages)/store/components/ProductsLayout";
 
 export const dynamic = 'force-dynamic'
 

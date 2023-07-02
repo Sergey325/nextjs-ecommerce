@@ -11,7 +11,7 @@ import {
 import {FaMemory} from "react-icons/fa";
 import {GiAbstract049} from "react-icons/gi";
 
-import CategoryBox from "@/app/components/store/CategoryBox";
+import CategoryBox from "@/app/(pages)/store/components/CategoryBox";
 
 import {usePathname, useSearchParams} from "next/navigation";
 

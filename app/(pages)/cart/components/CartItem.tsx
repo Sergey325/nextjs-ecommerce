@@ -15,7 +15,7 @@ type Props = {
 };
 
 const CartItem = ({item, onChangeQuantity}: Props) => {
-    const [totalPrice, setTotalPrice] = useState(Math.round(item.product.price * +item.quantity * 100) / 100)
+    const [totalAmount, setTotalAmount] = useState(Math.round(item.product.price * +item.quantity * 100) / 100)
     const router = useRouter()
 
     const options = [
@@ -33,7 +33,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
     const handleChangeQuantity = useCallback((quantity: string) => {
         try {
             item.quantity = +quantity;
-            setTotalPrice(Math.round(item.product.price * +quantity * 100) / 100);
+            setTotalAmount(Math.round(item.product.price * +quantity * 100) / 100);
 
             axios
                 .patch("/api/cart", item)
@@ -48,7 +48,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
         } catch (error) {
             toast.error("Something went wrong");
         }
-    }, [item, setTotalPrice]);
+    }, [item, setTotalAmount]);
 
     const handleDeleteItem = useCallback(() => {
         try {
@@ -61,7 +61,8 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                     toast.error("Something went wrong.");
                 })
                 .finally(() => {
-                    router.refresh();
+                    // onChangeQuantity()
+                    router.refresh()
                 });
         } catch (error) {
             toast.error("Something went wrong");
@@ -93,7 +94,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                         onClick={handleDeleteItem}
                     />
                 </div>
-                <span className="text-xl text-gray-300 inline-block text-right ">${totalPrice}</span>
+                <span className="text-xl text-gray-300 inline-block text-right ">${totalAmount}</span>
             </div>
 
         </div>

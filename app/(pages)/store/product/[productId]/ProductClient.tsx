@@ -8,8 +8,8 @@ import {FaShoppingCart} from "react-icons/fa";
 import useFavorite from "@/app/hooks/useFavorite";
 import {MdFavorite, MdFavoriteBorder} from "react-icons/md";
 import useCart from "@/app/hooks/useCart";
-import ProductImages from "@/app/components/store/ProductImages";
-import ProductSpecification from "@/app/components/store/ProductSpecification";
+import ProductImages from "@/app/(pages)/store/product/components/ProductImages";
+import ProductSpecification from "@/app/(pages)/store/product/components/ProductSpecification";
 
 type Props = {
     product: Product
