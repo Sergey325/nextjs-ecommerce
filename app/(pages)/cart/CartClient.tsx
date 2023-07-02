@@ -6,6 +6,7 @@ import CartItem from "@/app/(pages)/cart/components/CartItem";
 import {useCallback, useEffect, useState} from "react";
 import {BasketItem} from "@/app/types";
 import CartSummary from "@/app/(pages)/cart/components/CartSummary";
+import axios from "axios";
 
 type Props = {
     currentUser?: User | null
@@ -24,9 +25,13 @@ const CartClient = ({currentUser}: Props) => {
             return total + itemCost;
         }, 0);
 
-        console.log(Math.round(total * 100) / 100)
         setTotalPrice(Math.round(total * 100) / 100)
     }, [currentUser?.cart])
+
+    const onCheckout = async () => {
+        const response = await axios.post("api/checkout", currentUser?.cart as BasketItem[])
+        window.location = response.data.url
+    }
 
     return (
         <Container>
@@ -48,7 +53,7 @@ const CartClient = ({currentUser}: Props) => {
                             </div>
                         ))}
                     </div>
-                    <CartSummary totalPrice={totalPrice}/>
+                    <CartSummary totalPrice={totalPrice} onCheckout={onCheckout}/>
                 </div>
             </div>
         </Container>

@@ -2,9 +2,11 @@ import Button from "@/app/components/Button";
 
 type Props = {
     totalPrice: number
+    onCheckout: () => void
 };
 
-const CartSummary = ({totalPrice}: Props) => {
+const CartSummary = ({totalPrice, onCheckout}: Props) => {
+
     return (
         <div
             className="mt-16 rounded-lg px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 w-full md:w-[50%] xl:w-[30%] bg-gray-900 text-gray-400 self-start"
@@ -29,7 +31,7 @@ const CartSummary = ({totalPrice}: Props) => {
                 </div>
             </div>
             <div className="text-sm sm:text-base pt-5">
-                <Button label="Checkout" onClick={() => {}} gradient/>
+                <Button label="Checkout" onClick={onCheckout} gradient/>
             </div>
         </div>
     );
