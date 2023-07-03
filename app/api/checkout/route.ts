@@ -42,13 +42,10 @@ export async function POST(
         line_items,
         mode: "payment",
         payment_method_types: ["card"],
-        success_url: `${process.env.NEXT_AUTH_URL}/successfulPayment`,
+        success_url: `${process.env.NEXT_AUTH_URL}/successfulPayment?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${process.env.NEXT_AUTH_URL}/paymentCancelled`,
         customer_email: currentUser.email,
         client_reference_id: currentUser?.id,
-        // metadata: {
-        //
-        // }
     })
 
     return NextResponse.json({ url: session.url })

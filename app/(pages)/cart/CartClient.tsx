@@ -1,6 +1,6 @@
 "use client"
 
-import {User} from "@prisma/client";
+import {Product, User} from "@prisma/client";
 import Container from "@/app/components/Container";
 import CartItem from "@/app/(pages)/cart/components/CartItem";
 import {useCallback, useEffect, useState} from "react";
@@ -12,6 +12,8 @@ type Props = {
     currentUser?: User | null
 };
 
+export const calculateTotalPrice = (product: Product, quantity: number): number => Math.round((product.price-product.price/100*product.sale) * +quantity * 100) / 100
+
 const CartClient = ({currentUser}: Props) => {
     const [totalPrice, setTotalPrice] = useState(0)
 
@@ -21,7 +23,7 @@ const CartClient = ({currentUser}: Props) => {
 
     const onChangeQuantity = useCallback(() => {
         const total = (currentUser?.cart as BasketItem[]).reduce((total, item) => {
-            const itemCost = item.product.price * item?.quantity;
+            const itemCost = calculateTotalPrice(item.product, item.quantity);
             return total + itemCost;
         }, 0);
 

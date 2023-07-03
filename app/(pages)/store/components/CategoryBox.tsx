@@ -29,6 +29,10 @@ const CategoryBox = ({icon: Icon, label, selected}: Props) => {
             category: label
         }
 
+        if (params?.get('category') === label) {
+            delete updatedQuery.category;
+        }
+
         const url = qs.stringifyUrl({
             url: "/store",
             query: updatedQuery

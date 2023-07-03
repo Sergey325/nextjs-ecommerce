@@ -8,6 +8,7 @@ import {useCallback, useState} from "react";
 import {toast} from "react-hot-toast";
 import axios from "axios";
 import {useRouter} from "next/navigation";
+import {calculateTotalPrice} from "@/app/(pages)/cart/CartClient";
 
 type Props = {
     item: { product: Product, quantity: number }
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const CartItem = ({item, onChangeQuantity}: Props) => {
-    const [totalAmount, setTotalAmount] = useState(Math.round(item.product.price * +item.quantity * 100) / 100)
+    const [totalAmount, setTotalAmount] = useState(calculateTotalPrice(item.product, item.quantity))
     const router = useRouter()
 
     const options = [
@@ -33,7 +34,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
     const handleChangeQuantity = useCallback((quantity: string) => {
         try {
             item.quantity = +quantity;
-            setTotalAmount(Math.round(item.product.price * +quantity * 100) / 100);
+            setTotalAmount(calculateTotalPrice(item.product, item.quantity));
 
             axios
                 .patch("/api/cart", item)
@@ -69,6 +70,8 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
         }
     }, [item.product, router]);
 
+
+
     return (
         <div className="flex flex-col sm:flex-row w-full text-gray-400 text-sm md:text-lg justify-between items-center gap-5">
             <div
@@ -78,7 +81,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                 <Image src={item.product.images[0]} alt="productImage" height={100} width={100} className=""/>
                 <span className="text-sm md:text-base">{item.product.title}</span>
             </div>
-            <span className="hidden md:inline-block md:w-[15%]">${item.product.price}</span>
+            <span className="hidden md:inline-block md:w-[15%]">${item.product.price-item.product.price/100*item.product.sale}</span>
             <div className="flex justify-between items-center w-full sm:w-[45%] md:w-[30%] min-h-max min-w-max">
                 <div className="flex items-center text-base gap-1 min-h-max min-w-max">
                     <DropDown

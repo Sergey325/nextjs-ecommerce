@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/uniqid": "^5.3.2",
     "prisma": "^4.15.0"
   }
 }

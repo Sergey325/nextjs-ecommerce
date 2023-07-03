@@ -22,7 +22,6 @@ model User {
   favoriteIds    String[]  @db.ObjectId
   accounts       Account[]
   cart           Json[]    @default([])
-  orders         Json[]    @default([])
 }
 
 model Account {
@@ -58,9 +57,10 @@ model Product {
 }
 
 model Order {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  number    String   @unique @default(uuid())
-  userId    String   @db.ObjectId
-  products  Json[]   @default([])
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime @default(now())
+  number     String   @unique @default(uuid())
+  userId     String   @db.ObjectId
+  products   Json[]   @default([])
+  totalPrice Float
 }
