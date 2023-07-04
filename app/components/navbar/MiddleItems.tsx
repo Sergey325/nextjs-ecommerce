@@ -9,8 +9,8 @@ const MiddleItems = () => {
     return (
         <div className="hidden lg:flex items-center gap-4">
             <MiddleItem label="Store" action={() => {router.push("/store")}}/>
-            <MiddleItem label="Delivery" action={() => {}}/>
-            <MiddleItem label="About" action={() => {}}/>
+            <MiddleItem label="Home" action={() => {}}/>
+            <MiddleItem label="Support" action={() => {}}/>
         </div>
     );
 };

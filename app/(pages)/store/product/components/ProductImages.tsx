@@ -19,6 +19,16 @@ const responsive = {
     }
 };
 
+const responsiveOption = {
+    desktop: {
+        breakpoint: {
+            max: 8000,
+            min: 1024,
+        },
+        items: 4,
+    },
+}
+
 const ProductImages = memo(({product}: Props) => {
     const [selectedImage, setSelectedImage] = useState(product.images[0])
 
@@ -57,18 +67,41 @@ const ProductImages = memo(({product}: Props) => {
                 gradient="bg-gradient-to-br from-blue-400/70 to-purple-500/70"
                 blur="blur-[200px] md:blur-[300px]"
             />
-            <div className="hidden lg:flex flex-row gap-4 z-20">
-                {product?.images.map( image => (
-                    <Image
-                        src={image}
-                        key={image}
-                        priority={true}
-                        width={100} height={100}
-                        alt="productImageOption"
-                        className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-400 border-2"
-                        onMouseEnter={() => setSelectedImage(image)}
-                    />
-                ))}
+            <div className="h-[120px] w-[100%] z-20">
+                <Carousel
+                    responsive={responsiveOption}
+                    swipeable
+                    draggable
+                    infinite
+                    keyBoardControl
+                    customTransition="all 1s"
+                    transitionDuration={500}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    itemClass="carousel-item-padding-10-px">
+                    {product.images.map((slide) => (
+                        <Image
+                            src={slide}
+                            key={slide}
+                            width={100} height={100}
+                            priority
+                            className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-400 border-2"
+                            alt="productImageOption"
+                            onMouseEnter={() => setSelectedImage(slide)}
+                        />
+                    ))}
+                </Carousel>
+                {/*{product?.images.map( image => (*/}
+                {/*    <Image*/}
+                {/*        src={image}*/}
+                {/*        key={image}*/}
+                {/*        priority={true}*/}
+                {/*        width={100} height={100}*/}
+                {/*        alt="productImageOption"*/}
+                {/*        className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-400 border-2"*/}
+                {/*        onMouseEnter={() => setSelectedImage(image)}*/}
+                {/*    />*/}
+                {/*))}*/}
             </div>
         </>
     );

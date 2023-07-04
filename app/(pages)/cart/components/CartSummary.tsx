@@ -21,7 +21,7 @@ const CartSummary = ({totalPrice, onCheckout}: Props) => {
                     <span className="font-light text-base sm:text-lg text-gray-300">${totalPrice}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                    <span className="font-light text-sm sm:text-base text-gray-400 max-w-[60%]">Estimated shipping and handling costs</span>
+                    <span className="font-light text-sm sm:text-base text-gray-400 max-w-[60%]">Shipping and handling costs</span>
                     <span className="font-light text-base sm:text-lg text-gray-300">Free</span>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4 text-base sm:text-lg">

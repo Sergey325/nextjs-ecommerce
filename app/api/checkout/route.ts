@@ -5,6 +5,11 @@ import { stripe } from "@/app/libs/stripe"
 import {BasketItem} from "@/app/types";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
+enum Shipping {
+    freeOutOfStock = "shr_1NQ5rEA4VjmxU9YMdX7pUwyL",
+    freeInStock = "shr_1NQ5ozA4VjmxU9YMDGWqtzQQ",
+}
+
 export async function POST(
     req: Request
 ) {
@@ -21,6 +26,8 @@ export async function POST(
 
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = []
 
+    let estShippingTime = Shipping.freeInStock;
+
     items.forEach(item => {
         line_items.push({
             quantity: item.quantity,
@@ -33,9 +40,10 @@ export async function POST(
                         productId: item.product.id,
                     },
                 },
-                unit_amount: +((item.product.price-item.product.price/100*item.product.sale).toFixed(2)) * 100
-            }
+                unit_amount: +((item.product.price-item.product.price/100*item.product.sale).toFixed(2)) * 100,
+            },
         })
+        if(!item.product.immediatelyAvailable) estShippingTime = Shipping.freeOutOfStock
     })
 
     const session = await stripe.checkout.sessions.create({
@@ -46,6 +54,11 @@ export async function POST(
         cancel_url: `${process.env.NEXT_AUTH_URL}/paymentCancelled`,
         customer_email: currentUser.email,
         client_reference_id: currentUser?.id,
+        shipping_options: [
+            {
+                shipping_rate: estShippingTime
+            }
+        ]
     })
 
     return NextResponse.json({ url: session.url })
