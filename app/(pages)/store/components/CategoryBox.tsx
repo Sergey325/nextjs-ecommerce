@@ -49,7 +49,6 @@ const CategoryBox = ({icon: Icon, label, selected}: Props) => {
                 items-center justify-center
                 gap-2
                 p-3
-                border-b-2
                 hover:text-gray-600
                 transition
                 cursor-pointer
@@ -65,7 +64,7 @@ const CategoryBox = ({icon: Icon, label, selected}: Props) => {
                         size="w-[60px] h-[50px]"
                         gradient="bg-gradient-to-br from-indigo-500 to-blue-600"
                         blur="blur-[45px]"
-                        zIndex={"z-5"}
+                        zIndex={"z-1"}
                     />
                 )
             }

@@ -23,6 +23,7 @@ const HeroSection = () => {
                     size="w-1/2 h-1/2"
                     gradient="bg-gradient-to-br from-blue-400/70 to-purple-500/70"
                     blur="blur-[150px]"
+                    zIndex={"z-10"}
                 />
             </div>
             <div className=" text-gray-400 flex flex-col gap-4 md:gap-8 md:w-2/5">
