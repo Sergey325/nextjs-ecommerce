@@ -7,7 +7,8 @@ import DevCreateProductBtn from "@/app/(pages)/store/components/DevCreateProduct
 import getProducts, {IProductsParams} from "@/app/actions/getProducts";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ProductsLayout from "@/app/(pages)/store/components/ProductsLayout";
-import CheckBox from "@/app/(pages)/store/components/CheckBox";
+import Filters from "@/app/(pages)/store/components/Filters";
+import getManufacturers from "@/app/actions/getManufacturers";
 
 export const dynamic = 'force-dynamic'
 
@@ -19,6 +20,7 @@ type Props = {
 const StorePage = async ({searchParams}: Props) => {
     const currentUser = await getCurrentUser()
     const products = await getProducts(searchParams)
+    const manufacturers = await getManufacturers(searchParams)
 
     // products.push(products[0])
     // products.push(products[0])
@@ -33,13 +35,10 @@ const StorePage = async ({searchParams}: Props) => {
             <hr className="border-gray-800"/>
             <Container>
                 <div className="flex pt-10 gap-6">
-                    <aside className="hidden lg:flex flex-col items-center justify-start p-6 text-xl text-gray-500 border-gray-800 border-2 ">
+                    <aside className="hidden lg:flex flex-col items-center justify-start p-6 text-xl text-gray-500 border-gray-800 border-2 max-w-[300px]">
                         <span className="self-start font-semibold">Filter By</span>
                         <hr className="border-gray-700 w-full"/>
-                        <div className="w-[250px] text-base font-semibold pt-4">
-                            Availability
-                        </div>
-                        <CheckBox />
+                        <Filters manufacturers={manufacturers}/>
                     </aside>
                     <div className="w-full flex-col">
                         <div className="flex justify-between items-center">

@@ -10,15 +10,15 @@ const ProductsLayout = ({products, currentUser}: Props) => {
     return (
         <div
             className="
-                                pt-5
-                                grid
-                                grid-cols-1
-                                sm:grid-cols-2
-                                lg:grid-cols-3
-                                xl:grid-cols-4
-                                2xl:grid-cols-5
-                                gap-8
-                            "
+                pt-5
+                grid
+                grid-cols-1
+                sm:grid-cols-3
+                lg:grid-cols-3
+                xl:grid-cols-4
+                2xl:grid-cols-5
+                gap-8
+            "
         >
             {products.map((product, index) => {
                 return (

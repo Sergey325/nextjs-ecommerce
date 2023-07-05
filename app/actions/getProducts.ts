@@ -3,28 +3,43 @@ import prisma from "@/app/libs/prismadb"
 export interface IProductsParams {
     category?: string
     sorting?: string
+    immediatelyAvailable?: string
+    manufacturer?: string[]
 }
 
 export default async function getProducts(params: IProductsParams) {
     try {
-        const {category, sorting} = params
+        const { category, sorting, immediatelyAvailable, manufacturer } = params
 
         let orderBy = {}
 
-        if(sorting && sorting !== "Featured"){
+        let query: any = {}
+
+        if (category) {
+            query.category = category
+        }
+
+        if (immediatelyAvailable) {
+            query.immediatelyAvailable = immediatelyAvailable === "true"
+        }
+
+        if (sorting && sorting !== "Featured") {
             orderBy = {
                 price: sorting
             }
         }
 
-        const products = await prisma.product.findMany({
-            where: {
-                category: category
-            },
+        if (manufacturer && manufacturer.length > 0) {
+            query.manufacturer = {
+                in: manufacturer
+            }
+        }
+
+        return await prisma.product.findMany({
+            where: query,
             orderBy: orderBy
         })
 
-        return products
     } catch (e: any) {
         throw new Error(e)
     }

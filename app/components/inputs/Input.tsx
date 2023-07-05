@@ -6,7 +6,6 @@ import {BiDollar} from "react-icons/bi";
 type Props = {
     id: string
     label: string
-    type?: string
     disabled?: boolean
     formatPrice?: boolean
     required?: boolean
@@ -14,7 +13,7 @@ type Props = {
     errors: FieldErrors
 };
 
-const Input = ({id, label, type = "text", disabled, formatPrice, required, register, errors}: Props) => {
+const Input = ({id, label, disabled, formatPrice, required, register, errors}: Props) => {
 
 
     return (
@@ -27,7 +26,7 @@ const Input = ({id, label, type = "text", disabled, formatPrice, required, regis
                 disabled={disabled}
                 {...register(id, {required})}
                 placeholder=" "
-                type={type}
+                type={"number"}
                 className={`
                     peer
                     w-full
