@@ -5,11 +5,20 @@ export interface IProductsParams {
     sorting?: string
     immediatelyAvailable?: string
     manufacturer?: string[]
+    priceMin?: string
+    priceMax?: string
 }
 
 export default async function getProducts(params: IProductsParams) {
     try {
-        const { category, sorting, immediatelyAvailable, manufacturer } = params
+        const {
+            category,
+            sorting,
+            immediatelyAvailable,
+            manufacturer,
+            priceMin,
+            priceMax,
+        } = params
 
         let orderBy = {}
 
@@ -32,6 +41,21 @@ export default async function getProducts(params: IProductsParams) {
         if (manufacturer && manufacturer.length > 0) {
             query.manufacturer = {
                 in: manufacturer
+            }
+        }
+
+        if (priceMin && priceMax) {
+            query.price = {
+                gte: parseFloat(priceMin),
+                lte: parseFloat(priceMax)
+            }
+        } else if (priceMin) {
+            query.price = {
+                gte: parseFloat(priceMin)
+            }
+        } else if (priceMax) {
+            query.price = {
+                lte: parseFloat(priceMax)
             }
         }
 

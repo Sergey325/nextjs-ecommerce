@@ -1,13 +1,47 @@
 "use client"
 
 import CheckBox from "@/app/(pages)/store/components/CheckBox";
-import React from "react";
+import React, {useCallback} from "react";
+import qs from "query-string";
+import {useRouter, useSearchParams} from "next/navigation";
+import {BsDash} from "react-icons/bs";
+import debounce from "lodash.debounce"
 
 type Props = {
     manufacturers: string[]
 }
 
 const Filters = ({manufacturers}: Props) => {
+    const params = useSearchParams()
+    const router = useRouter()
+
+    const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        let currentQuery = {};
+
+        if (params) {
+            currentQuery = qs.parse(params.toString())
+        }
+
+        const updatedQuery: any = {
+            ...currentQuery,
+            [e.target.id]: e.target.value
+        }
+
+        if (!e.target.value) {
+            delete updatedQuery[e.target.id];
+        }
+
+        const url = qs.stringifyUrl({
+            url: "/store",
+            query: updatedQuery
+        }, {skipNull: true})
+
+        router.push(url)
+    }, [params, router])
+
+    const debouncedPrice = debounce((e) => {
+        handlePriceChange(e);
+    }, 500);
 
     return (
         <div className="flex flex-col gap-3 pt-4">
@@ -15,38 +49,41 @@ const Filters = ({manufacturers}: Props) => {
                 <div className="text-base font-semibold">
                     Price
                 </div>
-                <div className="flex justify-between min-w-min text-gray-400 gap-5">
+                <div className="flex items-center min-w-min text-gray-400 gap-2">
                     <div className="relative w-full ">
                         <input
-                            type=""
+                            id={"priceMin"}
                             placeholder="min"
                             className="
-                        pl-5
-                        h-[40px]
-                        text-base
-                        border border-gray-800
-                        focus:outline-0 appearance-none
-                        bg-slate-950
-                        placeholder:text-gray-500
-                        w-full
-                    "
+                                pl-5
+                                h-[40px]
+                                text-base
+                                border border-gray-800
+                                focus:outline-0 appearance-none
+                                bg-slate-950
+                                placeholder:text-gray-500
+                                w-full
+                            "
+                            onChange={debouncedPrice}
                         />
                         <label className="absolute top-[7px] left-1">$</label>
                     </div>
+                    <BsDash size={40}/>
                     <div className="relative">
                         <input
-                            type=""
+                            id={"priceMax"}
                             placeholder="max"
                             className="
-                            pl-5
-                            h-[40px]
-                            text-base
-                            border border-gray-800
-                            focus:outline-0 appearance-none
-                            bg-slate-950
-                            placeholder:text-gray-500
-                            w-full
-                        "
+                                pl-5
+                                h-[40px]
+                                text-base
+                                border border-gray-800
+                                focus:outline-0 appearance-none
+                                bg-slate-950
+                                placeholder:text-gray-500
+                                w-full
+                            "
+                            onChange={debouncedPrice}
                         />
                         <label className="absolute top-[7px] left-1">$</label>
                     </div>
@@ -59,7 +96,8 @@ const Filters = ({manufacturers}: Props) => {
                 <div className="text-base font-semibold">
                     Availability
                 </div>
-                <CheckBox urlParameter="immediatelyAvailable" urlValue="true" label="In Stock" colorOnChecked={"text-gray-400"}/>
+                <CheckBox urlParameter="immediatelyAvailable" urlValue="true" label="In Stock"
+                          colorOnChecked={"text-gray-400"}/>
                 {/*<CheckBox urlParameter="immediatelyAvailable" urlValue="false" label="Out of Stock" colorOnChecked={"text-gray-400"}/>*/}
             </div>
 
@@ -73,7 +111,8 @@ const Filters = ({manufacturers}: Props) => {
                     {
                         manufacturers.map(manufacturer => (
                             <div key={manufacturer}>
-                                <CheckBox urlParameter="manufacturer" urlValue={manufacturer} label={manufacturer} colorOnChecked={"text-gray-400"} />
+                                <CheckBox urlParameter="manufacturer" urlValue={manufacturer} label={manufacturer}
+                                          colorOnChecked={"text-gray-400"}/>
                             </div>
                         ))
                     }
