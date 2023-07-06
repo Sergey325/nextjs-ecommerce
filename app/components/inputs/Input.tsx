@@ -11,9 +11,10 @@ type Props = {
     required?: boolean
     register: UseFormRegister<FieldValues>
     errors: FieldErrors
+    type?: string
 };
 
-const Input = ({id, label, disabled, formatPrice, required, register, errors}: Props) => {
+const Input = ({id, label, disabled, formatPrice, required, register, errors, type}: Props) => {
 
 
     return (
@@ -26,7 +27,7 @@ const Input = ({id, label, disabled, formatPrice, required, register, errors}: P
                 disabled={disabled}
                 {...register(id, {required})}
                 placeholder=" "
-                type={"number"}
+                type={type}
                 className={`
                     peer
                     w-full

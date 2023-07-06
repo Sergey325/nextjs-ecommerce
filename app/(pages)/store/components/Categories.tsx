@@ -130,7 +130,7 @@ export const categories = [
     },
 ]
 
-const Categories =() => {
+const Categories = () => {
     const params = useSearchParams()
     const category = params?.get('category')
     const pathname = usePathname()

@@ -19,13 +19,13 @@ const Filters = ({allProducts}: Props) => {
     const params = useSearchParams()
     const router = useRouter()
 
-    const defineCategoryFilters = useCallback(() => {
+    const defineCategoryFilters = () => {
         if (params && params.has("category")) {
             const category = params.get("category");
             return categories.find(item => item.label === category)?.properties as CategoryFilters
         }
         return []
-    }, [params, categories])
+    }
 
     const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         let currentQuery = {};
@@ -108,8 +108,7 @@ const Filters = ({allProducts}: Props) => {
                 <div className="text-base font-semibold">
                     Availability
                 </div>
-                <CheckBox urlParameter="immediatelyAvailable" urlValue="true" label="In Stock"
-                          colorOnChecked={"text-gray-400"}/>
+                <CheckBox urlParameter="immediatelyAvailable" urlValue="true" label="In Stock" colorOnChecked={"text-gray-400"}/>
             </div>
 
             <hr className="border-gray-700 w-full"/>
