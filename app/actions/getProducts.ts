@@ -44,25 +44,39 @@ export default async function getProducts(params: IProductsParams) {
             }
         }
 
-        if (priceMin && priceMax) {
-            query.price = {
-                gte: parseFloat(priceMin),
-                lte: parseFloat(priceMax)
-            }
-        } else if (priceMin) {
-            query.price = {
-                gte: parseFloat(priceMin)
-            }
-        } else if (priceMax) {
-            query.price = {
-                lte: parseFloat(priceMax)
-            }
-        }
+        const minPrice = parseFloat(priceMin ?? "0");
+        const maxPrice =  parseFloat(priceMax ?? "99999");
 
-        return await prisma.product.findMany({
-            where: query,
+        // if (priceMin && priceMax) {
+        //     query.price = {
+        //         gte: parseFloat(priceMin),
+        //         lte: parseFloat(priceMax)
+        //     }
+        // } else if (priceMin) {
+        //     query.price = {
+        //         gte: parseFloat(priceMin)
+        //     }
+        // } else if (priceMax) {
+        //     query.price = {
+        //         lte: parseFloat(priceMax)
+        //     }
+        // }
+
+        const products = await prisma.product.findMany({
+            where:{
+                ...query,
+                price: {
+                    gte: minPrice,
+                    lte: maxPrice,
+                }
+            },
             orderBy: orderBy
         })
+
+        return products.filter((product) => {
+            const discountedPrice = product.price - (product.price / 100) * product.sale;
+            return discountedPrice >= minPrice && discountedPrice <= maxPrice;
+        });
 
     } catch (e: any) {
         throw new Error(e)

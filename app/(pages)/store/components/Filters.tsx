@@ -1,19 +1,33 @@
 "use client"
 
 import CheckBox from "@/app/(pages)/store/components/CheckBox";
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import qs from "query-string";
 import {useRouter, useSearchParams} from "next/navigation";
 import {BsDash} from "react-icons/bs";
 import debounce from "lodash.debounce"
+import {CategoryFilters, ProductItem} from "@/app/types";
+import {categories} from "@/app/(pages)/store/components/Categories";
+import {Product} from "@prisma/client";
+import {log} from "util";
+import CustomFilters from "@/app/(pages)/store/components/CustomFilters";
 
 type Props = {
-    manufacturers: string[]
+    manufacturers: string[],
+    allProducts: Product[]
 }
 
-const Filters = ({manufacturers}: Props) => {
+const Filters = ({manufacturers, allProducts}: Props) => {
     const params = useSearchParams()
     const router = useRouter()
+
+    const defineCategoryFilters = useCallback(() => {
+        if (params && params.has("category")) {
+            const category = params.get("category");
+            return categories.find(item => item.label === category)?.properties as CategoryFilters
+        }
+        return []
+    }, [params, categories])
 
     const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         let currentQuery = {};
@@ -109,17 +123,16 @@ const Filters = ({manufacturers}: Props) => {
                 </div>
                 <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">
                     {
-                        manufacturers.map(manufacturer => (
+                        Array.from(new Set(allProducts.map(product => product.manufacturer))).map(manufacturer => (
                             <div key={manufacturer}>
-                                <CheckBox urlParameter="manufacturer" urlValue={manufacturer} label={manufacturer}
-                                          colorOnChecked={"text-gray-400"}/>
+                                <CheckBox urlParameter="manufacturer" urlValue={manufacturer} label={manufacturer} colorOnChecked={"text-gray-400"}/>
                             </div>
                         ))
                     }
                 </div>
             </div>
 
-            <hr className="border-gray-700 w-full"/>
+            <CustomFilters customFilters={defineCategoryFilters()} allProducts={allProducts}/>
 
         </div>
     );

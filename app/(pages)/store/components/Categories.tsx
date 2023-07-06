@@ -14,6 +14,7 @@ import {GiAbstract049} from "react-icons/gi";
 import CategoryBox from "@/app/(pages)/store/components/CategoryBox";
 
 import {usePathname, useSearchParams} from "next/navigation";
+import {CategoryFilters} from "@/app/types";
 
 export const categories = [
     {
@@ -26,7 +27,7 @@ export const categories = [
             { title: "L3 Cache", value: 32},
             { title: "Graphics integrated", value: "AMD Radeon™ Vega 8"},
             { title: "Packaging", value: "tray"},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'Motherboards',
@@ -41,7 +42,7 @@ export const categories = [
             { title: "WiFi", value: true},
             { title: "SLI support", value: true},
             { title: "M.2 Slot", value: true},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'GPUs',
@@ -54,7 +55,7 @@ export const categories = [
             { title: "Connector", value: "PCIe 4.0"},
             { title: "Power Connector", value: "8pin + 6pin"},
             { title: "GPU Length (mm)", value: 295},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'RAM',
@@ -67,7 +68,7 @@ export const categories = [
             { title: "RAM Speed", value: "3200 MHz"},
             { title: "Illumination", value: false},
             { title: "CAS Latency", value: "CL18"},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'Hard Drives',
@@ -78,7 +79,7 @@ export const categories = [
             { title: "Capacity", value: "1TB"},
             { title: "NVMe", value: "true"},
             { title: "Speed", value: "Write speed up to 2800 MB/s, up to 3500 MB/s"},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'CPU Coolers',
@@ -91,7 +92,7 @@ export const categories = [
             { title: "Illumination", value: true},
             { title: "maximum Volume", value: "26.8 dB"},
             { title: "Speed Range", value: "1500rpm"},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'Cases',
@@ -110,7 +111,7 @@ export const categories = [
             { title: "possible 120mm fans", value: 0},
             { title: "possible 140mm fans", value: 6},
             { title: "possible 200mm fans", value: 0},
-        ],
+        ] as CategoryFilters,
     },
     {
         label: 'PSUs',
@@ -126,7 +127,7 @@ export const categories = [
             { title: "80 PLUS Certificate", value: "80 PLUS"},
             { title: "Illumination", value: false},
             { title: "Cable Management", value: false},
-        ],
+        ] as CategoryFilters,
     },
 ]
 
