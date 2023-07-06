@@ -62,7 +62,6 @@ export const categories = [
         icon: FaMemory,
         properties: [
             { title: "RAM Technology", value: "DDR4"},
-            { title: "VRAM", value: 12},
             { title: "Capacity", value: 16},
             { title: "Number of modules", value: "2x 8GB Kit"},
             { title: "RAM Speed", value: "3200 MHz"},

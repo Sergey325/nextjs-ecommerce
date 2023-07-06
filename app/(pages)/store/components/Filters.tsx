@@ -1,23 +1,21 @@
 "use client"
 
 import CheckBox from "@/app/(pages)/store/components/CheckBox";
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback} from "react";
 import qs from "query-string";
 import {useRouter, useSearchParams} from "next/navigation";
 import {BsDash} from "react-icons/bs";
 import debounce from "lodash.debounce"
-import {CategoryFilters, ProductItem} from "@/app/types";
+import {CategoryFilters} from "@/app/types";
 import {categories} from "@/app/(pages)/store/components/Categories";
 import {Product} from "@prisma/client";
-import {log} from "util";
 import CustomFilters from "@/app/(pages)/store/components/CustomFilters";
 
 type Props = {
-    manufacturers: string[],
     allProducts: Product[]
 }
 
-const Filters = ({manufacturers, allProducts}: Props) => {
+const Filters = ({allProducts}: Props) => {
     const params = useSearchParams()
     const router = useRouter()
 
@@ -112,7 +110,6 @@ const Filters = ({manufacturers, allProducts}: Props) => {
                 </div>
                 <CheckBox urlParameter="immediatelyAvailable" urlValue="true" label="In Stock"
                           colorOnChecked={"text-gray-400"}/>
-                {/*<CheckBox urlParameter="immediatelyAvailable" urlValue="false" label="Out of Stock" colorOnChecked={"text-gray-400"}/>*/}
             </div>
 
             <hr className="border-gray-700 w-full"/>

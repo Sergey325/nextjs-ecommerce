@@ -1,6 +1,6 @@
 import Categories from "@/app/(pages)/store/components/Categories";
 import Container from "@/app/components/Container";
-import React, {useEffect} from "react";
+import React from "react";
 import Sorting from "@/app/(pages)/store/components/Sorting";
 import ClientOnly from "@/app/components/ClientOnly";
 import DevCreateProductBtn from "@/app/(pages)/store/components/DevCreateProductBtn";
@@ -8,7 +8,6 @@ import getProducts, {IProductsParams} from "@/app/actions/getProducts";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ProductsLayout from "@/app/(pages)/store/components/ProductsLayout";
 import Filters from "@/app/(pages)/store/components/Filters";
-import getManufacturers from "@/app/actions/getManufacturers";
 import getProductsByCategory from "@/app/actions/getProductsByCategory";
 
 export const dynamic = 'force-dynamic'
@@ -21,7 +20,6 @@ type Props = {
 const StorePage = async ({searchParams}: Props) => {
     const currentUser = await getCurrentUser()
     const products = await getProducts(searchParams)
-    const manufacturers = await getManufacturers(searchParams)
     const productsByCategory = await getProductsByCategory(searchParams)
 
     // useEffect(() => {
@@ -44,7 +42,7 @@ const StorePage = async ({searchParams}: Props) => {
                     <aside className="hidden lg:flex flex-col items-center justify-start p-6 text-xl text-gray-500 border-gray-800 border-2 max-w-[300px]">
                         <span className="self-start font-semibold">Filter By</span>
                         <hr className="border-gray-700 w-full"/>
-                        <Filters manufacturers={manufacturers} allProducts={productsByCategory}/>
+                        <Filters allProducts={productsByCategory}/>
                     </aside>
                     <div className="w-full flex-col">
                         <div className="flex justify-between items-center">
