@@ -10,6 +10,7 @@ import {CategoryFilters} from "@/app/types";
 import {categories} from "@/app/(pages)/store/components/Categories";
 import {Product} from "@prisma/client";
 import CustomFilters from "@/app/(pages)/store/components/CustomFilters";
+import InputNumbers from "@/app/(pages)/store/components/InputNumbers";
 
 type Props = {
     allProducts: Product[]
@@ -62,43 +63,9 @@ const Filters = ({allProducts}: Props) => {
                     Price
                 </div>
                 <div className="flex items-center min-w-min text-gray-400 gap-2">
-                    <div className="relative w-full ">
-                        <input
-                            id={"priceMin"}
-                            placeholder="min"
-                            className="
-                                pl-5
-                                h-[40px]
-                                text-base
-                                border border-gray-800
-                                focus:outline-0 appearance-none
-                                bg-slate-950
-                                placeholder:text-gray-500
-                                w-full
-                            "
-                            onChange={debouncedPrice}
-                        />
-                        <label className="absolute top-[7px] left-1">$</label>
-                    </div>
+                    <InputNumbers id={"priceMin"} onChange={debouncedPrice} placeholder={"min"} price/>
                     <BsDash size={40}/>
-                    <div className="relative">
-                        <input
-                            id={"priceMax"}
-                            placeholder="max"
-                            className="
-                                pl-5
-                                h-[40px]
-                                text-base
-                                border border-gray-800
-                                focus:outline-0 appearance-none
-                                bg-slate-950
-                                placeholder:text-gray-500
-                                w-full
-                            "
-                            onChange={debouncedPrice}
-                        />
-                        <label className="absolute top-[7px] left-1">$</label>
-                    </div>
+                    <InputNumbers id={"priceMax"} onChange={debouncedPrice} placeholder={"max"} price/>
                 </div>
             </div>
 
@@ -128,7 +95,7 @@ const Filters = ({allProducts}: Props) => {
                 </div>
             </div>
 
-            <CustomFilters customFilters={defineCategoryFilters()} allProducts={allProducts}/>
+            <CustomFilters customFilters={defineCategoryFilters()} allProducts={allProducts} onInputChange={debouncedPrice}/>
 
         </div>
     );

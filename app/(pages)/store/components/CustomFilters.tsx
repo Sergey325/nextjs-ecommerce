@@ -2,13 +2,17 @@ import CheckBox from "@/app/(pages)/store/components/CheckBox";
 import React from "react";
 import {CategoryFilters} from "@/app/types";
 import {Product} from "@prisma/client";
+import InputNumbers from "@/app/(pages)/store/components/InputNumbers";
+import {BsDash} from "react-icons/bs";
+import {DebouncedFunc} from "lodash";
 
 type Props = {
     customFilters: CategoryFilters,
-    allProducts: Product[]
+    allProducts: Product[],
+    onInputChange: DebouncedFunc<(e: any) => void>
 };
 
-const CustomFilters = ({customFilters, allProducts}: Props) => {
+const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
     return (
         //change checkbox to input depending on property, mb add another field to properties
         <>
@@ -19,18 +23,30 @@ const CustomFilters = ({customFilters, allProducts}: Props) => {
                         <div className="text-base font-semibold">
                             {filter.title}
                         </div>
-                        <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">
-                            {Array.from(new Set(allProducts.map((product: any) => product.properties.find( (object: any) => object.title === filter.title)["value"]))).map((property: any) =>
-                                <React.Fragment key={property}>
-                                    <CheckBox
-                                        urlParameter={filter.title}
-                                        urlValue={property}
-                                        label={property}
-                                        colorOnChecked={"text-gray-400"}
-                                    />
-                                </React.Fragment>
-                            )}
-                        </div>
+                        {
+                            filter.title.includes(" (mm)")
+                            ?
+                                <div className="flex items-center min-w-min text-gray-400 gap-2">
+                                    <InputNumbers id={"min" + filter.title.replace(" ","").replace(" (mm)", "")} onChange={onInputChange} placeholder={"min"}/>
+                                    <BsDash size={40}/>
+                                    <InputNumbers id={"max" + filter.title.replace(" ","").replace(" (mm)", "")} onChange={onInputChange} placeholder={"max"}/>
+                                </div>
+                            :
+                                <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">
+                                    {Array.from(new Set(allProducts.map((product: any) => product.properties.find( (object: any) => object.title === filter.title)["value"]))).map((property: any) =>
+                                        <React.Fragment key={property}>
+                                            <CheckBox
+                                                urlParameter={filter.title.replace(" ", "")}
+                                                urlValue={property.toString()}
+                                                label={property}
+                                                multiplyParameter
+                                                colorOnChecked={"text-gray-400"}
+                                            />
+                                        </React.Fragment>
+                                    )}
+                                </div>
+                        }
+
                     </div>
                 </React.Fragment>
             ))}

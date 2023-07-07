@@ -17,29 +17,32 @@ const CategoryBox = ({icon: Icon, label, selected}: Props) => {
     const params = useSearchParams()
 
     const handleClick = useCallback(() => {
-
-        let currentQuery = {};
+        let currentQuery:any = {};
 
         if (params) {
-            currentQuery = qs.parse(params.toString())
+            currentQuery = qs.parse(params.toString());
         }
 
         const updatedQuery: any = {
-            ...currentQuery,
-            category: label
-        }
+            category: label, // Always set the category to the clicked label
+            manufacturer: currentQuery.manufacturer, // Preserve the "manufacturer" parameter
+        };
 
         if (params?.get('category') === label) {
+            // Remove the category parameter if it already exists
             delete updatedQuery.category;
         }
 
-        const url = qs.stringifyUrl({
-            url: "/store",
-            query: updatedQuery
-        }, {skipNull: true})
+        const url = qs.stringifyUrl(
+            {
+                url: '/store',
+                query: updatedQuery,
+            },
+            { skipNull: true }
+        );
 
-        router.push(url)
-    }, [label, params, router])
+        router.push(url);
+    }, [label, params, router]);
 
     return (
         <div

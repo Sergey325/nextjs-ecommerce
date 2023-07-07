@@ -10,6 +10,7 @@ import {MdFavorite, MdFavoriteBorder} from "react-icons/md";
 import useCart from "@/app/hooks/useCart";
 import ProductImages from "@/app/(pages)/store/product/components/ProductImages";
 import ProductSpecification from "@/app/(pages)/store/product/components/ProductSpecification";
+import Link from "next/link";
 
 type Props = {
     product: Product
@@ -37,9 +38,9 @@ const ProductClient = ({product, currentUser}: Props) => {
                         <ProductImages product={product}/>
                     </div>
                     <div className="flex flex-col items-stretch gap-6 text-gray-400">
-                        {/*need a function*/}
                         <div className="cursor-pointer text-4xl w-min" onClick={() => {}}>
-                            {product.manufacturer}
+                            <Link href={`/store?manufacturer=${product.manufacturer}`}>{product.manufacturer}</Link>
+
                         </div>
 
                         <hr className="border-gray-500 w-full"/>
@@ -88,7 +89,7 @@ const ProductClient = ({product, currentUser}: Props) => {
                                 product.description
                                     ?
                                     <div className="">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda commodi consequatur distinctio eveniet, explicabo fugiat inventore, iste laboriosam magnam nesciunt nostrum pariatur perferendis quia, quidem quisquam ratione recusandae repellendus sint temporibus vero! Ad atque libero necessitatibus nulla numquam, quasi voluptatibus.
+                                        {product.description}
                                     </div>
                                     :<div className="text-lg">
                                         The manufacturer did not provide a description of this product

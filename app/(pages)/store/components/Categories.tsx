@@ -41,7 +41,6 @@ export const categories = [
             { title: "M.2 Slot", value: true},
             { title: "WiFi", value: true},
             { title: "SLI support", value: true},
-            { title: "M.2 Slot", value: true},
         ] as CategoryFilters,
     },
     {

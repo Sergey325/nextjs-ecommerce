@@ -27,3 +27,8 @@ export type ProductItem = {
     sale: number;
     immediatelyAvailable: boolean;
 };
+
+export type Filter = {
+    param: string[] | string | number[] | undefined
+    title: string
+}
