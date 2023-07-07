@@ -37,9 +37,10 @@ const Footer = () => {
                             Pc Store
                         </div>
                     </div>
-                    {/*<Logo/>*/}
                     <div className="flex order-1 sm:order-3 gap-4 lg:w-[230px] justify-end">
-                        <AiFillGithub size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
+                        <a href="https://github.com/Sergey325">
+                            <AiFillGithub size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition" />
+                        </a>
                         <AiFillLinkedin size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
                     </div>
                 </div>

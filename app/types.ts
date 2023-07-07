@@ -29,6 +29,6 @@ export type ProductItem = {
 };
 
 export type Filter = {
-    param: string[] | string | number[] | undefined
+    param: string[] | string | undefined
     title: string
 }

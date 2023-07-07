@@ -61,7 +61,7 @@ const ProductClient = ({product, currentUser}: Props) => {
                                     </span>
                                 </p>
                             }
-                            <span className="text-4xl text-gray-300">${product.price-product.price/100*product.sale}</span>
+                            <span className="text-4xl text-gray-300">${(product.price-product.price/100*product.sale).toFixed(2)}</span>
                             <span className="text-sm text-gray-500">incl. VAT plus shipping costs</span>
                         </div>
                         <hr className="border-gray-500 w-full"/>

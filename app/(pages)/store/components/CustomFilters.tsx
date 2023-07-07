@@ -14,7 +14,6 @@ type Props = {
 
 const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
     return (
-        //change checkbox to input depending on property, mb add another field to properties
         <>
             {(customFilters).map((filter) => (
                 <React.Fragment key={filter.title}>
@@ -36,8 +35,8 @@ const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
                                     {Array.from(new Set(allProducts.map((product: any) => product.properties.find( (object: any) => object.title === filter.title)["value"]))).map((property: any) =>
                                         <React.Fragment key={property}>
                                             <CheckBox
-                                                urlParameter={filter.title.replace(" ", "")}
-                                                urlValue={property.toString()}
+                                                urlParameter={filter.title.replace(" ", "").replace(".", "")}
+                                                urlValue={property}
                                                 label={property}
                                                 multiplyParameter
                                                 colorOnChecked={"text-gray-400"}
@@ -46,7 +45,6 @@ const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
                                     )}
                                 </div>
                         }
-
                     </div>
                 </React.Fragment>
             ))}

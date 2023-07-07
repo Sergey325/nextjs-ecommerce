@@ -9,6 +9,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import ProductsLayout from "@/app/(pages)/store/components/ProductsLayout";
 import Filters from "@/app/(pages)/store/components/Filters";
 import getProductsByCategory from "@/app/actions/getProductsByCategory";
+import EmptyState from "@/app/components/EmptyState";
 
 export const dynamic = 'force-dynamic'
 
@@ -49,7 +50,14 @@ const StorePage = async ({searchParams}: Props) => {
                             <Sorting/>
                             {/*<DevCreateProductBtn/>*/}
                         </div>
-                        <ProductsLayout products={products} currentUser={currentUser}/>
+                        {
+                            !products.length
+                                ?
+                                <EmptyState showReset title="No exact matches" subtitle={"Try changing or removing some of your filters"}/>
+                                :
+                                <ProductsLayout products={products} currentUser={currentUser}/>
+                        }
+
                     </div>
                 </div>
             </Container>

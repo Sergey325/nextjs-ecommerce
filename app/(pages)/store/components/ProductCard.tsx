@@ -53,7 +53,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
             </div>
             <div className="flex flex-row items-center gap-1">
                 <div className="font-semibold text-2xl my-[-15px] text-gray-300 flex gap-2">
-                    $ {(product.sale ? product.price - product.price/100 * product.sale : product.price).toFixed(1)}
+                    $ {(product.sale ? (product.price - product.price/100 * product.sale).toFixed(2) : product.price)}
                     {
                         product.sale &&
                         <span

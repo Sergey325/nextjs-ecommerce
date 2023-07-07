@@ -45,47 +45,6 @@ export default async function getProducts(params: IProductsParams) {
             gte: minPrice,
             lte: maxPrice,
         }
-        const filters = FilterByProperties(params)
-        // Custom Filters
-        // const minGpuLength = parseInt(minGPULength ?? "0");
-        // const maxGpuLength = parseInt(maxGPULength ?? "99999");
-        //
-        // if (VRAM) {
-        //     vram = (Array.isArray(VRAM) ? VRAM.map((value) => +value) : [+VRAM])
-        // }
-        //
-        // const filters: Filter[] = [];
-        //
-        // if (Chipset) {
-        //     filters.push({param: Chipset, title: "Chipset"})
-        // }
-        // if (vram) {
-        //     filters.push({param: vram, title: "VRAM"})
-        // }
-        // if (Overclocked) {
-        //     filters.push({param: Overclocked, title: "Overclocked"})
-        // }
-        // if (BusWidth) {
-        //     filters.push({param: BusWidth, title: "Bus Width"})
-        // }
-        // if (Connector) {
-        //     filters.push({param: Connector, title: "Connector"})
-        // }
-        // if (PowerConnector) {
-        //     filters.push({param: PowerConnector, title: "Power Connector"})
-        // }
-        //
-        // filters.forEach((filter) => {
-        //     const {param, title} = filter;
-        //     if (param && param.length > 0) {
-        //         query.properties = {
-        //             ...query.properties,
-        //             hasSome: Array.isArray(param)
-        //                 ? param.map((value) => ({title, value, primary: true}))
-        //                 : [{title, value: param, primary: true}],
-        //         };
-        //     }
-        // });
 
         const products = await prisma.product.findMany({
             where: {
@@ -94,30 +53,14 @@ export default async function getProducts(params: IProductsParams) {
             orderBy,
         });
 
-
+        // Filtering by properties & discount
         return products.filter((product) => {
             const discountedPrice = product.price - (product.price / 100) * product.sale;
 
-            // const gpuLength = (product as any).properties.find((prop: any) => prop.title === "GPU Length (mm)").value
             return (
                 discountedPrice >= minPrice &&
                 discountedPrice <= maxPrice &&
-                // gpuLength >= minGpuLength &&
-                // gpuLength <= maxGpuLength &&
-                filters.every((filter) => {
-                    const {param, title} = filter;
-                    if (param && param.length > 0) {
-                        const filterValues = Array.isArray(param) ? param : [param];
-                        return filterValues.some(
-                            (value) =>
-                                product.properties.some(
-                                    (property: any) =>
-                                        property.title === title && property.value === value
-                                )
-                        );
-                    }
-                    return true;
-                })
+                FilterByProperties(params, product)
             );
         });
     } catch (e: any) {
