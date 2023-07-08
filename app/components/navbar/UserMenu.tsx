@@ -2,7 +2,7 @@
 
 import {AiOutlineMenu} from "react-icons/ai";
 import Avatar from "../Avatar";
-import {useMemo} from "react";
+import {useEffect, useMemo, useState} from "react";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import {User} from "@prisma/client";
@@ -16,9 +16,49 @@ type Props = {
 }
 
 const UserMenu = ({currentUser}: Props) => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [window.innerWidth]);
+
+    const options = useMemo(() => {
+        let options
+        if(currentUser){
+            options = [
+                { value: "Basket", label: "Basket", onSelected: () => {router.push("/cart")}},
+                { value: "Orders", label: "Orders", onSelected:  () => {router.push("/orders")}},
+                { value: "Favorites", label: "Favorites", onSelected: () => {router.push("/favorites")}},
+                { value: "Logout", label: "Logout", onSelected: signOut},
+            ]
+        }
+        else {
+            options = [
+                { value: "Login", label: "Login", onSelected: loginModal.onOpen},
+                { value: "Sign up", label: "Sign up", onSelected: registerModal.onOpen},
+            ]
+        }
+        if(windowWidth < 768){
+            options = [
+                { value: "Store", label: "Store", onSelected: () => {router.push("/store")}},
+                { value: "Home", label: "Home", onSelected:  () => {router.push("/")}},
+                { value: "Support", label: "Support", onSelected: () => {}},...options,
+            ]
+        }
+
+        return options
+    }, [currentUser, windowWidth])
 
     const onCartClick = () => {
         if(!currentUser){
@@ -36,22 +76,6 @@ const UserMenu = ({currentUser}: Props) => {
         </>
     )
 
-    const options = useMemo(() =>
-    {
-        if(currentUser){
-            return [
-                { value: "Basket", label: "Basket", onSelected: () => {}},
-                { value: "Orders", label: "Orders", onSelected:  () => {}},
-                { value: "Favorites", label: "Favorites", onSelected: () => {}},
-                { value: "Logout", label: "Logout", onSelected: signOut},
-            ]
-        }
-        return [
-            { value: "Login", label: "Login", onSelected: loginModal.onOpen},
-            { value: "Sign up", label: "Sign up", onSelected: registerModal.onOpen},
-        ]
-    }, [currentUser])
-
 
     return (
         <div className="relative">
@@ -63,7 +87,7 @@ const UserMenu = ({currentUser}: Props) => {
                     options={options}
                     mainStyles={"text-slate-500 border-slate-500 p-4 z-15"}
                     childStyle={"bg-gray-900 hover:bg-gray-700 border-red-500 font-medium min-w-[150px]"}
-                    hrAfter={[3]}
+                    hrAfter={windowWidth < 768 ? [3,6] : [3]}
                 />
             </div>
         </div>

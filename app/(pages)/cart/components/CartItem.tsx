@@ -88,6 +88,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                         mainStyles="border-1 border-gray-400 text-gray-400 hover:shadow-none text-base max-h-[200px] lg:max-h-min"
                         rounded
                         childStyle="bg-gray-900 "
+                        overflowHidden={true}
                     />
                     <BsFillTrashFill
                         className="text-gray-400 hover:text-gray-500 transition cursor-pointer"

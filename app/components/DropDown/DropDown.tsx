@@ -19,9 +19,10 @@ type Props = {
     options: Option[]
     childStyle?: string
     hrAfter?: Number[]
+    overflowHidden?: boolean
 };
 
-const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, hrAfter}: Props) => {
+const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, hrAfter, overflowHidden = false}: Props) => {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
@@ -78,7 +79,7 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                     text-gray-400
                     transition-all
                     duration-300
-                    max-h-[200px] lg:max-h-max
+                    ${overflowHidden ? "max-h-[200px] lg:max-h-max": "max-h-max"}
                     min-w-min
                     z-50
                     ${isOpen ? `translate-y-2 opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
