@@ -9,6 +9,7 @@ import {toast} from "react-hot-toast";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import {calculateTotalPrice} from "@/app/(pages)/cart/CartClient";
+import ToolTip from "@/app/components/ToolTip";
 
 type Props = {
     item: { product: Product, quantity: number }
@@ -90,11 +91,13 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                         childStyle="bg-gray-900 "
                         overflowHidden={true}
                     />
-                    <BsFillTrashFill
-                        className="text-gray-400 hover:text-gray-500 transition cursor-pointer"
-                        size={24}
-                        onClick={handleDeleteItem}
-                    />
+                    <ToolTip label={"delete item"}>
+                        <BsFillTrashFill
+                            className="text-gray-400 hover:text-gray-500 transition cursor-pointer"
+                            size={24}
+                            onClick={handleDeleteItem}
+                        />
+                    </ToolTip>
                 </div>
                 <span className="text-xl text-gray-300 inline-block text-right ">${totalAmount}</span>
             </div>

@@ -4,12 +4,16 @@ import Filters from "@/app/(pages)/store/components/Filters";
 import {Product} from "@prisma/client";
 import {AiOutlineCloseCircle} from "react-icons/ai";
 import useFilterModal from "@/app/hooks/useFilterModal";
+import {MdFilterAltOff} from "react-icons/md";
+import {useRouter} from "next/navigation";
+import ToolTip from "@/app/components/ToolTip";
 
 type Props = {
     productsByCategory: Product[]
 };
 
 const FilterPanel = ({productsByCategory}: Props) => {
+    const router = useRouter()
     const filterModal = useFilterModal()
 
     return (
@@ -36,8 +40,13 @@ const FilterPanel = ({productsByCategory}: Props) => {
                 `}
             >
                 <div className="flex w-full items-center justify-between">
-                    <span className="font-semibold">Filter By</span>
-                    <AiOutlineCloseCircle className="block lg:hidden cursor-pointer hover:text-gray-600" size={26} onClick={filterModal.onClose}/>
+                    <div className="lg:order-2">
+                        <ToolTip label="Clear filters">
+                            <MdFilterAltOff className="cursor-pointer hover:text-gray-600 " size={26} onClick={() => {router.push("/store")}}/>
+                        </ToolTip>
+                    </div>
+                    <span className="font-semibold lg:order-1">Filter By</span>
+                    <AiOutlineCloseCircle className="block lg:hidden cursor-pointer hover:text-gray-600 lg:order-3" size={26} onClick={filterModal.onClose}/>
                 </div>
                 <hr className="border-gray-700 w-full mt-3"/>
                 <Filters allProducts={productsByCategory}/>

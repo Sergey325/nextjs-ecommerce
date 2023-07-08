@@ -1,6 +1,7 @@
 import {Fragment, useState} from "react";
 import {AiOutlineCaretDown} from "react-icons/ai";
 import {Product} from "@prisma/client";
+import ToolTip from "@/app/components/ToolTip";
 
 type Props = {
     product: Product
@@ -43,11 +44,13 @@ const ProductSpecification = ({product}: Props) => {
                     </Fragment>
                 ))}
             </div>
-            <AiOutlineCaretDown
-                size={40}
-                className={`mx-auto -mt-3 text-gray-600 hover:text-gray-800 cursor-pointer transition-all ${isExpanded ? "rotate-180" : "rotate-0"}`}
-                onClick={() => setIsExpanded(value => !value)}
-            />
+            <ToolTip label={isExpanded ? "Collapse" : "Expand"}>
+                <AiOutlineCaretDown
+                    size={40}
+                    className={`mx-auto -mt-3 text-gray-600 hover:text-gray-800 cursor-pointer transition-all ${isExpanded ? "rotate-180" : "rotate-0"}`}
+                    onClick={() => setIsExpanded(value => !value)}
+                />
+            </ToolTip>
         </div>
     );
 };

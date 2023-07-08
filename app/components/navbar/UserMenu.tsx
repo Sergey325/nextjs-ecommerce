@@ -10,6 +10,7 @@ import {signOut} from "next-auth/react";
 import DropDown from "@/app/components/DropDown/DropDown";
 import Cart from "@/app/components/navbar/Cart";
 import {useRouter} from "next/navigation";
+import ToolTip from "@/app/components/ToolTip";
 
 type Props = {
     currentUser?: User | null
@@ -80,7 +81,9 @@ const UserMenu = ({currentUser}: Props) => {
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-4">
-                <Cart currentUser={currentUser} onClick={onCartClick}/>
+                <ToolTip label="Your cart">
+                    <Cart currentUser={currentUser} onClick={onCartClick}/>
+                </ToolTip>
                 <DropDown
                     body={body}
                     rounded
