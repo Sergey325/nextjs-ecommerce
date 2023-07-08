@@ -1,23 +1,3 @@
-// import {Filter} from "@/app/types";
-//
-//
-// export const getFiltersByCategory = (category: string, Chipset:string, VRAM: string, ): Filter[] => {
-//     switch (category) {
-//         case 'GPUs':
-//             return [
-//                 { param: 'Chipset', title: 'Chipset' },
-//                 { param: 'VRAM', title: 'VRAM' },
-//                 { param: 'Overclocked', title: 'Overclocked' },
-//                 { param: 'BusWidth', title: 'Bus Width' },
-//                 { param: 'Connector', title: 'Connector' },
-//                 { param: 'PowerConnector', title: 'Power Connector' },
-//             ];
-//         // Add more cases for other categories as needed
-//         default:
-//             [];
-//     }
-// };
-
 import {Filter} from "@/app/types";
 import {Product} from "@prisma/client";
 
@@ -25,14 +5,14 @@ export interface IProductsParams {
     category?: string;
 
     //GPU
-    Chipset?: string[];
-    VRAM?: string[];
-    Overclocked?: string[];
-    BusWidth?: string[];
-    Connector?: string[];
-    PowerConnector?: string[];
-    minGPULength?: string;
-    maxGPULength?: string;
+    Chipset?: string[],
+    VRAM?: string[],
+    Overclocked?: string[],
+    BusWidth?: string[],
+    Connector?: string[],
+    PowerConnector?: string[],
+    minGPULength?: string,
+    maxGPULength?: string,
 
     //Processor
     ProcessorSocket?: string[], //as well for motherboards
@@ -43,13 +23,59 @@ export interface IProductsParams {
     Packaging?: string[]
 
     //Motherboard
-    Formfactor?: string[],
+    Formfactor?: string[], //as well for HardDrives, Cases, PSUs
     ChipsetType?: string[],
     RAMSockets?: string[],
     RAMtechnology?: string[],
     M2Slot?: string[],
     WiFi?: string[],
     SLIsupport?: string[]
+
+    //RAM
+    RAMTechnology?: string[],
+    Capacity?: string[], //as well for HardDrives
+    Numberofmodules?: string[],
+    RAMSpeed?: string[],
+    Illumination?: string[], //as well for CPUCoolers, Cases, PSUs
+    CASLatency?: string[],
+
+    //HardDrives
+    Interface?: string[],
+    NVMe?: string[],
+
+    //CPUCoolers
+    CoolerType?: string[],
+    CPUSocket?: string[],
+    MaxTDP?: string[],
+    minInstallationheight?: string,
+    maxInstallationheight?: string,
+    minmaximumVolume?: string,
+    maxmaximumVolume?: string,
+    SpeedRange?: string[],
+
+    //Cases
+    Maxmotherboardformfactor?: string[],
+    minSupportedGPUlength?: string,
+    maxSupportedGPUlength?: string,
+    minSupportedCPUcoolerheight?: string,
+    maxSupportedCPUcoolerheight?: string,
+    Color?: string[],
+    Installed120mmfans?: string[],
+    Installed140mmfans?: string[],
+    Installed200mmfans?: string[],
+    possible120mmfans?: string[],
+    possible140mmfans?: string[],
+    possible200mmfans?: string[],
+
+    //PSUs
+    Power?: string[],
+    PCIe8pinConnectors?: string[],
+    PCIe6pinConnectors?: string[],
+    SATAConnectors?: string[],
+    ActiveCooling?: string[],
+    Fansize?: string[],
+    Certificate?: string[],
+    CableManagement?: string[],
 }
 
 export const FilterByProperties = (params: IProductsParams, product: Product) => {
@@ -78,8 +104,48 @@ export const FilterByProperties = (params: IProductsParams, product: Product) =>
         RAMtechnology,
         M2Slot,
         WiFi,
-        SLIsupport
+        SLIsupport,
 
+        RAMTechnology,
+        Capacity,
+        Numberofmodules: NumberOfModules,
+        RAMSpeed,
+        Illumination,
+        CASLatency,
+
+        Interface,
+        NVMe,
+
+        CoolerType,
+        CPUSocket,
+        MaxTDP,
+        minInstallationheight,
+        maxInstallationheight,
+        minmaximumVolume,
+        maxmaximumVolume,
+        SpeedRange,
+
+        Maxmotherboardformfactor: MaxMotherBoardFormFactor,
+        minSupportedGPUlength,
+        maxSupportedGPUlength,
+        minSupportedCPUcoolerheight,
+        maxSupportedCPUcoolerheight,
+        Color,
+        Installed120mmfans,
+        Installed140mmfans,
+        Installed200mmfans,
+        possible120mmfans,
+        possible140mmfans,
+        possible200mmfans,
+
+        Power,
+        PCIe8pinConnectors,
+        PCIe6pinConnectors,
+        SATAConnectors,
+        ActiveCooling,
+        Fansize,
+        Certificate,
+        CableManagement,
     } = params
 
     let filters: Filter[] = []
@@ -130,15 +196,92 @@ export const FilterByProperties = (params: IProductsParams, product: Product) =>
             return isMatching(product, filters) && isInRange(product, minGpuLength, maxGpuLength, "GPU Length (mm)")
 
         case 'RAM':
-            return []
+
+            filters = [
+                {param: RAMTechnology, title: "RAM Technology"},
+                {param: Capacity, title: "Capacity"},
+                {param: NumberOfModules, title: "Number of modules"},
+                {param: RAMSpeed, title: "RAM Speed"},
+                {param: RAMtechnology, title: "RAM technology"},
+                {param: Illumination, title: "Illumination"},
+                {param: CASLatency, title: "CAS Latency"},
+            ];
+
+            return isMatching(product, filters)
+
         case 'Hard Drives':
-            return []
+
+            filters = [
+                {param: Formfactor, title: "Form factor"},
+                {param: Interface, title: "Interface"},
+                {param: Capacity, title: "Capacity"},
+                {param: NVMe, title: "NVMe"},
+            ];
+
+            return isMatching(product, filters)
+
         case 'CPU Coolers':
-            return []
+
+            const minInstHeight = parseFloat(minInstallationheight ?? "0");
+            const maxInstHeight = parseFloat(maxInstallationheight ?? "99999");
+
+            const minVolume = parseFloat(minmaximumVolume ?? "0");
+            const maxVolume = parseFloat(maxmaximumVolume ?? "99999");
+
+            filters = [
+                {param: CoolerType, title: "Cooler Type"},
+                {param: CPUSocket, title: "CPU Socket"},
+                {param: MaxTDP, title: "Max. TDP"},
+                {param: SpeedRange, title: "Speed Range"},
+                {param: Illumination, title: "Illumination"},
+            ];
+
+            return isMatching(product, filters) &&
+                isInRange(product, minInstHeight, maxInstHeight, "Installation height (mm)") &&
+                isInRange(product, minVolume, maxVolume, "maximum Volume (dB)")
+
         case 'Cases':
-            return []
+
+            const minSupGpuLen = parseFloat(minSupportedGPUlength ?? "0");
+            const maxSupGpuLen = parseFloat(maxSupportedGPUlength ?? "99999");
+
+            const minSupCpuCoolerH = parseFloat(minSupportedCPUcoolerheight ?? "0");
+            const maxSupCpuCoolerH = parseFloat(maxSupportedCPUcoolerheight ?? "99999");
+
+            filters = [
+                {param: Formfactor, title: "Form factor"},
+                {param: MaxMotherBoardFormFactor, title: "Max motherboard form factor"},
+                {param: Illumination, title: "Illumination"},
+                {param: Color, title: "Color"},
+                {param: Installed120mmfans, title: "Installed 120mm fans"},
+                {param: Installed140mmfans, title: "Installed 140mm fans"},
+                {param: Installed200mmfans, title: "Installed 200mm fans"},
+                {param: possible120mmfans, title: "possible 120mm fans"},
+                {param: possible140mmfans, title: "possible 140mm fans"},
+                {param: possible200mmfans, title: "possible 200mm fans"},
+            ];
+
+            return isMatching(product, filters) &&
+                isInRange(product, minSupGpuLen, maxSupGpuLen, "Supported GPU length (mm)") &&
+                isInRange(product, minSupCpuCoolerH, maxSupCpuCoolerH, "Supported CPU cooler height (mm)")
+
         case 'PSUs':
-            return []
+
+            filters = [
+                {param: Power, title: "Power"},
+                {param: Formfactor, title: "Form factor"},
+                {param: PCIe8pinConnectors, title: "PCIe 8pin Connectors"},
+                {param: PCIe6pinConnectors, title: "PCIe 6pin Connectors"},
+                {param: SATAConnectors, title: "SATA Connectors"},
+                {param: ActiveCooling, title: "Active Cooling"},
+                {param: Fansize, title: "Fan size"},
+                {param: Certificate, title: "Certificate"},
+                {param: Illumination, title: "Illumination"},
+                {param: CableManagement, title: "Cable Management"},
+            ];
+
+            return isMatching(product, filters)
+
         default:
             return true
 

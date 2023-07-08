@@ -7,9 +7,9 @@ const MiddleItems = () => {
     const router = useRouter()
 
     return (
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4">
             <MiddleItem label="Store" action={() => {router.push("/store")}}/>
-            <MiddleItem label="Home" action={() => {}}/>
+            <MiddleItem label="Home" action={() => {router.push("/")}}/>
             <MiddleItem label="Support" action={() => {}}/>
         </div>
     );

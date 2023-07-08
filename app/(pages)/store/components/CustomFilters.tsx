@@ -23,19 +23,19 @@ const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
                             {filter.title}
                         </div>
                         {
-                            filter.title.includes(" (mm)")
+                            filter.title.includes(" (mm)") || filter.title.includes(" (dB)")
                             ?
                                 <div className="flex items-center min-w-min text-gray-400 gap-2">
-                                    <InputNumbers id={"min" + filter.title.replace(" ","").replace(" (mm)", "")} onChange={onInputChange} placeholder={"min"}/>
+                                    <InputNumbers id={"min" + filter.title.replace(/\s/g, "").slice(0, -4)} onChange={onInputChange} placeholder={"min"}/>
                                     <BsDash size={40}/>
-                                    <InputNumbers id={"max" + filter.title.replace(" ","").replace(" (mm)", "")} onChange={onInputChange} placeholder={"max"}/>
+                                    <InputNumbers id={"max" + filter.title.replace(/\s/g, "").slice(0, -4)} onChange={onInputChange} placeholder={"max"}/>
                                 </div>
                             :
                                 <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">
                                     {Array.from(new Set(allProducts.map((product: any) => product.properties.find( (object: any) => object.title === filter.title)["value"]))).map((property: any) =>
                                         <React.Fragment key={property}>
                                             <CheckBox
-                                                urlParameter={filter.title.replace(" ", "").replace(".", "")}
+                                                urlParameter={filter.title.replace(/\s/g, "").replace(".", "")}
                                                 urlValue={property}
                                                 label={property}
                                                 multiplyParameter

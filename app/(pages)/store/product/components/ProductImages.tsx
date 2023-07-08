@@ -42,7 +42,7 @@ const ProductImages = memo(({product}: Props) => {
                 quality={100}
                 priority
             />
-            <div className="block lg:hidden pb-10 w-full z-5">
+            <div className="block lg:hidden pb-10 w-full z-10">
                 <Carousel
                     responsive={responsive}
                     swipeable
@@ -63,10 +63,10 @@ const ProductImages = memo(({product}: Props) => {
                 </Carousel>
             </div>
             <GradientRadial
-                size="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px]"
+                size="w-[200px] h-[200px] sm:w-[150px] sm:h-[150px] md:w-[300px] md:h-[300px]"
                 gradient="bg-gradient-to-br from-blue-400/70 to-purple-500/70"
                 blur="blur-[200px] md:blur-[300px]"
-                zIndex={"z-10"}
+                zIndex={"z-5"}
             />
             {
                 product.images.length > 5
@@ -88,7 +88,7 @@ const ProductImages = memo(({product}: Props) => {
                                     key={slide}
                                     width={100} height={100}
                                     priority
-                                    className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-400 border-2"
+                                    className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-500 border-2"
                                     alt="productImageOption"
                                     onMouseEnter={() => setSelectedImage(slide)}
                                 />
@@ -104,7 +104,7 @@ const ProductImages = memo(({product}: Props) => {
                                 priority={true}
                                 width={100} height={100}
                                 alt="productImageOption"
-                                className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-400 border-2"
+                                className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-500 border-2"
                                 onMouseEnter={() => setSelectedImage(image)}
                             />
                         ))}

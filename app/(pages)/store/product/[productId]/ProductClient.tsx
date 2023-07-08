@@ -34,7 +34,7 @@ const ProductClient = ({product, currentUser}: Props) => {
             <div className="flex flex-col pt-10 gap-10 px-3 sm:px-10 2xl:px-36 justify-center">
                 <div className="flex flex-col xl:flex-row justify-between gap-10 xl:gap-0">
                     <div className="relative flex flex-col items-center">
-                        <div className="text-xl md:text-2xl lg:text-3xl text-gray-300 self-start">{product.title}</div>
+                        <div className="text-xl md:text-2xl lg:text-3xl text-gray-300 self-start select-text">{product.title}</div>
                         <ProductImages product={product}/>
                     </div>
                     <div className="flex flex-col items-stretch gap-6 text-gray-400">

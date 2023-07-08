@@ -41,7 +41,7 @@ const Sorting = () => {
             placeholder="Sort By"
             mainStyles="
                 hover:shadow-none
-                w-1/5
+                min-w-[180px]
                 border-gray-800
                 border-[1px]
                 text-gray-500

@@ -33,7 +33,7 @@ export default async function RootLayout({
                         <RegisterModal/>
                         <Navbar currentUser={currentUser}/>
                     </ClientOnly>
-                    <div className="pb-20 flex-grow">
+                    <div className="pb-20 flex-grow ">
                         {children}
                     </div>
                     <BackToTop/>

@@ -21,7 +21,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
         <div
             onClick={() => router.push(`store/product/${product.id}`)}
             className="
-                col-span-1 cursor-pointer group bg-gray-900 text-gray-400 rounded-xl flex flex-col gap-8 p-4 flex-shrink-0
+                col-span-1 cursor-pointer group bg-gray-900 text-gray-400 rounded-xl flex flex-col gap-8 p-4 flex-shrink-0 select-text
             "
         >
             <div
@@ -43,6 +43,8 @@ const ProductCard = ({data: product, currentUser}: Props) => {
                             hover:scale-110
                             transition
                         "
+                    sizes={"(max-width: 1200px) 50vw, 15vw"}
+                    priority
                 />
                 <div className="absolute top-0 right-0">
                     <HeartButton productId={product.id} currentUser={currentUser}/>
