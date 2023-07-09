@@ -1,16 +1,13 @@
 "use client"
 
 import CheckBox from "@/app/(pages)/store/components/CheckBox";
-import React, {useCallback} from "react";
-import qs from "query-string";
-import {useRouter, useSearchParams} from "next/navigation";
+import {useSearchParams} from "next/navigation";
 import {BsDash} from "react-icons/bs";
-import debounce from "lodash.debounce"
 import {CategoryFilters} from "@/app/types";
 import {categories} from "@/app/(pages)/store/components/Categories";
 import {Product} from "@prisma/client";
 import CustomFilters from "@/app/(pages)/store/components/CustomFilters";
-import InputNumbers from "@/app/(pages)/store/components/InputNumbers";
+import InputFilter from "@/app/(pages)/store/components/InputFilter";
 
 type Props = {
     allProducts: Product[]
@@ -18,7 +15,6 @@ type Props = {
 
 const Filters = ({allProducts}: Props) => {
     const params = useSearchParams()
-    const router = useRouter()
 
     const defineCategoryFilters = () => {
         if (params && params.has("category")) {
@@ -28,34 +24,6 @@ const Filters = ({allProducts}: Props) => {
         return []
     }
 
-    const handlePriceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        let currentQuery = {};
-
-        if (params) {
-            currentQuery = qs.parse(params.toString())
-        }
-
-        const updatedQuery: any = {
-            ...currentQuery,
-            [e.target.id]: e.target.value
-        }
-
-        if (!e.target.value) {
-            delete updatedQuery[e.target.id];
-        }
-
-        const url = qs.stringifyUrl({
-            url: "/store",
-            query: updatedQuery
-        }, {skipNull: true})
-
-        router.push(url)
-    }, [params, router])
-
-    const debouncedPrice = debounce((e) => {
-        handlePriceChange(e);
-    }, 500);
-
     return (
         <div className="flex flex-col gap-3 pt-4">
             <div className="flex flex-col gap-1">
@@ -63,9 +31,9 @@ const Filters = ({allProducts}: Props) => {
                     Price
                 </div>
                 <div className="flex items-center min-w-min text-gray-400 gap-2">
-                    <InputNumbers id={"priceMin"} onChange={debouncedPrice} placeholder={"min"} price/>
+                    <InputFilter id={"priceMin"} type={"number"} placeholder={"min"} price/>
                     <BsDash size={40}/>
-                    <InputNumbers id={"priceMax"} onChange={debouncedPrice} placeholder={"max"} price/>
+                    <InputFilter id={"priceMax"} type={"number"} placeholder={"max"} price/>
                 </div>
             </div>
 
@@ -95,7 +63,7 @@ const Filters = ({allProducts}: Props) => {
                 </div>
             </div>
 
-            <CustomFilters customFilters={defineCategoryFilters()} allProducts={allProducts} onInputChange={debouncedPrice}/>
+            <CustomFilters customFilters={defineCategoryFilters()} allProducts={allProducts}/>
 
         </div>
     );

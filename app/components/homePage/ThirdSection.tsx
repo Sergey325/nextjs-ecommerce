@@ -9,42 +9,42 @@ const items = [
         icon: BsCpuFill,
         label: "Processors",
         linearGradient: "bg-gradient-to-br from-orange-400 to-amber-500",
-        pushUrl: "/store?category=Processors",
+        category: "Processors",
         iconColor: "#f97316",
     },
     {
         icon: BsMotherboardFill,
         label: "Motherboards",
         linearGradient: "bg-gradient-to-br from-indigo-500 to-purple-600",
-        pushUrl: "/store?category=Motherboards",
+        category: "Motherboards",
         iconColor: "#818cf8",
     },
     {
         icon: BsGpuCard,
         label: "Graphics cards",
         linearGradient: "bg-gradient-to-br from-teal-400 to-purple-600",
-        pushUrl: "/store?category=GPUs",
+        category: "GPUs",
         iconColor: "#06b6d4",
     },
     {
         icon: FaMemory,
         label: "Desktop Memory (RAM)",
         linearGradient: "bg-gradient-to-br from-yellow-500 to-purple-400",
-        pushUrl: "/store?category=RAM",
+        category: "RAM",
         iconColor: "#fdba74",
     },
     {
         icon: BsDeviceSsdFill,
         label: "Hard Drives",
         linearGradient: "bg-gradient-to-br from-green-500 to-purple-400",
-        pushUrl: "/store?category=Hard%20Drives",
+        category: "Hard Drives",
         iconColor: "#10b981",
     },
     {
         icon: BsFan,
         label: "Processor Coolers",
         linearGradient: "bg-gradient-to-br from-red-500 to-purple-400",
-        pushUrl: "/store?category=CPU%20Coolers",
+        category: "CPU Coolers",
         iconColor: "#ec4899",
     },
 ]
@@ -58,7 +58,7 @@ const ThirdSection = () => {
                     icon={item.icon}
                     label={item.label}
                     linearGradient={item.linearGradient}
-                    pushUrl={item.pushUrl}
+                    category={item.category}
                     iconColor={item.iconColor}
                 />
             ))}

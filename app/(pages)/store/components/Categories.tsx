@@ -13,7 +13,7 @@ import {GiAbstract049} from "react-icons/gi";
 
 import CategoryBox from "@/app/(pages)/store/components/CategoryBox";
 
-import {usePathname, useSearchParams} from "next/navigation";
+import {useSearchParams} from "next/navigation";
 import {CategoryFilters} from "@/app/types";
 
 export const categories = [
@@ -130,35 +130,26 @@ export const categories = [
 const Categories = () => {
     const params = useSearchParams()
     const category = params?.get('category')
-    const pathname = usePathname()
-
-    const isMainPage = pathname === "/store"
-
-    if(!isMainPage) {
-        return null
-    }
 
     return (
-
-            <div className="
-                flex items-center justify-between
-                mx-auto
-                w-full
-                lg:w-[90%]
-                lg:px-20
-                overflow-y-hidden overflow-x-auto
-                "
-            >
-                {categories.map(item => (
-                    <CategoryBox
-                        key={item.label}
-                        icon={item.icon}
-                        label={item.label}
-                        selected={category === item.label}
-                    />
-                ))}
-            </div>
-
+        <div className="
+            flex items-center justify-between
+            mx-auto
+            w-full
+            lg:w-[90%]
+            lg:px-20
+            overflow-y-hidden overflow-x-auto
+            "
+        >
+            {categories.map(item => (
+                <CategoryBox
+                    key={item.label}
+                    icon={item.icon}
+                    label={item.label}
+                    selected={category === item.label}
+                />
+            ))}
+        </div>
     );
 };
 

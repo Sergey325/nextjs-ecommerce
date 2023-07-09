@@ -38,6 +38,7 @@ const BackToTop = () => {
                 p-2 lg:p-4 
                 animate-bounce 
                 drop-shadow-[0_0_10px_rgba(98,143,200,0.25)]
+                cursor-pointer
             `}
             onClick={scrollToTop}
         >

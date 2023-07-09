@@ -1,13 +1,10 @@
-'use client'
-
 import Image from "next/image"
 import {AiFillGithub, AiFillLinkedin} from "react-icons/ai";
-import {useRouter} from "next/navigation";
 import Container from "@/app/components/Container";
+import Link from "next/link";
 
 
 const Footer = () => {
-    const router = useRouter()
 
     return (
         <Container>
@@ -24,9 +21,8 @@ const Footer = () => {
                             <span className="hover:text-indigo-600 transition cursor-pointer">Terms</span>
                         </div>
                     </div>
-                    <div className="flex items-center order-2 sm:order-1 lg:order-2 text-blue gap-2 cursor-pointer select-none">
+                    <Link href={"/"} className="flex items-center order-2 sm:order-1 lg:order-2 text-blue gap-2 cursor-pointer select-none">
                         <Image
-                            onClick={() => router.push('/')}
                             alt="FooterLogo"
                             className="h-[48px] w-[48px]"
                             height="48"
@@ -36,7 +32,8 @@ const Footer = () => {
                         <div className="text-3xl text-gray-400">
                             Pc Store
                         </div>
-                    </div>
+                    </Link>
+
                     <div className="flex order-1 sm:order-3 gap-4 lg:w-[230px] justify-end">
                         <a href="https://github.com/Sergey325">
                             <AiFillGithub size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition" />

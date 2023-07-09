@@ -6,11 +6,12 @@ type Props = {
     styles?: string
     overflow?: boolean
     onClick?: () => void
+    styleOfContainer?: string
 };
 
-const GradientRadial = ({size, gradient, blur, styles, zIndex, onClick, overflow=true}: Props) => {
+const GradientRadial = ({size, gradient, blur, styles, zIndex, onClick, overflow=true, styleOfContainer}: Props) => {
     return (
-        <div className={`absolute inset-0 flex items-center justify-center ${!overflow && "overflow-hidden"} z-5 ${zIndex}`}>
+        <div className={`absolute inset-0 flex items-center justify-center ${!overflow && "overflow-hidden"} z-5 ${zIndex} ${styleOfContainer}`}>
             <div
                 className={`
                     ${size ? size : "w-[200px] h-[200px] md:w-[300px] md:h-[300px]"}

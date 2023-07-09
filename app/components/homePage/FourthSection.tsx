@@ -1,7 +1,6 @@
 import {RiRefund2Line, RiTruckFill} from "react-icons/ri";
 import {FaCoins} from "react-icons/fa";
 import {TbDiscount} from "react-icons/tb";
-import React from "react";
 import FourthSectionItem from "@/app/components/homePage/FourthSectionItem";
 import GradientRadial from "@/app/components/GradientRadial";
 

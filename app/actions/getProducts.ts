@@ -2,6 +2,7 @@ import prisma from "@/app/libs/prismadb";
 import {FilterByProperties} from "@/app/utils/getFiltersByCategory";
 
 export interface IProductsParams {
+    title?: string;
     category?: string;
     sorting?: string;
     immediatelyAvailable?: string;
@@ -19,6 +20,7 @@ export default async function getProducts(params: IProductsParams) {
             manufacturer,
             priceMin,
             priceMax,
+            title = ""
         } = params;
 
         let orderBy = {};
@@ -56,10 +58,13 @@ export default async function getProducts(params: IProductsParams) {
         // Filtering by properties & discount
         return products.filter((product) => {
             const discountedPrice = product.price - (product.price / 100) * product.sale;
+            const formattedTitle = title.toLowerCase().replace(/\s/g, "");
+            const formattedProductTitle = product.title.toLowerCase().replace(/\s/g, "");
 
             return (
                 discountedPrice >= minPrice &&
                 discountedPrice <= maxPrice &&
+                formattedProductTitle.includes(formattedTitle) &&
                 FilterByProperties(params, product)
             );
         });

@@ -2,17 +2,15 @@ import CheckBox from "@/app/(pages)/store/components/CheckBox";
 import React from "react";
 import {CategoryFilters} from "@/app/types";
 import {Product} from "@prisma/client";
-import InputNumbers from "@/app/(pages)/store/components/InputNumbers";
+import InputFilter from "@/app/(pages)/store/components/InputFilter";
 import {BsDash} from "react-icons/bs";
-import {DebouncedFunc} from "lodash";
 
 type Props = {
     customFilters: CategoryFilters,
     allProducts: Product[],
-    onInputChange: DebouncedFunc<(e: any) => void>
 };
 
-const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
+const CustomFilters = ({customFilters, allProducts}: Props) => {
     return (
         <>
             {(customFilters).map((filter) => (
@@ -26,9 +24,9 @@ const CustomFilters = ({customFilters, allProducts, onInputChange}: Props) => {
                             filter.title.includes(" (mm)") || filter.title.includes(" (dB)")
                             ?
                                 <div className="flex items-center min-w-min text-gray-400 gap-2">
-                                    <InputNumbers id={"min" + filter.title.replace(/\s/g, "").slice(0, -4)} onChange={onInputChange} placeholder={"min"}/>
+                                    <InputFilter type={"number"} id={"min" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"min"}/>
                                     <BsDash size={40}/>
-                                    <InputNumbers id={"max" + filter.title.replace(/\s/g, "").slice(0, -4)} onChange={onInputChange} placeholder={"max"}/>
+                                    <InputFilter type={"number"} id={"max" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"max"}/>
                                 </div>
                             :
                                 <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">

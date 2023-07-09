@@ -9,6 +9,9 @@ import ProductsLayout from "@/app/(pages)/store/components/ProductsLayout";
 import {Product, User} from "@prisma/client";
 import FilterPanel from "@/app/(pages)/store/components/FilterPanel";
 import useFilterModal from "@/app/hooks/useFilterModal";
+import {BiSearch} from "react-icons/bi";
+import ToolTip from "@/app/components/ToolTip";
+import InputFilter from "@/app/(pages)/store/components/InputFilter";
 
 type Props = {
     currentUser: User | null,
@@ -28,9 +31,17 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                 <div className="relative flex pt-10 gap-6">
                     <FilterPanel productsByCategory={productsByCategory}/>
                     <div className="w-full flex-col px-5 sm:px-0">
-                        <div className="flex gap-3 items-center">
-                            <Sorting/>
-                            <FaFilter className="block lg:hidden text-gray-400 hover:text-gray-600 transition cursor-pointer" size={24}  onClick={filterModal.onOpen}/>
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
+                            <div className="flex items-center justify-between w-full sm:w-auto sm:justify-center gap-3 order-2 sm:order-1">
+                                <Sorting/>
+                                <ToolTip label={"Filters"}>
+                                    <FaFilter className="block lg:hidden text-gray-400 hover:text-gray-600 transition cursor-pointer" size={24}  onClick={filterModal.onOpen}/>
+                                </ToolTip>
+                            </div>
+                            <div className="flex items-center w-full sm:w-auto hover:drop-shadow-[0_0_5px_rgba(98,143,200,0.25)] transition order-1 pl-1 sm:order-2">
+                                <BiSearch className="text-gray-400 -mr-7 z-10" size={24}/>
+                                <InputFilter type={"text"} id={"title"} placeholder={"Search"} debounced styles="text-gray-400 outline-none pl-7 py-1.5 rounded-md bg-gray-800 w-full sm:max-w-[180px]"/>
+                            </div>
                             {/*<DevCreateProductBtn/>*/}
                         </div>
                         {

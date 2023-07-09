@@ -1,14 +1,9 @@
-'use client'
-
 import Image from "next/image"
-import {useRouter} from "next/navigation";
+import Link from "next/link";
 
 const Logo = () => {
-    const router = useRouter()
-
     return (
-
-        <div className="flex items-center text-blue gap-2 cursor-pointer select-none" onClick={() => router.push('/')}>
+        <Link href={"/"} className="flex items-center text-blue gap-2 cursor-pointer select-none">
             <Image
 
                 alt="Logo"
@@ -20,7 +15,7 @@ const Logo = () => {
             <div className="text-3xl text-gray-400">
                 Pc Store
             </div>
-        </div>
+        </Link>
     );
 };
 

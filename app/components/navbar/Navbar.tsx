@@ -10,8 +10,6 @@ type Props = {
 }
 
 const Navbar = ({currentUser}: Props) => {
-
-
     return (
         <div className="w-full  bg-slate-950 z-15">
             <div
