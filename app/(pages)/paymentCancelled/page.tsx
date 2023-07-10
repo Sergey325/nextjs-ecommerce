@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import GradientRadial from "@/app/components/GradientRadial";
 
-
 const PaymentCancelled = () => {
     return (
         <Container>

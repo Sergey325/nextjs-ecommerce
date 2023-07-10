@@ -21,7 +21,7 @@ const SuccessfulPayment = () => {
                 <span className="-mt-2">We will be in contact with more details shortly</span>
                 <div className="flex flex-col sm:flex-row justify-between gap-10 text-base font-semibold w-full sm:w-[520px] mt-10 px-10">
                     <Link
-                        href="/orders"
+                        href={{pathname: "/orders"}}
                         className={`
                             relative
                             block
@@ -39,7 +39,7 @@ const SuccessfulPayment = () => {
                         Check Orders
                     </Link>
                     <Link
-                        href="/store"
+                        href={{pathname: "/store"}}
                         className={`
                             relative
                             disabled:opacity-70 disabled:cursor-not-allowed

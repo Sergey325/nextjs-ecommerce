@@ -18,7 +18,6 @@ const ProductCard = ({data: product, currentUser, favorites = false}: Props) => 
     const router = useRouter()
     const {isInCart, updateCart} = useCart({product, currentUser})
 
-
     return (
         <div
             onClick={() => router.push(`store/product/${product.id}`)}
@@ -57,7 +56,7 @@ const ProductCard = ({data: product, currentUser, favorites = false}: Props) => 
             </div>
             <div className="flex flex-row items-center gap-1">
                 <div className="font-semibold text-2xl my-[-15px] text-gray-300 flex gap-2">
-                    $ {(product.sale ? (product.price - product.price / 100 * product.sale).toFixed(2) : product.price)}
+                    $ {(product.sale ? (product.price - product.price / 100 * product.sale).toFixed(2) : product.price.toFixed(1))}
                     {
                         product.sale &&
                         <span
@@ -80,11 +79,13 @@ const ProductCard = ({data: product, currentUser, favorites = false}: Props) => 
                 {product.immediatelyAvailable ? "Immediately available" : "Out of stock"}
             </div>
             {
-                !favorites ?
-                <div className="">
-                    <Button label={isInCart ? "Remove" : "Into Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
-                </div>
-                    : <div className="-mt-4"></div>
+                !favorites
+                    ?
+                    <div className="">
+                        <Button label={isInCart ? "Remove" : "Into Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
+                    </div>
+                    :
+                    <div className="-mt-4"></div>
             }
 
         </div>

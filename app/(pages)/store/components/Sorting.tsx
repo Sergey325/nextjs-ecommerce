@@ -5,7 +5,6 @@ import React from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import qs from "query-string";
 
-
 const Sorting = () => {
     const router = useRouter();
     const params = useSearchParams();

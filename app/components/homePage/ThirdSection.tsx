@@ -1,5 +1,3 @@
-"use client"
-
 import {BsCpuFill, BsDeviceSsdFill, BsFan, BsGpuCard, BsMotherboardFill} from "react-icons/bs";
 import ThirdSectionItem from "@/app/components/homePage/ThirdSectionItem";
 import {FaMemory} from "react-icons/fa";

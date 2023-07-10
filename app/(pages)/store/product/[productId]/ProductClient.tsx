@@ -37,10 +37,9 @@ const ProductClient = ({product, currentUser}: Props) => {
                         <div className="text-xl md:text-2xl lg:text-3xl text-gray-300 self-start select-text">{product.title}</div>
                         <ProductImages product={product}/>
                     </div>
-                    <div className="flex flex-col items-stretch gap-6 text-gray-400">
+                    <div className="flex flex-col items-stretch gap-6 text-gray-400 xl:max-w-[480px]">
                         <div className="cursor-pointer text-4xl w-min" onClick={() => {}}>
                             <Link href={`/store?manufacturer=${product.manufacturer}`}>{product.manufacturer}</Link>
-
                         </div>
 
                         <hr className="border-gray-500 w-full"/>

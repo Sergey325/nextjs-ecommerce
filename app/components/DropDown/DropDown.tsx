@@ -4,7 +4,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import {IoIosArrowDropdown} from "react-icons/io";
 import DropDownItem from "@/app/components/DropDown/DropDownItem";
 
-
 type Option = {
     value: string;
     label: string;

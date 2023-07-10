@@ -53,7 +53,6 @@ const OrdersClient = ({orders}: Props) => {
                         </div>)
                 })}
             </div>
-
         </Container>
     );
 };
