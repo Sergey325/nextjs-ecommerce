@@ -20,7 +20,7 @@ const OrderSummary = ({order}: Props) => {
                 </div>
                 <div className="flex justify-between">
                     <span className="font-light text-base sm:text-lg text-gray-400 max-w-[60%]">Status</span>
-                    <span className="font-light text-base sm:text-lg text-gray-300">In Process</span>
+                    <span className="font-light text-base sm:text-lg text-gray-300">{order.status}</span>
                 </div>
                 <div className="flex justify-between">
                     <span className="font-light text-base sm:text-lg text-gray-400 max-w-[60%]">Subtotal</span>

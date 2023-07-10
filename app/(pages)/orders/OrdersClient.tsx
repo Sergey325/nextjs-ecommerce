@@ -20,7 +20,8 @@ const OrdersClient = ({orders}: Props) => {
                         userId: order.userId,
                         products: order.products as ProductOrder[],
                         totalPrice: order.totalPrice,
-                        createdAt: order.createdAt
+                        createdAt: order.createdAt,
+                        status: order.status,
                     };
                     return (
                         <div className="text-base sm:text-lg md:text-xl lg:text-2xl py-5 md:py-10 px-5 text-gray-400 rounded-xl border-2 border-gray-500">

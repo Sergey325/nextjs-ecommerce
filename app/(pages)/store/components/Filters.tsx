@@ -1,13 +1,13 @@
 "use client"
 
-import CheckBox from "@/app/(pages)/store/components/CheckBox";
+import CheckBox from "@/app/components/inputs/CheckBox";
 import {useSearchParams} from "next/navigation";
 import {BsDash} from "react-icons/bs";
 import {CategoryFilters} from "@/app/types";
 import {categories} from "@/app/(pages)/store/components/Categories";
 import {Product} from "@prisma/client";
 import CustomFilters from "@/app/(pages)/store/components/CustomFilters";
-import InputFilter from "@/app/(pages)/store/components/InputFilter";
+import InputFilter from "@/app/components/inputs/InputFilter";
 
 type Props = {
     allProducts: Product[]

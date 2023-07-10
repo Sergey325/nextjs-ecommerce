@@ -11,7 +11,7 @@ import FilterPanel from "@/app/(pages)/store/components/FilterPanel";
 import useFilterModal from "@/app/hooks/useFilterModal";
 import {BiSearch} from "react-icons/bi";
 import ToolTip from "@/app/components/ToolTip";
-import InputFilter from "@/app/(pages)/store/components/InputFilter";
+import InputFilter from "@/app/components/inputs/InputFilter";
 
 type Props = {
     currentUser: User | null,

@@ -57,10 +57,11 @@ model Product {
 }
 
 model Order {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
   createdAt  String
-  number     String   @unique @default(uuid())
-  userId     String   @db.ObjectId
-  products   Json[]   @default([])
+  status     String
+  number     String @unique @default(uuid())
+  userId     String @db.ObjectId
+  products   Json[] @default([])
   totalPrice Float
 }

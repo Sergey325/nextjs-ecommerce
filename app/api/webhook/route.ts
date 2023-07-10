@@ -3,10 +3,11 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { stripe } from "@/app/libs/stripe";
 import prisma from "@/app/libs/prismadb";
+import {ItemOrder, ProductOrder} from "@/app/types";
 
 async function getOrderItems(lineItems: any, stripe: any) {
     return new Promise((resolve, reject) => {
-        let items: any = [];
+        let items: ProductOrder[] = [];
 
         lineItems?.data?.forEach(async (item: any) => {
             const product = await stripe.products.retrieve(item.price.product);
@@ -59,9 +60,10 @@ export async function POST(req: Request) {
         await prisma.order.create({
             data: {
                 userId: session.client_reference_id as string,
-                products: orderItems as any,
+                products: orderItems as ItemOrder,
                 totalPrice: Number(session.amount_total) / 100,
-                createdAt: dateTime
+                createdAt: dateTime,
+                status: "On Process"
             }
         })
 

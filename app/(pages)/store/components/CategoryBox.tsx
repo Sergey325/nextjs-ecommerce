@@ -24,12 +24,11 @@ const CategoryBox = ({icon: Icon, label, selected}: Props) => {
         }
 
         const updatedQuery: any = {
-            category: label, // Always set the category to the clicked label
-            manufacturer: currentQuery.manufacturer, // Preserve the "manufacturer" parameter
+            category: label,
+            manufacturer: currentQuery.manufacturer,
         };
 
         if (params?.get('category') === label) {
-            // Remove the category parameter if it already exists
             delete updatedQuery.category;
         }
 

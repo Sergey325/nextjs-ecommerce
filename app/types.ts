@@ -23,7 +23,7 @@ export type ProductItem = {
     price: number;
     category: string;
     images: string[];
-    properties: Record<string, string | number>[]; // Индексная сигнатура
+    properties: Record<string, string | number>[];
     sale: number;
     immediatelyAvailable: boolean;
 };
@@ -48,4 +48,5 @@ export type ItemOrder = {
     products: ProductOrder[]
     totalPrice: number
     createdAt: string
+    status: string
 }

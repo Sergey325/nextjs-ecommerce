@@ -43,7 +43,7 @@ const useFavorite = (
 
             await request()
             router.refresh()
-            toast.success('Success')
+            toast.success(hasFavorited ? 'Removed from favorites' : "Added to favorites")
         } catch (error) {
             toast.error("Something went wrong")
         }

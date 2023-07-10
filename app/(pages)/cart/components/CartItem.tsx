@@ -40,7 +40,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
             axios
                 .patch("/api/cart", item)
                 .then(() => {
-                    toast.success("Success!");
+                    toast.success("Quantity changed!");
                 })
                 .catch(() => {
                     toast.error("Something went wrong.");
@@ -57,7 +57,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
             axios
                 .put("/api/cart", { productId: item.product.id })
                 .then(() => {
-                    toast.success("Success!");
+                    toast.success("Item removed from cart!");
                 })
                 .catch(() => {
                     toast.error("Something went wrong.");

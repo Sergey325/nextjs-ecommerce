@@ -35,7 +35,6 @@ const CheckBox = ({label, urlParameter, urlValue, colorOnChecked, multiplyParame
         const existingValues = params?.getAll(urlParameter) || [];
 
         if (existingValues.includes(urlValue)) {
-            // Remove all occurrences of the URL value
             const updatedQuery = {
                 ...currentQuery,
                 [urlParameter]: existingValues.filter(value => value !== urlValue),
@@ -49,14 +48,12 @@ const CheckBox = ({label, urlParameter, urlValue, colorOnChecked, multiplyParame
             let updatedQuery;
 
             if (multiplyParameter) {
-                // Append a new occurrence of the URL value
                 const updatedValues = [...existingValues, urlValue];
                 updatedQuery = {
                     ...currentQuery,
                     [urlParameter]: updatedValues,
                 };
             } else {
-                // Update the existing parameter with the new value
                 updatedQuery = {
                     ...currentQuery,
                     [urlParameter]: urlValue,

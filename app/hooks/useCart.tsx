@@ -45,7 +45,7 @@ const useCart = (
 
             await request()
             router.refresh()
-            toast.success('Success')
+            toast.success(isInCart ? 'Removed from cart' : 'Added to cart')
         } catch (error) {
             toast.error("Something went wrong")
         }
