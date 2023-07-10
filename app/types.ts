@@ -10,10 +10,10 @@ export type CategoryFilters = (
         title: string,
         value: string
     } | {
-        title: string,
-        value: number
-    }
-)[]
+    title: string,
+    value: number
+}
+    )[]
 
 export type ProductItem = {
     id: string;
@@ -31,4 +31,21 @@ export type ProductItem = {
 export type Filter = {
     param: string[] | string | undefined
     title: string
+}
+
+export type ProductOrder = {
+    productId: string,
+    name: string,
+    price: number
+    quantity: number
+    image: string
+}
+
+export type ItemOrder = {
+    id: string,
+    number: string,
+    userId: string
+    products: ProductOrder[]
+    totalPrice: number
+    createdAt: string
 }

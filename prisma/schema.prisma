@@ -58,7 +58,7 @@ model Product {
 
 model Order {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt  DateTime @default(now())
+  createdAt  String
   number     String   @unique @default(uuid())
   userId     String   @db.ObjectId
   products   Json[]   @default([])

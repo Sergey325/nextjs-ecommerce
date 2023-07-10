@@ -50,12 +50,18 @@ export async function POST(req: Request) {
         const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
         const orderItems = await getOrderItems(lineItems, stripe)
 
+        const date = new Date(session.created * 1000);
+        const formattedDate = `${date.getDate()} ${date.toLocaleString('en-US', { month: 'long' })} ${date.getFullYear()}`;
+        const formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+        const dateTime = `${formattedTime}, ${formattedDate}`;
+
         //creating order
         await prisma.order.create({
             data: {
                 userId: session.client_reference_id as string,
                 products: orderItems as any,
                 totalPrice: Number(session.amount_total) / 100,
+                createdAt: dateTime
             }
         })
 

@@ -20,7 +20,7 @@ const PaymentCancelled = () => {
                 <Heading center title="Ooops something went wrong!" subtitle="Please try to pay again"/>
                 <div className="text-gray-300 font-semibold text-base">
                     <Link
-                        href="/cart"
+                        href={{pathname: "/cart"}}
                         className={`
                             relative
                             block
