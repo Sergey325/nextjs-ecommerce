@@ -24,7 +24,7 @@ const OrdersClient = ({orders}: Props) => {
                         status: order.status,
                     };
                     return (
-                        <div className="text-base sm:text-lg md:text-xl lg:text-2xl py-5 md:py-10 px-5 text-gray-400 rounded-xl border-2 border-gray-500">
+                        <div key={orderItem.id} className="text-base sm:text-lg md:text-xl lg:text-2xl py-5 md:py-10 px-5 text-gray-400 rounded-xl border-2 border-gray-500">
                             <div className="flex flex-col sm:flex-row justify-between gap-3">
                                 <span className="">{`Order: ${orderItem.number}`}</span>
                                 <span className="sm:text-right">{orderItem.createdAt}</span>

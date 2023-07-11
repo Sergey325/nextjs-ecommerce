@@ -8,16 +8,19 @@ type Props = {
 };
 
 const ProductSpecification = ({product}: Props) => {
-    const [isExpanded, setIsExpanded] = useState(false)
+    const properties = product.properties.filter((property: any) => property?.title !== "description")
+    const [isExpanded, setIsExpanded] = useState(properties.length <= 10)
 
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <div id="specs" className={`
                 relative
+                w-full
                 flex flex-col gap-3
                 overflow-y-hidden
                 transition-all
                 duration-700
+                
                 ${isExpanded ? "h-auto" : "h-[560px]"}
                 ${isExpanded ? "after:hidden" : "after:absolute"}
                 after:content-['']
@@ -30,7 +33,7 @@ const ProductSpecification = ({product}: Props) => {
                 `}
             >
                 Specification
-                {product.properties.filter((property: any) => property?.title !== "description").map((property: any) => (
+                {properties.map((property: any) => (
                     <Fragment key={property.value + property.title}>
                         <div className="grid grid-cols-2 justify-between text-sm lg:text-lg text-gray-400 ">
                             <span>
@@ -44,13 +47,16 @@ const ProductSpecification = ({product}: Props) => {
                     </Fragment>
                 ))}
             </div>
-            <ToolTip label={isExpanded ? "Collapse" : "Expand"}>
-                <AiOutlineCaretDown
-                    size={40}
-                    className={`mx-auto -mt-3 text-gray-600 hover:text-gray-800 cursor-pointer transition-all ${isExpanded ? "rotate-180" : "rotate-0"}`}
-                    onClick={() => setIsExpanded(value => !value)}
-                />
-            </ToolTip>
+            {
+                properties.length > 10 &&
+                <ToolTip label={isExpanded ? "Collapse" : "Expand"}>
+                    <AiOutlineCaretDown
+                        size={40}
+                        className={`mx-auto -mt-3 text-gray-600 hover:text-gray-800 cursor-pointer transition-all ${isExpanded ? "rotate-180" : "rotate-0"}`}
+                        onClick={() => setIsExpanded(value => !value)}
+                    />
+                </ToolTip>
+            }
         </div>
     );
 };

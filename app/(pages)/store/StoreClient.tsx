@@ -43,7 +43,7 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                                 <BiSearch className="text-gray-400 -mr-7 z-10" size={24}/>
                                 <InputFilter type={"text"} id={"title"} placeholder={"Search"} debounced styles="text-gray-400 outline-none pl-7 py-1.5 rounded-md bg-gray-800 w-full sm:max-w-[180px]"/>
                             </div>
-                            <DevCreateProductBtn/>
+                            {/*<DevCreateProductBtn/>*/}
                         </div>
                         {
                             !products.length

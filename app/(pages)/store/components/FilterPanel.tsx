@@ -20,13 +20,15 @@ const FilterPanel = ({productsByCategory}: Props) => {
         <div className={`
                 absolute lg:static
                 ${filterModal.isOpen ? "w-[100vh] z-20" : "w-0 z-0"}
-                lg:min-w-[300px] lg:max-w-[300px]
+                max-w-[103%] lg:min-w-[300px] lg:max-w-[300px]
                 bg-gray-950/90 lg:bg-transparent
                 z-20
                 h-full
             `}
+             onClick={filterModal.onClose}
         >
-            <aside className={`
+            <aside
+                className={`
                 flex flex-col items-center
                 ${filterModal.isOpen ? "translate-x-0" : "-translate-x-96"}
                 transition
@@ -38,6 +40,7 @@ const FilterPanel = ({productsByCategory}: Props) => {
                 z-20
                 bg-slate-950
                 `}
+                onClick={(e) => {e.stopPropagation()}}
             >
                 <div className="flex w-full items-center justify-between">
                     <div className="lg:order-2">

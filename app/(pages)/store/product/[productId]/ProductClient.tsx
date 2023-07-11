@@ -38,7 +38,7 @@ const ProductClient = ({product, currentUser}: Props) => {
                         <ProductImages product={product}/>
                     </div>
                     <div className="flex flex-col items-stretch gap-6 text-gray-400 xl:max-w-[480px]">
-                        <div className="cursor-pointer text-4xl w-min" onClick={() => {}}>
+                        <div className="cursor-pointer text-4xl whitespace-nowrap w-min" onClick={() => {}}>
                             <Link href={`/store?manufacturer=${product.manufacturer}`}>{product.manufacturer}</Link>
                         </div>
 

@@ -38,7 +38,7 @@ const UserMenu = ({currentUser}: Props) => {
         let options
         if(currentUser){
             options = [
-                { value: "Basket", label: "Basket", onSelected: () => {router.push("/cart")}},
+                { value: "Cart", label: "Cart", onSelected: () => {router.push("/cart")}},
                 { value: "Orders", label: "Orders", onSelected:  () => {router.push("/orders")}},
                 { value: "Favorites", label: "Favorites", onSelected: () => {router.push("/favorites")}},
                 { value: "Logout", label: "Logout", onSelected: signOut},
@@ -59,7 +59,7 @@ const UserMenu = ({currentUser}: Props) => {
         }
 
         return options
-    }, [currentUser, windowWidth])
+    }, [currentUser, windowWidth, router, loginModal.onOpen, registerModal.onOpen])
 
     const onCartClick = () => {
         if(!currentUser){

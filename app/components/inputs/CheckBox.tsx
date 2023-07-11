@@ -66,7 +66,7 @@ const CheckBox = ({label, urlParameter, urlValue, colorOnChecked, multiplyParame
             }, { skipNull: true });
             router.push(url);
         }
-    }, [label, urlParameter, urlValue, multiplyParameter, params, router]);
+    }, [urlParameter, urlValue, multiplyParameter, params, router]);
 
     return (
         <div className={`flex items-center gap-1 cursor-pointer group select-none transition ${isChecked ? colorOnChecked : "text-current"}`} onClick={handleAction}>

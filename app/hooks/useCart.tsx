@@ -49,7 +49,7 @@ const useCart = (
         } catch (error) {
             toast.error("Something went wrong")
         }
-    }, [currentUser?.cart, isInCart, product, loginModal, router])
+    }, [currentUser, currentUser?.cart, isInCart, product, loginModal, router])
     return {
         isInCart,
         updateCart
