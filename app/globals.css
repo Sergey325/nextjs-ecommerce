@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* rid of selection with tap on mobile*/
+* { -webkit-tap-highlight-color: transparent;  }
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

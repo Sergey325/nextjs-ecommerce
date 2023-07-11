@@ -51,6 +51,7 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                 text-md
                 group
                 select-none
+                touch-none
                 ${mainStyles}
             `}
         >
