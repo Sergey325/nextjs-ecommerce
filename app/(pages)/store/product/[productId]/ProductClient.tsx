@@ -75,7 +75,7 @@ const ProductClient = ({product, currentUser}: Props) => {
                             <span className="text-sm lg:text-xl text-gray-300">{product.immediatelyAvailable ? "In stock and immediately available" : "Out of stock"}</span>
                             <span className="text-xs lg:text-sm text-gray-500">{product.immediatelyAvailable ? "Delivery time 1-2 business days" : "Delivery time 3-5 business days"}</span>
                         </div>
-                        <Button icon={FaShoppingCart} label={isInCart ? "Remove from cart" : "Into Cart"} outline  onClick={updateCart}/>
+                        <Button icon={FaShoppingCart} label={isInCart ? "Remove from cart" : "Add to Cart"} outline  onClick={updateCart}/>
                         <Button icon={hasFavorited ? MdFavorite : MdFavoriteBorder} label={hasFavorited ? "Remove from wish list" : "Add to wish list"} onClick={toggleFavorite} outline />
                     </div>
                 </div>

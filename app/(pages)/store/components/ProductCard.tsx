@@ -82,7 +82,7 @@ const ProductCard = ({data: product, currentUser, favorites = false}: Props) => 
                 !favorites
                     ?
                     <div className="">
-                        <Button label={isInCart ? "Remove" : "Into Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
+                        <Button label={isInCart ? "Remove" : "Add to Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
                     </div>
                     :
                     <div className="-mt-4"></div>
