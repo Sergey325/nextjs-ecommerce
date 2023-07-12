@@ -55,9 +55,30 @@ export const authOptions: AuthOptions = {
     },
     debug: process.env.NODE_ENV === 'development',
     session: {
-        strategy: 'jwt'
+        strategy: 'jwt',
     },
     secret: process.env.NEXTAUTH_SECRET,
+
+    //fix for unsign after checkout
+    cookies: {
+        sessionToken: {
+            name: `__Secure-next-auth.session-token`,
+            options: {
+                httpOnly: true,
+                sameSite: 'lax',
+                path: '/',
+                secure: true
+            }
+        },
+        callbackUrl: {
+            name: `__Secure-next-auth.callback-url`,
+            options: {
+                sameSite: 'lax',
+                path: '/',
+                secure: true
+            }
+        }
+    }
 }
 
 export default NextAuth(authOptions)

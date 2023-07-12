@@ -53,6 +53,10 @@ const InputFilter = ({price = false, placeholder = "", id, styles, type, debounc
     }, 800);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target.value.includes("-")){
+            setValue("")
+            return null
+        }
         setValue(e.target.value)
         if(debounced) {
             debouncedChange(e)

@@ -5,6 +5,16 @@
 /* rid of selection with tap on mobile*/
 * { -webkit-tap-highlight-color: transparent;  }
 
+/* Remove Arrows/Spinners from inputs*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -50,5 +60,5 @@ body,
 
 /*Handle*/
 ::-webkit-scrollbar-thumb {
-  @apply ml-1 bg-slate-600 rounded-md;
+  @apply ml-1 bg-slate-600 rounded-md h-[40%];
 }

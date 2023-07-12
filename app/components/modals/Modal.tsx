@@ -74,8 +74,9 @@ const Modal = ({
                     focus:outline-none
                     bg-neutral-800/70
                 "
+                onClick={onClose}
             >
-                <div className="
+                <div onClick={(e) => {e.stopPropagation()}} className="
                     relative
                     w-full md:w-4/6 lg:w-3/6 xl:w-2/5
                     my-6 mx-auto
@@ -112,15 +113,16 @@ const Modal = ({
                                 relative
                                 border-b-[1px]
                             ">
-                                <button
-                                    onClick={handleClose}
-                                    className="p-1 border-0 hover:opacity-70 transition absolute left-9"
-                                >
-                                    <IoMdClose size={18}/>
-                                </button>
                                 <div className="text-lg font-semibold">
                                     {title}
                                 </div>
+                                <button
+                                    onClick={handleClose}
+                                    className="p-1 border-0 hover:opacity-70 transition absolute right-9"
+                                >
+                                    <IoMdClose size={18}/>
+                                </button>
+
                             </div>
 
                             {/*  BODY  */}
