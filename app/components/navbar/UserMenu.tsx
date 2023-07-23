@@ -11,6 +11,7 @@ import DropDown from "@/app/components/DropDown/DropDown";
 import Cart from "@/app/components/navbar/Cart";
 import {useRouter} from "next/navigation";
 import ToolTip from "@/app/components/ToolTip";
+import useSupportModal from "@/app/hooks/useSupportModal";
 
 type Props = {
     currentUser?: User | null
@@ -21,6 +22,7 @@ const UserMenu = ({currentUser}: Props) => {
     const router = useRouter()
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
+    const supportModal = useSupportModal()
 
     useEffect(() => {
         const handleResize = () => {
@@ -54,7 +56,7 @@ const UserMenu = ({currentUser}: Props) => {
             options = [
                 { value: "Store", label: "Store", onSelected: () => {router.push("/store")}},
                 { value: "Home", label: "Home", onSelected:  () => {router.push("/")}},
-                { value: "Support", label: "Support", onSelected: () => {}},...options,
+                { value: "Support", label: "Support", onSelected: supportModal.onOpen},...options,
             ]
         }
 
