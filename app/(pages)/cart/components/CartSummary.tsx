@@ -9,7 +9,7 @@ const CartSummary = ({totalPrice, onCheckout}: Props) => {
 
     return (
         <div
-            className="mt-16 rounded-lg px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 w-full xl:w-[30%] bg-gray-900 text-gray-400 self-start"
+            className="rounded-lg px-4 py-6 sm:p-6 lg:col-span-5 lg:p-8 w-full xl:w-[30%] bg-gray-900 text-gray-400 self-start"
         >
             <h2 className="text-xl font-medium ">
                 Order summary

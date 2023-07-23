@@ -29,7 +29,7 @@ const CustomFilters = ({customFilters, allProducts}: Props) => {
                                     <InputFilter type={"number"} id={"max" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"max"}/>
                                 </div>
                             :
-                                <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">
+                                <div className="flex flex-col gap-2 text-base max-h-[130px] overflow-y-auto">
                                     {Array.from(new Set(allProducts.map((product: any) => product.properties.find( (object: any) => object.title === filter.title)["value"]))).map((property: any) =>
                                         <React.Fragment key={property}>
                                             <CheckBox

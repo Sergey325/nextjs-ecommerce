@@ -74,7 +74,7 @@ const Modal = ({
                     focus:outline-none
                     bg-neutral-800/70
                 "
-                onClick={onClose}
+                onClick={handleClose}
             >
                 <div onClick={(e) => {e.stopPropagation()}} className="
                     relative
