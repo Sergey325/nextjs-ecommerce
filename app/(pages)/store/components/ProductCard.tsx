@@ -11,10 +11,9 @@ import useCart from "@/app/hooks/useCart";
 type Props = {
     data: Product
     currentUser?: User | null
-    favorites?: boolean
 };
 
-const ProductCard = ({data: product, currentUser, favorites = false}: Props) => {
+const ProductCard = ({data: product, currentUser}: Props) => {
     const router = useRouter()
     const {isInCart, updateCart} = useCart({product, currentUser})
 
@@ -78,16 +77,9 @@ const ProductCard = ({data: product, currentUser, favorites = false}: Props) => 
             <div className="font-light text-sm text-gray-400 justify-self-start mb-[-10px] ">
                 {product.immediatelyAvailable ? "Immediately available" : "Out of stock"}
             </div>
-            {
-                !favorites
-                    ?
-                    <div className="">
-                        <Button label={isInCart ? "Remove" : "Add to Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
-                    </div>
-                    :
-                    <div className="-mt-4"></div>
-            }
-
+            <div className="">
+                <Button label={isInCart ? "Remove" : "Add to Cart"} outline onClick={updateCart} icon={FaShoppingCart}/>
+            </div>
         </div>
     );
 };
