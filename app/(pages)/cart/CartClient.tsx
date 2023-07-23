@@ -39,7 +39,7 @@ const CartClient = ({currentUser}: Props) => {
         <Container>
             <div className="text-2xl md:text-4xl pt-10 px-5 lg:px-20 text-gray-400">
                 Your Shopping Cart
-                <div className="flex flex-col xl:flex-row gap-10 xl:gap-20 items-start">
+                <div className="flex flex-col xl:flex-row gap-20 items-start">
                     <div className="flex flex-col w-full xl:w-4/6  pt-10 gap-3">
                         <div className="hidden sm:grid grid-cols-3 md:grid-cols-4 text-sm sm:text-lg">
                             <span className="">Product</span>

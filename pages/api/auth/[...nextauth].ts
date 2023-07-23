@@ -59,7 +59,7 @@ export const authOptions: AuthOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
 
-    //fix for sign out after checkout
+    //fix for unsign after checkout
     cookies: {
         sessionToken: {
             name: `__Secure-next-auth.session-token`,

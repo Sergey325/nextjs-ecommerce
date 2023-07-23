@@ -33,6 +33,7 @@ const FavoritesClient = ({products, currentUser}: Props) => {
                                 key={product.id + index}
                                 data={product}
                                 currentUser={currentUser}
+                                favorites
                             />
                         )
                     })}

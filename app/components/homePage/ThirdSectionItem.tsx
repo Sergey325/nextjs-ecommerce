@@ -22,9 +22,10 @@ const ThirdSectionItem = ({label, icon: Icon, linearGradient, category, iconColo
                     overflow={false}
                     zIndex="z-20"
                     styles="mt-[-20%] group-hover:scale-125 cursor-pointer"
+
                 />
             </Link>
-            <div className="flex z-20 translate-y-0 group-hover:translate-y-[-15px] transition-all duration-700 cursor-pointer">
+            <div className="flex z-50 translate-y-0 group-hover:translate-y-[-15px] transition-all duration-700 cursor-pointer">
                 <Link href={{pathname: "/store", query:{ category: category },}}>
                     <Icon size={size} color={iconColor}/>
                 </Link>
