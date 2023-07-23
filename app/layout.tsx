@@ -8,6 +8,7 @@ import ToasterProvider from "@/app/Providers/ToasterProvider";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import BackToTop from "@/app/components/BackToTop";
 import Footer from "@/app/components/Footer";
+import SupportModal from "@/app/components/modals/SupportModal";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
                         <ToasterProvider/>
                         <LoginModal/>
                         <RegisterModal/>
+                        <SupportModal/>
                         <Navbar currentUser={currentUser}/>
                     </ClientOnly>
                     <div className="pb-20 flex-grow">

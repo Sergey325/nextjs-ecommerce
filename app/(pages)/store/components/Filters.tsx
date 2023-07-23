@@ -52,7 +52,7 @@ const Filters = ({allProducts}: Props) => {
                 <div className="text-base font-semibold">
                     Manufacturer
                 </div>
-                <div className="flex flex-col gap-2 text-base max-h-[100px] overflow-y-auto">
+                <div className="flex flex-col gap-2 text-base max-h-[130px] overflow-y-auto">
                     {
                         Array.from(new Set(allProducts.map(product => product.manufacturer))).map(manufacturer => (
                             <div key={manufacturer}>
