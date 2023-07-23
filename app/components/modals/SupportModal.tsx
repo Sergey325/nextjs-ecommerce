@@ -109,7 +109,7 @@ const SupportModal = () => {
                     font-light text-gray-300
                     bg-slate-800
                     border-2 border-slate-700 rounded-md
-                    min-h-[100px] max-h-[350px]
+                    min-h-[350px] md:min-h-[100px] max-h-[350px]
                     overflow-y-auto
                 "
                 placeholder="Provide details about the issue you faced"
