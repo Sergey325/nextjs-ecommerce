@@ -17,7 +17,6 @@ const FifthSectionItem = ({ src_gray, src_purple, lastOne }: Props) => {
     const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        console.log("eventWorking")
         const parentRect = e.currentTarget.getBoundingClientRect();
         if (parentRect) {
             const offsetX = e.clientX - parentRect.left;

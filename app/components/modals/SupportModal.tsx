@@ -51,7 +51,6 @@ const SupportModal = () => {
             toast.error("You didn't fill in all the blanks")
             return
         }
-        console.log(data)
 
         setIsLoading(true)
 

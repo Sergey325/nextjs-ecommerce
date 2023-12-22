@@ -1,8 +1,9 @@
 "use client"
 
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {IoIosArrowDropdown} from "react-icons/io";
 import DropDownItem from "@/app/components/DropDown/DropDownItem";
+import useClickOutside from "@/app/hooks/useClickOutside";
 
 type Option = {
     value: string;
@@ -24,6 +25,8 @@ type Props = {
 const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, hrAfter, overflowHidden = false}: Props) => {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+    const dropDownRef = useRef(null)
+    useClickOutside({ ref: dropDownRef, onClickOutside: () => setIsOpen(false) })
 
     const handleSelectOption = useCallback((option: Option) => {
         if(selectedOption?.value === option.value){
@@ -54,6 +57,7 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                 touch-none
                 ${mainStyles}
             `}
+            ref={dropDownRef}
         >
             {
                 body ? body
