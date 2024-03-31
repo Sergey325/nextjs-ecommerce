@@ -33,22 +33,33 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                     <FilterPanel productsByCategory={productsByCategory}/>
                     <div className="w-full flex-col px-5 sm:px-0">
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
-                            <div className="flex items-center justify-between w-full sm:w-auto sm:justify-center gap-3 order-2 sm:order-1">
+                            <div
+                                className="flex items-center justify-between w-full sm:w-auto sm:justify-center gap-3 order-2 sm:order-1">
                                 <Sorting/>
                                 <ToolTip label={"Filters"}>
-                                    <FaFilter className="block lg:hidden text-gray-400 hover:text-gray-600 transition cursor-pointer" size={24}  onClick={filterModal.onOpen}/>
+                                    <FaFilter
+                                        className="block lg:hidden text-gray-400 hover:text-gray-600 transition cursor-pointer"
+                                        size={24} onClick={filterModal.onOpen}/>
                                 </ToolTip>
                             </div>
-                            <div className="flex items-center w-full sm:w-auto hover:drop-shadow-[0_0_5px_rgba(98,143,200,0.25)] transition order-1 pl-1 sm:order-2">
-                                <BiSearch className="text-gray-400 -mr-7 z-10" size={24}/>
-                                <InputFilter type={"text"} id={"title"} placeholder={"Search"} debounced styles="text-gray-400 outline-none pl-7 py-1.5 rounded-md bg-gray-800 w-full sm:max-w-[180px]"/>
+                            <div
+                                className="relative flex items-center w-full sm:w-auto hover:drop-shadow-[0_0_5px_rgba(98,143,200,0.25)] transition order-1 sm:order-2">
+                                <BiSearch className="absolute left-2 text-gray-400 z-10" size={24}/>
+                                <InputFilter
+                                    type={"text"}
+                                    id={"title"}
+                                    placeholder={"Search"}
+                                    debounced
+                                    styles="text-gray-400 outline-none pl-9 py-1.5 rounded-md bg-gray-800 w-full sm:max-w-[180px]"
+                                />
                             </div>
                             {/*<DevCreateProductBtn/>*/}
                         </div>
                         {
                             !products.length
                                 ?
-                                <EmptyState showReset title="No exact matches" subtitle={"Try changing or removing some of your filters"}/>
+                                <EmptyState showReset title="No exact matches"
+                                            subtitle={"Try changing or removing some of your filters"}/>
                                 :
                                 <ProductsLayout products={products} currentUser={currentUser}/>
                         }

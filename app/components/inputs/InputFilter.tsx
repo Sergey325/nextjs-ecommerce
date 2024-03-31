@@ -66,7 +66,7 @@ const InputFilter = ({price = false, placeholder = "", id, styles, type, debounc
     }
 
     return (
-        <div className="relative w-full ">
+        <div className="relative w-full">
             <input
                 id={id}
                 placeholder={placeholder}

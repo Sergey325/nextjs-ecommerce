@@ -8,12 +8,7 @@ export type BasketItem = {
 export type CategoryFilters = (
     {
         title: string,
-        value: string
-    }
-    |
-    {
-        title: string,
-        value: number
+        value: string | number
     }
 )[]
 
