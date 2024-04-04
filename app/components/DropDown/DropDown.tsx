@@ -83,13 +83,13 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
                     text-gray-400
                     transition-all
                     duration-300
-                    ${overflowHidden ? "max-h-[200px] lg:max-h-max": "max-h-max"}
+                    ${overflowHidden ? "max-h-[200px] lg:h-fit": "h-fit"}
                     min-w-min
                     z-50
                     ${isOpen ? `translate-y-2 opacity-100 visible` : "translate-y-[-5] opacity-0 invisible"}
                 `}
             >
-                <div className="flex flex-col h-full cursor-pointer text-md w-full">
+                <div className="flex flex-col cursor-pointer text-md w-full">
                     {options.map((option, key) => (
                         (
                             <div key={key + option.value}>
