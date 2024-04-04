@@ -17,8 +17,10 @@ import toast from "react-hot-toast";
 import Button from "@/app/components/Button";
 import {signIn} from "next-auth/react";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import {useRouter} from "next/navigation";
 
 const RegisterModal = () => {
+    const router = useRouter()
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false)
@@ -43,7 +45,21 @@ const RegisterModal = () => {
         axios.post('/api/register', data)
             .then(() => {
                 toast.success("Account created!")
-                loginModal.onOpen()
+                signIn('credentials',{
+                    ...data,
+                    redirect: false,
+                })
+                    .then((callback) => {
+
+                        if(callback?.ok) {
+                            toast.success("Logged in")
+                            router.refresh()
+                        }
+
+                        if(callback?.error){
+                            toast.error(callback.error)
+                        }
+                    })
                 registerModal.onClose()
             })
             .catch(() => {

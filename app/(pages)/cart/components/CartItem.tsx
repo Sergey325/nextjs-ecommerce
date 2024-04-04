@@ -81,12 +81,12 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
                 <span className="text-sm md:text-base">{item.product.title}</span>
             </div>
             <span className="hidden md:inline-block md:w-[15%]">${(item.product.price-item.product.price/100*item.product.sale).toFixed(2)}</span>
-            <div className="flex justify-between items-center w-full sm:w-[45%] md:w-[30%] min-h-max min-w-max">
-                <div className="flex items-center text-base gap-1 min-h-max min-w-max">
+            <div className="flex justify-between items-center w-full sm:w-[45%] md:w-[30%] min-w-max">
+                <div className="flex items-center text-base gap-1 min-w-max">
                     <DropDown
                         options={options}
                         placeholder={item.quantity.toString()}
-                        mainStyles="border-1 border-gray-400 text-gray-400 hover:shadow-none text-base max-h-[200px] lg:max-h-min"
+                        mainStyles="border-1 border-gray-400 text-gray-400 hover:shadow-none text-base max-h-[200px] lg:h-fit"
                         rounded
                         childStyle="bg-gray-900 "
                         overflowHidden={true}
