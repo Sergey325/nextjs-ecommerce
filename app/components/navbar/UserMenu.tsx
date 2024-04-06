@@ -65,7 +65,7 @@ const UserMenu = ({currentUser}: Props) => {
 
     const onCartClick = () => {
         if(!currentUser){
-            return registerModal.onOpen()
+            return loginModal.onOpen()
         }
         return router.push("/cart")
     }
