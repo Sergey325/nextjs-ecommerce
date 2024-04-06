@@ -1,8 +1,9 @@
 "use client"
 
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {IoMdClose} from "react-icons/io";
 import Button from "@/app/components/Button";
+import useClickOutside from "@/app/hooks/useClickOutside";
 
 type Props = {
     isOpen?: boolean
@@ -30,6 +31,8 @@ const Modal = ({
    secondaryActionLabel
 }: Props) => {
     const [showModal, setShowModal] = useState(isOpen)
+    const modalRef = useRef(null)
+    useClickOutside({ ref: modalRef, onClickOutside: () => handleClose() })
 
     useEffect(() => {
         setShowModal(isOpen)
@@ -74,22 +77,23 @@ const Modal = ({
                     focus:outline-none
                     bg-neutral-800/70
                 "
-                onClick={handleClose}
             >
-                <div onClick={(e) => {e.stopPropagation()}} className="
+                <div className="
                     relative
                     w-full md:w-4/6 lg:w-3/6 xl:w-2/5
                     my-6 mx-auto
                     h-full lg:h-auto md:h-auto
                     "
+                     ref={modalRef}
                 >
                     {/*  CONTENT  */}
-                    <div className={`
+                    <div  className={`
                         translate
                         duration-300
                         h-full
                         ${showModal ? "translate-y-0" : "translate-y-full"}
                         ${showModal ? "opacity-100" : "opacity-0"}
+                       
                     `}>
                         <div className="
                             translate
