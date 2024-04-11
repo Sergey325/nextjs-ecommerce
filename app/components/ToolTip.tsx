@@ -29,6 +29,7 @@ const ToolTip = ({children, label}: Props) => {
                     transition 
                     rounded-md
                     pointer-events-none
+                    select-none
                     `
                 }
             >

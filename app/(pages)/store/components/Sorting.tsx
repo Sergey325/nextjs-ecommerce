@@ -1,13 +1,19 @@
 "use client"
 
 import DropDown from "@/app/components/DropDown/DropDown";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import qs from "query-string";
 
 const Sorting = () => {
     const router = useRouter();
     const params = useSearchParams();
+    const [value, setValue] = useState("")
+
+    useEffect(() => {
+        const paramValue = params?.get("sorting");
+        setValue(paramValue ?? "")
+    }, [params]);
 
     const options = [
         { value: "Featured", label: "Featured", onSelected: function() { handleOptionClick(this.value) }},
@@ -49,6 +55,7 @@ const Sorting = () => {
             "
             childStyle={"bg-slate-900 hover:bg-slate-800 text-md drop-shadow-xl"}
             options={options}
+            initialOption={options.find(option => option.value === value)}
         />
     );
 };

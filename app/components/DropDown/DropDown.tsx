@@ -20,9 +20,10 @@ type Props = {
     childStyle?: string
     hrAfter?: Number[]
     overflowHidden?: boolean
+    initialOption?: Option
 };
 
-const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, hrAfter, overflowHidden = false}: Props) => {
+const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, hrAfter, overflowHidden = false, initialOption}: Props) => {
     const [isOpen, setIsOpen] = useState(false)
     const [selectedOption, setSelectedOption] = useState<Option | null>(null);
     const dropDownRef = useRef(null)
@@ -39,6 +40,10 @@ const DropDown = ({placeholder, body, rounded, mainStyles, options, childStyle, 
     useEffect(() => {
         setIsOpen(false);
     }, [selectedOption]);
+
+    useEffect(() => {
+        setSelectedOption(initialOption as Option)
+    }, [initialOption]);
     return (
         <div
             onClick={() => {setIsOpen((value) => !value)}}

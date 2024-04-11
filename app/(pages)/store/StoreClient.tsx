@@ -12,7 +12,7 @@ import useFilterModal from "@/app/hooks/useFilterModal";
 import {BiSearch} from "react-icons/bi";
 import ToolTip from "@/app/components/ToolTip";
 import InputFilter from "@/app/components/inputs/InputFilter";
-import DevCreateProductBtn from "@/app/(pages)/store/components/DevCreateProductBtn";
+// import DevCreateProductBtn from "@/app/(pages)/store/components/DevCreateProductBtn";
 
 type Props = {
     currentUser: User | null,
@@ -24,12 +24,12 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
     const filterModal = useFilterModal()
 
     return (
-        <div className="relative">
+        <>
             <hr className="border-gray-800"/>
             <Categories/>
             <hr className="border-gray-800"/>
             <Container>
-                <div className="relative flex pt-10 gap-6">
+                <div className="flex pt-10 gap-6">
                     <FilterPanel productsByCategory={productsByCategory}/>
                     <div className="w-full flex-col px-5 sm:px-0">
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
@@ -67,7 +67,7 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                     </div>
                 </div>
             </Container>
-        </div>
+        </>
     );
 };
 
