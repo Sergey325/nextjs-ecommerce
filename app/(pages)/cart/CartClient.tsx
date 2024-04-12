@@ -19,7 +19,7 @@ const CartClient = ({currentUser}: Props) => {
 
     useEffect(() => {
         onChangeQuantity()
-    }, [currentUser?.cart])
+    }, [currentUser?.cart.length])
 
     const onChangeQuantity = useCallback(() => {
         const total = (currentUser?.cart as BasketItem[]).reduce((total, item) => {
@@ -28,7 +28,7 @@ const CartClient = ({currentUser}: Props) => {
         }, 0);
 
         setTotalPrice(Math.round(total * 100) / 100)
-    }, [currentUser?.cart])
+    }, [currentUser?.cart.length])
 
     const onCheckout = async () => {
         const response = await axios.post("api/checkout", currentUser?.cart as BasketItem[])

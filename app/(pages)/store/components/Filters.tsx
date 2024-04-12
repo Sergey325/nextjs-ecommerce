@@ -31,9 +31,9 @@ const Filters = ({allProducts}: Props) => {
                     Price
                 </div>
                 <div className="flex items-center min-w-min text-gray-400 gap-2">
-                    <InputFilter id={"priceMin"} type={"number"} placeholder={"min"} price/>
+                    <InputFilter id={"priceMin"} debounced type={"number"} placeholder={"min"} price/>
                     <BsDash size={40}/>
-                    <InputFilter id={"priceMax"} type={"number"} placeholder={"max"} price/>
+                    <InputFilter id={"priceMax"} debounced type={"number"} placeholder={"max"} price/>
                 </div>
             </div>
 

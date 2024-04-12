@@ -24,9 +24,9 @@ const CustomFilters = ({customFilters, allProducts}: Props) => {
                             filter.title.includes(" (mm)") || filter.title.includes(" (dB)")
                             ?
                                 <div className="flex items-center min-w-min text-gray-400 gap-2">
-                                    <InputFilter type={"number"} id={"min" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"min"}/>
+                                    <InputFilter type={"number"} debounced id={"min" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"min"}/>
                                     <BsDash size={40}/>
-                                    <InputFilter type={"number"} id={"max" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"max"}/>
+                                    <InputFilter type={"number"} debounced id={"max" + filter.title.replace(/\s/g, "").slice(0, -4)} placeholder={"max"}/>
                                 </div>
                             :
                                 <div className="flex flex-col gap-2 text-base max-h-[130px] overflow-y-auto">

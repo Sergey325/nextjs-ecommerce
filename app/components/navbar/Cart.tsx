@@ -13,14 +13,8 @@ const Cart = ({currentUser, onClick}: Props) => {
     const [amountCart, setAmountCart] = useState(0);
 
     useEffect(() => {
-        const updateAmountCart = async () => {
-            await new Promise((resolve) => setTimeout(resolve, 0));
-
-            setAmountCart(currentUser?.cart.length ?? 0);
-        };
-
-        updateAmountCart();
-    }, [currentUser?.cart]);
+        setAmountCart(currentUser?.cart.length ?? 0);
+    }, [currentUser?.cart.length]);
 
     return (
         <div className="group cursor-pointer relative hidden sm:block" onClick={onClick}>
