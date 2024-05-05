@@ -27,7 +27,7 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <div className="relative flex min-h-screen flex-col">
+                <div className="relative flex flex-col flex-auto">
                     <ClientOnly>
                         <ToasterProvider/>
                         <LoginModal/>
@@ -35,7 +35,7 @@ export default async function RootLayout({
                         <SupportModal/>
                         <Navbar currentUser={currentUser}/>
                     </ClientOnly>
-                    <div className="pb-20 flex-grow">
+                    <div className="pb-20 flex-auto">
                         {children}
                     </div>
                     <BackToTop/>

@@ -8,7 +8,7 @@ const Footer = () => {
 
     return (
         <Container>
-            <footer className="pb-10 sm:b-20 flex flex-col flex-shrink justify-center items-center">
+            <footer className="pb-10 sm:b-20 flex flex-col justify-center items-center">
                 <hr className="border-gray-700 w-full "/>
                 <div className="flex flex-col sm:flex-row gap-5 sm:gap-0 justify-between items-center w-full pt-5 sm:pt-10">
                     <div className="flex flex-col order-3 sm:order-2 lg:order-1 text-gray-500 text-xs md:text-sm lg:text-md">

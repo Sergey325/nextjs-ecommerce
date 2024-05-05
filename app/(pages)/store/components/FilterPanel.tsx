@@ -18,18 +18,19 @@ const FilterPanel = ({productsByCategory}: Props) => {
 
     return (
         <div className={`
-                absolute lg:static
-                ${filterModal.isOpen ? "w-[100vh] z-20" : "w-0 z-0"}
-                max-w-[103%] lg:min-w-[300px] lg:max-w-[300px]
+                absolute lg:static top-0 left-0
+                ${filterModal.isOpen ? "w-[100%] z-20" : "w-0 z-0"}
+                max-w-[100%] lg:min-w-[300px] lg:max-w-[300px]
                 bg-gray-950/90 lg:bg-transparent
                 z-20
-                h-full
+                h-[100%]
+                overflow-hidden
             `}
              onClick={filterModal.onClose}
         >
             <aside
                 className={`
-                flex flex-col items-center
+                flex flex-col items-center w-full
                 ${filterModal.isOpen ? "translate-x-0" : "-translate-x-96"}
                 transition
                 p-6

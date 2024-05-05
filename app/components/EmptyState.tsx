@@ -20,7 +20,7 @@ const EmptyState = ({
     return (
         <div
             className="
-                h-[60vh]
+                h-full
                 flex flex-col
                 justify-center items-center
                 gap-2
