@@ -8,6 +8,7 @@ type Props = {
     title?: string
     subtitle?: string
     showReset?: boolean
+    center?: boolean
 };
 
 const EmptyState = ({
@@ -24,7 +25,6 @@ const EmptyState = ({
                 flex flex-col
                 justify-center items-center
                 gap-2
-
             "
         >
             <Heading

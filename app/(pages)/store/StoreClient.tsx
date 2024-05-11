@@ -50,7 +50,7 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                                     id={"title"}
                                     placeholder={"Search"}
                                     debounced
-                                    styles="text-gray-400 outline-none pl-9 py-1.5 rounded-md bg-gray-800 w-full sm:max-w-[180px]"
+                                    styles="text-gray-400 outline-none pl-9 py-1.5 rounded-md bg-gray-800 w-full sm:max-w-[280px]"
                                 />
                             </div>
                             {/*<DevCreateProductBtn/>*/}
@@ -58,8 +58,12 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                         {
                             !products.length
                                 ?
-                                <EmptyState showReset title="No exact matches"
-                                            subtitle={"Try changing or removing some of your filters"}/>
+                                <div className="h-[400px]">
+                                    <EmptyState
+                                        showReset title="No exact matches"
+                                        subtitle={"Try changing or removing some of your filters"}
+                                    />
+                                </div>
                                 :
                                 <ProductsLayout products={products} currentUser={currentUser}/>
                         }

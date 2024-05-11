@@ -17,7 +17,7 @@ const Footer = () => {
                         </div>
                         <div className="flex justify-between gap-1">
                             All rights reserved |
-                            <span className="hover:text-indigo-600 transition cursor-pointer">Privacy</span> |
+                            <span className=" hover:text-indigo-600 transition cursor-pointer">Privacy</span> |
                             <span className="hover:text-indigo-600 transition cursor-pointer">Terms</span>
                         </div>
                     </div>
@@ -36,9 +36,9 @@ const Footer = () => {
 
                     <div className="flex order-1 sm:order-3 gap-4 lg:w-[230px] justify-end">
                         <a href="https://github.com/Sergey325">
-                            <AiFillGithub size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition" />
+                            <AiFillGithub className="h-8 w-8 lg:h-10 lg:w-10 text-gray-500 cursor-pointer hover:text-indigo-700 transition" />
                         </a>
-                        <AiFillLinkedin size={40} className="text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
+                        <AiFillLinkedin className="h-8 w-8 lg:h-10 lg:w-10 text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
                     </div>
                 </div>
             </footer>
