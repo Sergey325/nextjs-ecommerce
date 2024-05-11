@@ -2,6 +2,7 @@ import {NextResponse} from "next/server";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from "@/app/libs/prismadb";
 import {BasketItem} from "@/app/types";
+import {Prisma} from "@prisma/client";
 
 export async function PATCH(request: Request) {
     const body = await request.json();
@@ -68,7 +69,7 @@ export async function PUT(request: Request) {
             id: currentUser.id
         },
         data: {
-            cart
+            cart: cart as Prisma.InputJsonValue[]
         }
     })
 
