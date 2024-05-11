@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/app/libs/stripe";
 import prisma from "@/app/libs/prismadb";
 import {ItemOrder, ProductOrder} from "@/app/types";
+import {Prisma} from "@prisma/client";
 
 async function getOrderItems(lineItems: any, stripe: any) {
     return new Promise((resolve, reject) => {
@@ -60,7 +61,7 @@ export async function POST(req: Request) {
         await prisma.order.create({
             data: {
                 userId: session.client_reference_id as string,
-                products: orderItems as ItemOrder,
+                products: orderItems as Prisma.InputJsonValue[],
                 totalPrice: Number(session.amount_total) / 100,
                 createdAt: dateTime,
                 status: "On Process"
