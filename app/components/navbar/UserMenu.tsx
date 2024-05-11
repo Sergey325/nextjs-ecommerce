@@ -91,7 +91,7 @@ const UserMenu = ({currentUser}: Props) => {
                     rounded
                     options={options}
                     mainStyles={"text-slate-500 border-slate-500 p-4 z-15"}
-                    childStyle={"bg-gray-900 hover:bg-gray-700 border-red-500 font-medium min-w-[150px]"}
+                    childStyle={"bg-gray-900 hover:bg-gray-700 font-medium min-w-[150px]"}
                     hrAfter={windowWidth < 768 ? [3,6] : [3]}
                 />
             </div>

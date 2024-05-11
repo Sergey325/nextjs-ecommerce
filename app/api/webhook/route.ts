@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { stripe } from "@/app/libs/stripe";
 import prisma from "@/app/libs/prismadb";
-import {ItemOrder, ProductOrder} from "@/app/types";
+import {ProductOrder} from "@/app/types";
 import {Prisma} from "@prisma/client";
 
 async function getOrderItems(lineItems: any, stripe: any) {

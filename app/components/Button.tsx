@@ -31,22 +31,25 @@ const Button = ({label, onClick, disabled, outline, small, icon: Icon, gradient}
                 ${gradient && "bg-gradient-to-br from-indigo-500 to-purple-600"}
                 ${gradient && ""}
                 ${small ? "py-1" : "py-3"}
-                ${small ? "text-sm" : "text-md"}
+                ${small ? "text-sm" : "text-base"}
                 ${small ? "font-light" : "font-semibold"}
                 select-none
             `}
         >
-            {Icon && (
-                <Icon
-                    size={24}
-                    className="
-                        absolute
-                        left-4
-                        top-3
-                    "
-                />
-            )}
-            {label}
+            <div className="flex items-center">
+                {Icon && (
+                    <Icon
+                        size={24}
+                        className="w-[30%] pl-2"
+                    />
+                )}
+                <span className="w-full text-center text-nowrap">
+                    {label}
+                </span>
+                {Icon && (
+                    <div className="w-[30%]"/>
+                )}
+            </div>
         </button>
     );
 };
