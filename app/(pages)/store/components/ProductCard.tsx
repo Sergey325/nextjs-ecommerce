@@ -21,16 +21,23 @@ const ProductCard = ({data: product, currentUser}: Props) => {
         <div
             onClick={() => router.push(`store/product/${product.id}`)}
             className="
-                col-span-1 cursor-pointer group bg-gray-900 text-gray-400 rounded-xl flex flex-col gap-8 p-4 flex-shrink-0 select-text
+                col-span-1
+                min-w-[200px]
+                cursor-pointer
+                group
+                bg-gray-900 text-gray-400
+                rounded-xl
+                flex flex-col gap-8 p-4 flex-shrink-0
+                select-text
             "
         >
             <div
                 className="
-                        aspect-square
-                        w-full
-                        relative
-                        overflow-hidden
-                    "
+                    aspect-square
+                    w-full
+                    relative
+                    overflow-hidden
+                "
             >
                 <Image
                     fill
