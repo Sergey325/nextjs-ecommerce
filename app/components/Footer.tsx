@@ -24,7 +24,7 @@ const Footer = () => {
                     <Link href={"/"} className="flex items-center order-2 sm:order-1 lg:order-2 text-blue gap-2 cursor-pointer select-none">
                         <Image
                             alt="FooterLogo"
-                            className="h-[48px] w-[48px]"
+                            className="size-[48px]"
                             height="48"
                             width="48"
                             src="/images/logo1.png"
@@ -36,9 +36,9 @@ const Footer = () => {
 
                     <div className="flex order-1 sm:order-3 gap-4 lg:w-[230px] justify-end">
                         <a href="https://github.com/Sergey325">
-                            <AiFillGithub className="h-8 w-8 lg:h-10 lg:w-10 text-gray-500 cursor-pointer hover:text-indigo-700 transition" />
+                            <AiFillGithub className="size-8 lg:size-10 text-gray-500 cursor-pointer hover:text-indigo-700 transition" />
                         </a>
-                        <AiFillLinkedin className="h-8 w-8 lg:h-10 lg:w-10 text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
+                        <AiFillLinkedin className="size-8 lg:size-10 lg:w-10 text-gray-500 cursor-pointer hover:text-indigo-700 transition"/>
                     </div>
                 </div>
             </footer>

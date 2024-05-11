@@ -9,8 +9,8 @@ const PaymentCancelled = () => {
         <Container>
             <div className="flex flex-col h-[60vh] justify-center items-center gap-7 text-gray-500 text-sm sm:text-xl">
                 <GradientRadial
-                    size="w-[150px] h-[150px] md:w-[200px] md:h-[200px]"
-                    gradient="bg-gradient-to-br from-purple-400/70 to-red-500/70"
+                    size="size-[150px] md:size-[200px]"
+                    gradient="bg-red-500/70"
                     blur="blur-[100px] md:blur-[150px]"
                     styles=""
                     styleOfContainer="h-min top-80"

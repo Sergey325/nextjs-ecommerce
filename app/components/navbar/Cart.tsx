@@ -20,14 +20,14 @@ const Cart = ({currentUser, onClick}: Props) => {
         <div className="group cursor-pointer relative hidden sm:block" onClick={onClick}>
             <BiShoppingBag size={32} className="text-gray-400 group-hover:text-gray-500" />
             <span className="
-        text-gray-300 text-sm
-        absolute top-[-10px] right-[-10px]
-        rounded-full
-        bg-gray-600
-        px-1.5
-      ">
-        {amountCart ? amountCart : ""}
-      </span>
+                text-gray-300 text-sm
+                absolute top-[-10px] right-[-10px]
+                rounded-full
+                bg-gray-600
+                px-1.5
+            ">
+                {amountCart ? amountCart : ""}
+            </span>
         </div>
     );
 };

@@ -9,7 +9,7 @@ const SuccessfulPayment = () => {
         <Container>
             <div className="flex flex-col h-[60vh] justify-center items-center gap-5 text-gray-500 text-sm sm:text-xl z-5">
                 <GradientRadial
-                    size="w-[150px] h-[150px] md:w-[200px] md:h-[200px]"
+                    size="size-[150px] md:size-[200px]"
                     gradient="bg-gradient-to-br from-blue-400/80 to-green-500/70"
                     blur="blur-[100px] md:blur-[150px]"
                     styles=""

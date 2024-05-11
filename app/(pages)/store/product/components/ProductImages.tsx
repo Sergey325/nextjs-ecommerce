@@ -63,7 +63,7 @@ const ProductImages = memo(({product}: Props) => {
                 </Carousel>
             </div>
             <GradientRadial
-                size="w-[200px] h-[200px] sm:w-[150px] sm:h-[150px] md:w-[300px] md:h-[300px]"
+                size="size-[200px] sm:size-[150px] md:size-[300px]"
                 gradient="bg-gradient-to-br from-blue-400/70 to-purple-500/70"
                 blur="blur-[200px] md:blur-[300px]"
                 zIndex={"z-5"}
