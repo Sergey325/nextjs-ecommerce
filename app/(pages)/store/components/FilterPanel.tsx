@@ -46,7 +46,7 @@ const FilterPanel = ({productsByCategory}: Props) => {
                 <div className="flex w-full items-center justify-between">
                     <div className="lg:order-2">
                         <ToolTip label="Clear filters">
-                            <MdFilterAltOff className="cursor-pointer hover:text-gray-600 " size={26} onClick={() => {router.push("/store")}}/>
+                            <MdFilterAltOff className="cursor-pointer hover:text-gray-600 size-[26px] hover:scale-125" onClick={() => {router.push("/store")}}/>
                         </ToolTip>
                     </div>
                     <span className="font-semibold lg:order-1">Filter By</span>

@@ -54,7 +54,7 @@ body {
 }
 
 ::-webkit-scrollbar{
-  @apply ml-1 w-2.5 h-1;
+  @apply ml-1 w-2 h-1;
 }
 
 /*Track*/

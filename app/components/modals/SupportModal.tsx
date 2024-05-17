@@ -56,8 +56,11 @@ const SupportModal = () => {
 
         axios.defaults.headers.post['Content-Type'] = 'application/json';
         axios.post('https://formsubmit.co/ajax/344aae01ca778a97e6ea92f5e4d5582a', data)
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
+            .catch(error =>
+            {
+                console.error(error)
+                toast.error(error)
+            });
 
         toast.success("Sent, we'll get back to you by e-mail")
         reset()

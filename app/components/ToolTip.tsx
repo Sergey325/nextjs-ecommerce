@@ -19,7 +19,7 @@ const ToolTip = ({children, label}: Props) => {
                 className={`
                     absolute 
                     px-1
-                    hidden md:inline-block 
+                    hidden lg:inline-block 
                     whitespace-nowrap 
                     left-[50%] -translate-x-[50%] 
                     text-sm text-gray-400

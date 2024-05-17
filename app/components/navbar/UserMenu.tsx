@@ -82,7 +82,7 @@ const UserMenu = ({currentUser}: Props) => {
 
     return (
         <div className="relative">
-            <div className="flex flex-row items-center gap-4 ml-[50px]">
+            <div className="flex flex-row items-center gap-4 sm:ml-[50px]">
                 <ToolTip label="Your cart">
                     <Cart currentUser={currentUser} onClick={onCartClick}/>
                 </ToolTip>

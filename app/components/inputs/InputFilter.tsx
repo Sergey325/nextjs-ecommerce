@@ -22,7 +22,7 @@ const InputFilter = ({price = false, placeholder = "", id, styles, type, debounc
     useEffect(() => {
         const paramValue = params?.get(id);
         setValue(paramValue ?? "")
-    }, [params, id]);
+    }, []);
 
     const changeUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         let currentQuery = {};
@@ -50,7 +50,7 @@ const InputFilter = ({price = false, placeholder = "", id, styles, type, debounc
 
     const debouncedChange = debounce((e) => {
         changeUrl(e);
-    }, 1500);
+    }, 800);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if(e.target.value.includes("-")){

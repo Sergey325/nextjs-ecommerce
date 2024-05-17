@@ -40,7 +40,6 @@ export default async function getProducts(params: IProductsParams) {
         if (sorting && sorting !== "Featured") {
             orderBy = {price: sorting};
         }
-        console.log(typeof manufacturer, manufacturer)
         if (manufacturer && !Array.isArray(manufacturer)) {
             query.manufacturer = manufacturer
         } else if (manufacturer && manufacturer.length > 1) {
