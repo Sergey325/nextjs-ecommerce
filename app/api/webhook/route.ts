@@ -47,6 +47,22 @@ export async function POST(req: Request) {
     }
 
     const session = event.data.object as Stripe.Checkout.Session
+    const customerId = session.client_reference_id as string
+    const customerName = session?.metadata?.customer_name as string
+    const customerEmail = session.customer_email as string
+    const address = session?.customer_details?.address
+
+    const addressComponents = [
+        address?.line1,
+        address?.line2,
+        address?.city,
+        address?.state,
+        address?.postal_code,
+        address?.country,
+    ]
+
+    const addressString = addressComponents.filter((c) => c !== null).join(", ")
+
 
     if(event.type === "checkout.session.completed") {
         const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
@@ -60,10 +76,13 @@ export async function POST(req: Request) {
         //creating order
         await prisma.order.create({
             data: {
-                userId: session.client_reference_id as string,
+                userId: customerId,
                 products: orderItems as Prisma.InputJsonValue[],
                 totalPrice: Number(session.amount_total) / 100,
                 createdAt: dateTime,
+                customerName: customerName,
+                customerEmail: customerEmail,
+                address: addressString,
                 status: "On Process"
             }
         })

@@ -54,11 +54,15 @@ export async function POST(
         cancel_url: `${process.env.NEXT_AUTH_URL}/paymentCancelled`,
         customer_email: currentUser.email,
         client_reference_id: currentUser?.id,
+        billing_address_collection: "required",
         shipping_options: [
             {
                 shipping_rate: estShippingTime
             }
-        ]
+        ],
+        metadata: {
+            customer_name: currentUser.name as string,
+        }
     })
 
     return NextResponse.json({ url: session.url })

@@ -16,6 +16,7 @@ model User {
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
+  role           String    @default("customer")
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
@@ -57,11 +58,14 @@ model Product {
 }
 
 model Order {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt  String
-  status     String
-  number     String @unique @default(uuid())
-  userId     String @db.ObjectId
-  products   Json[] @default([])
-  totalPrice Float
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     String
+  status        String
+  number        String @unique @default(uuid())
+  userId        String @db.ObjectId
+  products      Json[] @default([])
+  customerName  String
+  customerEmail String
+  address       String
+  totalPrice    Float
 }

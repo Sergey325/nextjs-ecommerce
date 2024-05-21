@@ -8,7 +8,8 @@ export type BasketItem = {
 export type CategoryFilters = (
     {
         title: string,
-        value: string | number
+        value: string | number,
+        primary?: boolean
     }
 )[]
 
@@ -29,9 +30,12 @@ export type ProductOrder = {
 export type ItemOrder = {
     id: string,
     number: string,
-    userId: string
-    products: ProductOrder[]
-    totalPrice: number
-    createdAt: string
-    status: string
+    userId: string,
+    products: ProductOrder[],
+    totalPrice: number,
+    createdAt: string,
+    customerName: string,
+    customerEmail: string,
+    address: string,
+    status: string,
 }

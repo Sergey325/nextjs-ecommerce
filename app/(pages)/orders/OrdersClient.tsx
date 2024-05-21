@@ -21,6 +21,9 @@ const OrdersClient = ({orders}: Props) => {
                         products: order.products as ProductOrder[],
                         totalPrice: order.totalPrice,
                         createdAt: order.createdAt,
+                        customerEmail: order.customerEmail,
+                        customerName: order.customerName,
+                        address: order.address,
                         status: order.status,
                     };
                     return (
