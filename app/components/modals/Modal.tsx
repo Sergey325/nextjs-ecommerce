@@ -38,6 +38,17 @@ const Modal = ({
         setShowModal(isOpen)
     }, [isOpen])
 
+    useEffect(() => {
+        if (showModal) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+        return () => {
+            document.body.classList.remove('no-scroll');
+        };
+    }, [showModal]);
+
     const handleClose = useCallback(() => {
         if (disabled) return
 
@@ -68,8 +79,7 @@ const Modal = ({
                     justify-center
                     items-center
                     flex
-                    overflow-x-hidden
-                    overflow-y-auto
+                    overflow-hidden
                     fixed
                     inset-0
                     z-50

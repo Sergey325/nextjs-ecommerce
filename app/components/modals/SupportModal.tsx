@@ -14,7 +14,11 @@ import useSupportModal from "@/app/hooks/useSupportModal";
 import axios from "axios";
 import DropDown from "@/app/components/DropDown/DropDown";
 
-const SupportModal = () => {
+type Props = {
+    currentUserEmail?: string | null
+}
+
+const SupportModal = ({currentUserEmail}: Props) => {
     const loginModal = useSupportModal();
     const [isLoading, setIsLoading] = useState(false)
 
@@ -31,7 +35,7 @@ const SupportModal = () => {
         defaultValues: {
             topic: '',
             message: '',
-            email: ""
+            email: currentUserEmail || ""
         }
     })
 
@@ -111,7 +115,7 @@ const SupportModal = () => {
                     font-light text-gray-300
                     bg-slate-800
                     border-2 border-slate-700 rounded-md
-                    min-h-[350px] md:min-h-[100px] max-h-[350px]
+                    min-h-[200px] md:min-h-[100px] max-h-[350px]
                     overflow-y-auto
                 "
                 placeholder="Provide details about the issue you faced"
