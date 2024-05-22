@@ -37,8 +37,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
             item.quantity = +quantity;
             setTotalAmount(calculateTotalPrice(item.product, item.quantity));
 
-            axios
-                .patch("/api/cart", item)
+            axios.patch("/api/cart", item)
                 .then(() => {
                     toast.success("Quantity changed!");
                 })
@@ -54,8 +53,7 @@ const CartItem = ({item, onChangeQuantity}: Props) => {
 
     const handleDeleteItem = useCallback(() => {
         try {
-            axios
-                .put("/api/cart", { productId: item.product.id })
+            axios.put("/api/cart", { productId: item.product.id })
                 .then(() => {
                     toast.success("Item removed from cart!");
                 })

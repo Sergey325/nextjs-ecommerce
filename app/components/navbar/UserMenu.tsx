@@ -12,6 +12,7 @@ import Cart from "@/app/components/navbar/Cart";
 import {useRouter} from "next/navigation";
 import ToolTip from "@/app/components/ToolTip";
 import useSupportModal from "@/app/hooks/useSupportModal";
+import {getUserMenuHrPositions} from "@/app/utils/getUserMenuHrPositions";
 
 type Props = {
     currentUser?: User | null
@@ -43,8 +44,16 @@ const UserMenu = ({currentUser}: Props) => {
                 { value: "Cart", label: "Cart", onSelected: () => {router.push("/cart")}},
                 { value: "Orders", label: "Orders", onSelected:  () => {router.push("/orders")}},
                 { value: "Favorites", label: "Favorites", onSelected: () => {router.push("/favorites")}},
-                { value: "Logout", label: "Logout", onSelected: signOut},
+                { value: "Logout", label: "Logout", onSelected: signOut}
             ]
+            if (currentUser.role === "admin") {
+                options.splice(
+                    3,
+                    0,
+                    { value: "ManageProducts", label: "Manage Products", onSelected:() => {router.push("/admin/manageProducts?tab=AllProducts")}},
+                    { value: "ManageOrders", label: "Manage Orders", onSelected: () => {router.push("/admin/manageOrders")}}
+                )
+            }
         }
         else {
             options = [
@@ -79,7 +88,6 @@ const UserMenu = ({currentUser}: Props) => {
         </>
     )
 
-
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-4 sm:ml-[50px]">
@@ -91,8 +99,8 @@ const UserMenu = ({currentUser}: Props) => {
                     rounded
                     options={options}
                     mainStyles={"text-slate-500 border-slate-500 p-4 z-15"}
-                    childStyle={"bg-gray-900 hover:bg-gray-700 font-medium min-w-[150px]"}
-                    hrAfter={windowWidth < 768 ? [3,6] : [3]}
+                    childStyle={"bg-gray-900 hover:bg-gray-700 font-medium min-w-[150px] text-nowrap"}
+                    hrAfter={getUserMenuHrPositions(currentUser, windowWidth, options.length)}
                 />
             </div>
         </div>

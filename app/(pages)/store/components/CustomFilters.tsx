@@ -1,9 +1,9 @@
-import CheckBox from "@/app/components/inputs/CheckBox";
 import React from "react";
 import {CategoryFilters} from "@/app/types";
 import {Product} from "@prisma/client";
 import InputFilter from "@/app/components/inputs/InputFilter";
 import {BsDash} from "react-icons/bs";
+import CheckBox from "@/app/components/inputs/CheckBox";
 
 type Props = {
     customFilters: CategoryFilters,

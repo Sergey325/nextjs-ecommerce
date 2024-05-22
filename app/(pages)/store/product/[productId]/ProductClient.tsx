@@ -65,8 +65,8 @@ const ProductClient = ({product, currentUser}: Props) => {
                         </div>
                         <hr className="border-gray-500 w-full"/>
                         <div className="flex flex-col gap-4 items-start text-sm lg:text-lg">
-                            {product.properties.filter((property: any) => property?.title === "description").map( (property: any) => (
-                                <span key={property.value} className="before:content-['•'] before:text-xl before:pr-2 ">{property.value}</span>
+                            {product.properties.filter((property: any) => property?.title.includes("description")).map( (property: any, index) => (
+                                <span key={property.value + index} className="before:content-['•'] before:text-xl before:pr-2 ">{property.value}</span>
                             ))}
                             <span className="hover:underline underline-offset-4 cursor-pointer" onClick={scrollToSpecs}>more product information {">"}</span>
                         </div>

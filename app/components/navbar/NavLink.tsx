@@ -8,7 +8,7 @@ type Props = {
     linkTo: string
 };
 
-const MiddleItem = ({label, linkTo}: Props) => {
+const NavLink = ({label, linkTo}: Props) => {
     const supportModal = useSupportModal()
     const router = useRouter()
 
@@ -27,4 +27,4 @@ const MiddleItem = ({label, linkTo}: Props) => {
     );
 };
 
-export default MiddleItem;
+export default NavLink;

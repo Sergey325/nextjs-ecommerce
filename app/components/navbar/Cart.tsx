@@ -2,7 +2,7 @@
 
 import {BiShoppingBag} from "react-icons/bi";
 import {User} from "@prisma/client";
-import {useEffect, useState} from "react";
+import {useMemo} from "react";
 
 type Props = {
     currentUser?: User | null;
@@ -10,10 +10,8 @@ type Props = {
 };
 
 const Cart = ({currentUser, onClick}: Props) => {
-    const [amountCart, setAmountCart] = useState(0);
-
-    useEffect(() => {
-        setAmountCart(currentUser?.cart.length ?? 0);
+    const amountCart = useMemo(() => {
+        return currentUser?.cart.length ?? 0;
     }, [currentUser?.cart.length]);
 
     return (

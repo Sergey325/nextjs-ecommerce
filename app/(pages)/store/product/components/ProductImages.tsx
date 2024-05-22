@@ -37,7 +37,7 @@ const ProductImages = memo(({product}: Props) => {
             <Image
                 src={selectedImage}
                 width={600} height={600}
-                className="hidden lg:block object-contain mx-auto select-none pointer-events-none"
+                className="hidden lg:block object-contain aspect-square mx-auto select-none pointer-events-none"
                 alt="ProductImage"
                 quality={100}
                 priority
@@ -58,7 +58,7 @@ const ProductImages = memo(({product}: Props) => {
                     renderDotsOutside
                     itemClass="carousel-item-padding-40-px">
                     {product.images.map((slide) => (
-                        <Image src={slide} key={slide} width={600} height={600} priority className="object-contain mx-auto select-none pointer-events-none" alt=""/>
+                        <Image src={slide} key={slide} width={600} height={600} priority className="object-contain h-full mx-auto select-none pointer-events-none" alt=""/>
                     ))}
                 </Carousel>
             </div>
@@ -88,7 +88,7 @@ const ProductImages = memo(({product}: Props) => {
                                     key={slide}
                                     width={100} height={100}
                                     priority
-                                    className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-500 border-2"
+                                    className="object-cover aspect-square cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-500 border-2"
                                     alt="productImageOption"
                                     onMouseEnter={() => setSelectedImage(slide)}
                                 />
@@ -104,7 +104,7 @@ const ProductImages = memo(({product}: Props) => {
                                 priority={true}
                                 width={100} height={100}
                                 alt="productImageOption"
-                                className="object-cover cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-500 border-2"
+                                className="object-cover aspect-square cursor-pointer hover:shadow-xl hover:opacity-70 rounded-xl border-gray-500 border-2"
                                 onMouseEnter={() => setSelectedImage(image)}
                             />
                         ))}

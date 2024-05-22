@@ -12,9 +12,10 @@ type Props = {
     styles?: string
     type: string
     debounced?: boolean
+    baseUrl?: string
 };
 
-const InputFilter = ({price = false, placeholder = "", id, styles, type, debounced = false}: Props) => {
+const InputFilter = ({price = false, placeholder = "", id, styles, type, debounced = false, baseUrl = "/store"}: Props) => {
     const params = useSearchParams()
     const router = useRouter()
     const [value, setValue] = useState("")
@@ -41,7 +42,7 @@ const InputFilter = ({price = false, placeholder = "", id, styles, type, debounc
         }
 
         const url = qs.stringifyUrl({
-            url: "/store",
+            url: baseUrl,
             query: updatedQuery
         }, {skipNull: true})
 

@@ -12,7 +12,6 @@ import useFilterModal from "@/app/hooks/useFilterModal";
 import {BiSearch} from "react-icons/bi";
 import ToolTip from "@/app/components/ToolTip";
 import InputFilter from "@/app/components/inputs/InputFilter";
-// import DevCreateProductBtn from "@/app/(pages)/store/components/DevCreateProductBtn";
 
 type Props = {
     currentUser: User | null,
@@ -35,7 +34,7 @@ const StoreClient = ({currentUser, products, productsByCategory}: Props) => {
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
                             <div
                                 className="flex items-center justify-between w-full sm:w-auto sm:justify-center gap-3 order-2 sm:order-1">
-                                <Sorting/>
+                                <Sorting />
                                 <ToolTip label={"Filters"}>
                                     <FaFilter
                                         className="block lg:hidden text-gray-400 hover:text-gray-600 transition cursor-pointer"

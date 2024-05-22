@@ -32,7 +32,7 @@ export default async function RootLayout({
                         <ToasterProvider/>
                         <LoginModal/>
                         <RegisterModal/>
-                        <SupportModal/>
+                        <SupportModal currentUserEmail={currentUser?.email}/>
                         <Navbar currentUser={currentUser}/>
                     </ClientOnly>
                     <div className="pb-20 flex-auto">
@@ -41,7 +41,6 @@ export default async function RootLayout({
                     <BackToTop/>
                     <Footer/>
                 </div>
-
             </body>
         </html>
     )

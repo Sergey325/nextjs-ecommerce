@@ -8,14 +8,15 @@ type Props = {
     label: string
     disabled?: boolean
     formatPrice?: boolean
-    required?: boolean
+    required: boolean
     register: UseFormRegister<FieldValues>
     errors: FieldErrors
     type?: string
+    placeholder?: string
+    onChange?: (value: string) => void
 };
 
-const Input = ({id, label, disabled, formatPrice, required, register, errors, type}: Props) => {
-
+const Input = ({id, label, disabled, formatPrice, required, register, errors, type, placeholder, onChange}: Props) => {
 
     return (
         <div className="w-full relative">
@@ -25,9 +26,10 @@ const Input = ({id, label, disabled, formatPrice, required, register, errors, ty
             <input
                 id={id}
                 disabled={disabled}
-                {...register(id, {required})}
-                placeholder=" "
+                {...register(id, { required })}
+                placeholder={placeholder || " "}
                 type={type}
+                onChange={(e) => onChange?.(e.target.value)}
                 className={`
                     peer
                     w-full
@@ -39,11 +41,13 @@ const Input = ({id, label, disabled, formatPrice, required, register, errors, ty
                     border-2
                     border-slate-700
                     autofill:!bg-slate-700
+                    placeholder-transparent
                     rounded-md
                     outline-none
                     transition
                     disabled:opacity-70
                     disabled:cursor-not-allowed
+                    focus:placeholder-gray-500
                     ${formatPrice ? "pl-9" : "pl-4"}
                     ${errors[id] ? 'border-rose-500' : "border-neutral-300"}
                     ${errors[id] ? 'focus:border-rose-500' : "focus:drop-shadow-[0_0_10px_rgba(98,143,200,0.4)]"}

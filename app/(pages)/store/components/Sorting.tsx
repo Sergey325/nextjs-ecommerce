@@ -5,7 +5,11 @@ import React, {useEffect, useState} from "react";
 import {useRouter, useSearchParams} from "next/navigation";
 import qs from "query-string";
 
-const Sorting = () => {
+type Props = {
+    baseUrl?: string
+}
+
+const Sorting = ({baseUrl = "/store"}: Props) => {
     const router = useRouter();
     const params = useSearchParams();
     const [value, setValue] = useState("")
@@ -34,7 +38,7 @@ const Sorting = () => {
         }
 
         const url = qs.stringifyUrl({
-            url: '/store',
+            url: baseUrl,
             query: updatedQuery
         }, { skipNull: true });
 

@@ -1,6 +1,5 @@
 "use client"
 
-import CheckBox from "@/app/components/inputs/CheckBox";
 import {useSearchParams} from "next/navigation";
 import {BsDash} from "react-icons/bs";
 import {CategoryFilters} from "@/app/types";
@@ -8,6 +7,7 @@ import {categories} from "@/app/(pages)/store/components/Categories";
 import {Product} from "@prisma/client";
 import CustomFilters from "@/app/(pages)/store/components/CustomFilters";
 import InputFilter from "@/app/components/inputs/InputFilter";
+import CheckBox from "@/app/components/inputs/CheckBox";
 
 type Props = {
     allProducts: Product[]
@@ -19,7 +19,7 @@ const Filters = ({allProducts}: Props) => {
     const defineCategoryFilters = () => {
         if (params && params.has("category")) {
             const category = params.get("category");
-            return categories.find(item => item.label === category)?.properties as CategoryFilters
+            return categories.find(item => item.label === category)?.properties.filter(item => item.primary === true)  as CategoryFilters;
         }
         return []
     }
