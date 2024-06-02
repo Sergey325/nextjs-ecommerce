@@ -127,7 +127,7 @@ const AddProduct = ({product = {
 
     return (
         <div className="text-xl text-center md:text-3xl pt-4 px-5 text-gray-400">
-            Product Creation
+            {product?.id ? "Product Editing" : "Product Creation"}
             <hr className="border-gray-700 w-full mt-2"/>
             <p className="text-base sm:text-lg text-left py-2">Basic information</p>
             <div className="flex flex-col gap-4 text-xs md:text-base xl:text-lg">

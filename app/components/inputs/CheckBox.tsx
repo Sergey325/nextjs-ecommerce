@@ -1,6 +1,6 @@
 "use client"
 
-import {useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {BiSquareRounded} from "react-icons/bi";
 import {BsCheck} from "react-icons/bs";
 import useUrlParams from "@/app/hooks/useUrlParams";
@@ -18,6 +18,10 @@ type Props = {
 const CheckBox = ({label, urlParameter = "", urlValue = "", colorOnChecked, multiplyParameter = true, initialValue = false, onChange}: Props) => {
     const [isChecked, setIsChecked] = useState(initialValue)
     const {changeUrl} = useUrlParams({urlValue, urlParameter, multiplyParameter, setIsChecked})
+
+    useEffect(() => {
+        setIsChecked(initialValue);
+    }, [initialValue]);
 
     const handleClick = () => {
         if (urlParameter) {

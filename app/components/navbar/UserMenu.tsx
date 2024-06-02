@@ -51,7 +51,7 @@ const UserMenu = ({currentUser}: Props) => {
                     3,
                     0,
                     { value: "ManageProducts", label: "Manage Products", onSelected:() => {router.push("/admin/manageProducts?tab=AllProducts")}},
-                    { value: "ManageOrders", label: "Manage Orders", onSelected: () => {router.push("/admin/manageOrders")}}
+                    { value: "ManageOrders", label: "Manage Orders", onSelected: () => {router.push("/admin/manageOrders?status=All")}}
                 )
             }
         }

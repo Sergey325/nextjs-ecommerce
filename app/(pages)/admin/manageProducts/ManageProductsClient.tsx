@@ -27,6 +27,8 @@ const ManageProductsClient = ({products}: Props) => {
             setSelectedProduct(null)
         }
 
+        if (tab === tabTitle) return null
+
         let currentQuery = {}
 
         if(params){

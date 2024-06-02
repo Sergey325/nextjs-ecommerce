@@ -22,6 +22,8 @@ const ManageOrdersClient = ({orders}: Props) => {
     const handleClick = useCallback((statusValue: string) => {
         let currentQuery = {}
 
+        if (status === statusValue) return null
+
         if(params){
             currentQuery = qs.parse(params.toString())
         }

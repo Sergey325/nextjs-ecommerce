@@ -72,7 +72,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
                                 text-sm text-gray-400
                                 before:absolute before:inset-0
                                 before:-rotate-[12deg]
-                                before:translate-y-2 before:translate-x-1
+                                before:translate-y-2 before:translate-x-[0.15rem]
                                 before:border-t-2 before:border-red-500
                                 beforer:w-full
                             "
