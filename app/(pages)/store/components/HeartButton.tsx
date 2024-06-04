@@ -27,16 +27,10 @@ const HeartButton = ({productId, currentUser, size=28}: Props) => {
                 ?
                 <MdFavoriteBorder
                     size={size}
-                    className="
-                        absolute
-                        -top-[2px]
-                        -right-[2px]
-                    "
                 />
                 :
                 <MdFavorite
                     size={size}
-                    className={"absolute -top-[2px] -right-[2px]"}
                 />
             }
         </div>

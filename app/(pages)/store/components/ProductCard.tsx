@@ -7,6 +7,7 @@ import Button from "@/app/components/Button";
 import {FaShoppingCart} from "react-icons/fa";
 import HeartButton from "@/app/(pages)/store/components/HeartButton";
 import useCart from "@/app/hooks/useCart";
+import {MdFavorite} from "react-icons/md";
 
 type Props = {
     data: Product
@@ -53,7 +54,7 @@ const ProductCard = ({data: product, currentUser}: Props) => {
                     sizes={"(max-width: 1200px) 50vw, 15vw"}
                     priority
                 />
-                <div className="absolute top-0 right-0">
+                <div className="absolute -top-[2px] -right-[2px] hover:opacity-80">
                     <HeartButton productId={product.id} currentUser={currentUser}/>
                 </div>
             </div>
